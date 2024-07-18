@@ -1,16 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://b77lgv747e4bf"]
+[gd_scene load_steps=2 format=3 uid="uid://ceht8ltjnwuam"]
 
-[ext_resource type="Texture2D" uid="uid://cps56woktyw7w" path="res://Assets/ice.png" id="1_y68vl"]
+[ext_resource type="Texture2D" uid="uid://dk1q0poghnf5m" path="res://Assets/poison.png" id="1_kgrfr"]
 
-[node name="Ice" type="Node2D"]
+[node name="Poison" type="Node2D"]
 z_index = -4
+z_as_relative = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(-18, 15, -38, 8, -38, -2, -3, -20, 22, -22, 41, -7, 41, -1, 9, 15, -18, 15)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-texture = ExtResource("1_y68vl")
+texture = ExtResource("1_kgrfr")
