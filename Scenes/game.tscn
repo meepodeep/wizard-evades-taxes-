@@ -6,4 +6,7 @@
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_5ty26")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+zoom = Vector2(3.5, 3.5)
+process_callback = 0
+position_smoothing_enabled = true
