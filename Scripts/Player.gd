@@ -6,7 +6,7 @@ var canDash = 1.0
 var dashSpeed = 500
 var stopped = Vector2(0,0)
 @onready var animator = $AnimatedSprite2D
-@onready var GunSprite = $Node2D/Gun
+@onready var GunSprite = $GunParent/Gun
 # Get the gravity from the project settings to be synced with RigidBody nodes.)
 func _physics_process(delta):
 
@@ -22,10 +22,8 @@ func _physics_process(delta):
 	if updown == 1:
 		GunSprite.z_index = 1
 		animator.play("RunForward")
-
 	if updown == -1:
-
-		GunSprite.z_index = -1
+		GunSprite.z_index = -2
 		animator.play("RunBackward")
 
 	if dash == 1 && canDash >=0:
