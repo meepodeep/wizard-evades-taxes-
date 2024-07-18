@@ -1,17 +1,55 @@
-[gd_scene load_steps=4 format=3 uid="uid://cealsvi7aqafc"]
+[gd_scene load_steps=9 format=3 uid="uid://cealsvi7aqafc"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_kikrh"]
-[ext_resource type="Texture2D" uid="uid://b56nefviqx41t" path="res://Assets/square.svg" id="1_vghyx"]
+[ext_resource type="Texture2D" uid="uid://dmn6gj8fjyyj5" path="res://Assets/Wizard.png" id="2_36n4y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nurv1"]
+atlas = ExtResource("2_36n4y")
+region = Rect2(0, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8ped"]
+atlas = ExtResource("2_36n4y")
+region = Rect2(30, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rune"]
+atlas = ExtResource("2_36n4y")
+region = Rect2(60, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83tje"]
+atlas = ExtResource("2_36n4y")
+region = Rect2(90, 0, 30, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_enpul"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nurv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8ped")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rune")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83tje")
+}],
+"loop": true,
+"name": &"RunForward",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pdbr4"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_kikrh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_pdbr4")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_enpul")
+animation = &"RunForward"
+frame = 3
+frame_progress = 0.167462
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0.0624995, 0.0312507)
-scale = Vector2(-0.0249979, -0.0250791)
-texture = ExtResource("1_vghyx")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 5)
+shape = SubResource("CircleShape2D_pdbr4")
