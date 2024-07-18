@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var SPEED = 300.0
 var angular_force = 50000
-var canDash = true
+var canDash = 1.0
 var dashSpeed = 500
 # Get the gravity from the project settings to be synced with RigidBody nodes.)
 func _physics_process(delta):
@@ -12,10 +12,15 @@ func _physics_process(delta):
 	var direction = Input.get_vector("Left","Right","Up", "Down")
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var dash = Input.get_action_strength("Dash")
-	if dash:
+	
+	if dash == 1 && canDash >=0:
 		SPEED = 600
+		canDash -=.1
 	else:
 		SPEED = 300
+	if dash != 1:
+		canDash = 1
+
 	if direction:
 			velocity = direction * SPEED
 	else:
