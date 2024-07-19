@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dr0vw38qauc2q"]
+[gd_scene load_steps=4 format=3 uid="uid://dr0vw38qauc2q"]
 
 [ext_resource type="PackedScene" uid="uid://cealsvi7aqafc" path="res://Scenes/Player.tscn" id="1_5ty26"]
 [ext_resource type="Script" path="res://Scripts/SpellManager.gd" id="2_y522a"]
+[ext_resource type="PackedScene" uid="uid://801kiy05g0j6" path="res://Scenes/mouse_collider.tscn" id="3_yxe1q"]
 
 [node name="Node2D" type="Node2D" groups=["Spells"]]
 
@@ -19,6 +20,10 @@ position_smoothing_enabled = true
 [node name="Spell Manager" type="Node2D" parent="."]
 script = ExtResource("2_y522a")
 
+[node name="MouseCollider" parent="." instance=ExtResource("3_yxe1q")]
+position = Vector2(91, 10)
+
 [connection signal="AmmoFilled" from="Player" to="Spell Manager" method="_on_player_ammo_filled"]
 [connection signal="AmmoOut" from="Player" to="Spell Manager" method="_on_player_ammo_out"]
+[connection signal="transferHitPosition" from="Player" to="Spell Manager" method="_on_player_transfer_hit_position"]
 [connection signal="Fired" from="Spell Manager" to="Player" method="_on_spell_manager_fired"]

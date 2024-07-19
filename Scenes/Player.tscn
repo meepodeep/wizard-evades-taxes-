@@ -1,8 +1,9 @@
-[gd_scene load_steps=43 format=3 uid="uid://cealsvi7aqafc"]
+[gd_scene load_steps=44 format=3 uid="uid://cealsvi7aqafc"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_kikrh"]
 [ext_resource type="Texture2D" uid="uid://db5jrmpoqseu6" path="res://Assets/Wizard.png" id="2_36n4y"]
 [ext_resource type="Script" path="res://Scripts/Gun.gd" id="2_060sx"]
+[ext_resource type="Script" path="res://Scripts/RayCast.gd" id="4_onfna"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ib4te"]
 load_path = "res://.godot/imported/Wizard.png-2ebbcfc18e600834351ca1a6d7bec2ee.ctex"
@@ -341,3 +342,10 @@ sprite_frames = SubResource("SpriteFrames_sjhyi")
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_33ysb")
 animation = &"Poison"
+
+[node name="RayCast2D" type="RayCast2D" parent="GunParent"]
+target_position = Vector2(1000, 0)
+collision_mask = 2048
+script = ExtResource("4_onfna")
+
+[connection signal="collisionPoint" from="GunParent/RayCast2D" to="." method="_on_ray_cast_2d_collision_point"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://801kiy05g0j6"]
+
+[ext_resource type="Script" path="res://Scripts/mouse_collider.gd" id="1_s7ury"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e1700"]
+radius = 7.0
+
+[node name="MouseCollider" type="Node2D"]
+script = ExtResource("1_s7ury")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2048
+collision_mask = 2048
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_e1700")

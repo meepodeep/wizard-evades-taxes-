@@ -1,7 +1,8 @@
 extends CharacterBody2D
-
+signal WhatSpell
 signal AmmoOut
 signal AmmoFilled
+signal transferHitPosition
 var SPEED
 var angular_force = 50000
 var canDash = 1.0
@@ -13,9 +14,10 @@ var SpellType = "light"
 @onready var PotionAnimator = $GunParent/Gun/Potions
 @onready var GunSprite = $GunParent/Gun
 # Get the gravity from the project settings to be synced with RigidBody nodes.)
-func _process(delta):
+func _process(_delta):
 	match SpellType:
 		"poison":
+			WhatSpell.emit(1) 
 			PotionAnimator.play_backwards("Poison")
 		"health":
 			PotionAnimator.play_backwards("Health")
@@ -80,3 +82,7 @@ func reload():
 
 func _on_spell_manager_fired():
 	ammoCount -= 1 # Replace with function body.
+
+
+func _on_ray_cast_2d_collision_point(posit):
+	transferHitPosition.emit(posit) # Replace with function body.
