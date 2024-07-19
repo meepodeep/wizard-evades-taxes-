@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dr0vw38qauc2q"]
+[gd_scene load_steps=5 format=3 uid="uid://dr0vw38qauc2q"]
 
 [ext_resource type="PackedScene" uid="uid://cealsvi7aqafc" path="res://Scenes/Player.tscn" id="1_5ty26"]
 [ext_resource type="Script" path="res://Scripts/SpellManager.gd" id="2_y522a"]
 [ext_resource type="PackedScene" uid="uid://801kiy05g0j6" path="res://Scenes/mouse_collider.tscn" id="3_yxe1q"]
+[ext_resource type="PackedScene" uid="uid://bhlyxfpg5udx2" path="res://Scenes/spell_ball.tscn" id="4_y80bv"]
 
 [node name="Node2D" type="Node2D" groups=["Spells"]]
 
@@ -16,6 +17,9 @@ unique_name_in_owner = true
 zoom = Vector2(2.96, 2.96)
 process_callback = 0
 position_smoothing_enabled = true
+
+[node name="SpellBall" parent="Player" instance=ExtResource("4_y80bv")]
+position = Vector2(26, 5)
 
 [node name="Spell Manager" type="Node2D" parent="."]
 script = ExtResource("2_y522a")

@@ -40,5 +40,6 @@ animations = [{
 [node name="SpellBall" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.360001, 0.360001)
 sprite_frames = SubResource("SpriteFrames_5ijhg")
 animation = &"lightBall"
