@@ -1,32 +1,53 @@
 extends CharacterBody2D
 
-var SPEED = 100.0
+signal AmmoOut
+signal AmmoFilled
+var SPEED
 var angular_force = 50000
 var canDash = 1.0
 var dashSpeed = 500
 var stopped = Vector2(0,0)
-@onready var ammmoCount = 4
+var ammoCount = 4
+var SpellType = "light"
 @onready var animator = $AnimatedSprite2D
 @onready var PotionAnimator = $GunParent/Gun/Potions
 @onready var GunSprite = $GunParent/Gun
 # Get the gravity from the project settings to be synced with RigidBody nodes.)
-func _process(_delta):
-	match ammmoCount:
-			1:
-				PotionAnimator.frame = 3
-			2:
-				PotionAnimator.frame = 2
-			3:
-				PotionAnimator.frame = 1
-			4:
-				PotionAnimator.frame = 0
-func _physics_process(_delta):
-	
-	# Get the input direction and handle the movement/deceleration.
+func _process(delta):
+	match SpellType:
+		"poison":
+			PotionAnimator.play_backwards("Poison")
+		"health":
+			PotionAnimator.play_backwards("Health")
+		"light":
+			PotionAnimator.play_backwards("Light")
+		"ice":
+			PotionAnimator.play_backwards("Ice")
+		"fire":
+			PotionAnimator.play_backwards("Fire")
+		
+	match ammoCount:
+		0:
+			AmmoOut.emit()
+			PotionAnimator.frame = 4
+		1:
+			PotionAnimator.frame = 3
+		2:
+			PotionAnimator.frame = 2
+		3:
+			PotionAnimator.frame = 1
+		4:
+			AmmoFilled.emit()
+			PotionAnimator.frame = 0
+
+func _physics_process(delta):
 	var direction = Input.get_vector("Left","Right","Up", "Down")
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var dash = Input.get_action_strength("Dash")
 	var updown = Input.get_axis("Up","Down")
+	if Input.is_action_just_pressed("Reload"):
+		reload()
+	# Get the input direction and handle the movement/deceleration.
+
 
 	if velocity == stopped:
 		animator.play("idleForward")
@@ -39,17 +60,23 @@ func _physics_process(_delta):
 		animator.play("RunBackward")
 
 	if dash == 1 && canDash >=0:
-		SPEED = 600
-		canDash -=.1
+		SPEED = 60000
+		canDash -= 9 * delta
 	else:
-		SPEED = 100
+		SPEED = 9000
 	if dash != 1:
 		canDash = 1
 
 	if direction:
-			velocity = direction * SPEED
+			velocity = direction * SPEED * delta
 	else:
 		velocity.x = move_toward(velocity.x, 0, 10)
 		velocity.y = move_toward(velocity.y, 0, 10)
 
 	move_and_slide()
+
+func reload():
+	ammoCount = 4
+
+func _on_spell_manager_fired():
+	ammoCount -= 1 # Replace with function body.

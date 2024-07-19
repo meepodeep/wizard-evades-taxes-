@@ -4,7 +4,9 @@ extends Node2D
 @onready var health = load("res://Scenes/health.tscn")
 @onready var fire = load("res://Scenes/fire.tscn")
 @onready var light = load("res://Scenes/light.tscn")
-@onready var currentSpell = 5
+signal Fired
+var currentSpell = 5
+var OutOfAmmo = false
 func instIce(pos):
 	var instanceIce = ice.instantiate()
 	instanceIce.position = pos
@@ -26,7 +28,8 @@ func instLight(pos):
 	instanceLight.position = pos
 	add_child(instanceLight)
 func _process(_delta):
-	if Input.is_action_just_pressed("Fire"):
+	if Input.is_action_just_pressed("Fire") && OutOfAmmo != true:
+		Fired.emit()
 		match currentSpell:
 			1:
 				instPoison(get_global_mouse_position())
@@ -39,3 +42,11 @@ func _process(_delta):
 			5:
 				instLight(get_global_mouse_position())
 		print("wawawa")
+
+
+func _on_player_ammo_out():
+	OutOfAmmo = true # Replace with function body.
+
+
+func _on_player_ammo_filled():
+	OutOfAmmo = false

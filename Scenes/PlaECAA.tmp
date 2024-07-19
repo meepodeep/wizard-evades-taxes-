@@ -1,8 +1,9 @@
-[gd_scene load_steps=43 format=3 uid="uid://cealsvi7aqafc"]
+[gd_scene load_steps=44 format=3 uid="uid://cealsvi7aqafc"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_kikrh"]
 [ext_resource type="Texture2D" uid="uid://db5jrmpoqseu6" path="res://Assets/Wizard.png" id="2_36n4y"]
 [ext_resource type="Script" path="res://Scripts/Gun.gd" id="2_060sx"]
+[ext_resource type="Script" path="res://Scripts/SpellManager.gd" id="4_d6m2e"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ib4te"]
 load_path = "res://.godot/imported/Wizard.png-2ebbcfc18e600834351ca1a6d7bec2ee.ctex"
@@ -228,13 +229,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hrnes")
-}, {
-"duration": 1.0,
-"texture": null
 }],
 "loop": false,
 "name": &"Fire",
-"speed": 2.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -248,13 +246,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_eg7jp")
-}, {
-"duration": 1.0,
-"texture": null
 }],
 "loop": false,
 "name": &"Health",
-"speed": 2.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -268,9 +263,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v4prg")
-}, {
-"duration": 1.0,
-"texture": null
 }],
 "loop": false,
 "name": &"Ice",
@@ -288,13 +280,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nbjrl")
-}, {
-"duration": 1.0,
-"texture": null
 }],
 "loop": false,
 "name": &"Light",
-"speed": 2.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -308,13 +297,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q7iww")
-}, {
-"duration": 1.0,
-"texture": null
 }],
 "loop": false,
-"name": &"Poison",
-"speed": 2.0
+"name": &"Poision",
+"speed": 5.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -340,4 +326,7 @@ sprite_frames = SubResource("SpriteFrames_sjhyi")
 [node name="Potions" type="AnimatedSprite2D" parent="GunParent/Gun"]
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_33ysb")
-animation = &"Poison"
+animation = &"Poision"
+
+[node name="Spell Manager" type="Node2D" parent="."]
+script = ExtResource("4_d6m2e")
