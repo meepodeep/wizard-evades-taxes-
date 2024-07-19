@@ -5,12 +5,16 @@
 
 [node name="Node2D" type="Node2D" groups=["Spells"]]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_5ty26")]
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-zoom = Vector2(3.5, 3.5)
-process_callback = 0
-position_smoothing_enabled = true
-
 [node name="Spell Manager" type="Node2D" parent="."]
 script = ExtResource("2_y522a")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_5ty26")]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2.96, 2.96)
+process_callback = 0
+position_smoothing_enabled = true

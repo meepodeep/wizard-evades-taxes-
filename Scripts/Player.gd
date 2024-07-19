@@ -5,11 +5,23 @@ var angular_force = 50000
 var canDash = 1.0
 var dashSpeed = 500
 var stopped = Vector2(0,0)
+@onready var ammmoCount = 4
 @onready var animator = $AnimatedSprite2D
+@onready var PotionAnimator = $GunParent/Gun/Potions
 @onready var GunSprite = $GunParent/Gun
 # Get the gravity from the project settings to be synced with RigidBody nodes.)
-func _physics_process(delta):
-
+func _process(_delta):
+	match ammmoCount:
+			1:
+				PotionAnimator.frame = 3
+			2:
+				PotionAnimator.frame = 2
+			3:
+				PotionAnimator.frame = 1
+			4:
+				PotionAnimator.frame = 0
+func _physics_process(_delta):
+	
 	# Get the input direction and handle the movement/deceleration.
 	var direction = Input.get_vector("Left","Right","Up", "Down")
 	# As good practice, you should replace UI actions with custom gameplay actions.
