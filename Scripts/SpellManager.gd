@@ -4,7 +4,7 @@ extends Node2D
 @onready var health = load("res://Scenes/health.tscn")
 @onready var fire = load("res://Scenes/fire.tscn")
 @onready var light = load("res://Scenes/light.tscn")
-@onready var ball = $"../Player/SpellBall"
+@onready var ball = $"../SpellBall"
 @onready var player = %Player
 var targetPosition
 signal Fired
@@ -13,7 +13,8 @@ var OutOfAmmo = false
 var hitPosition
 var isFiring = false
 func _ready():
-	ball.position = Vector2(0,0)
+	ball.visible = false
+	ball.position = player.global_position
 func instIce(pos):
 	var instanceIce = ice.instantiate()
 	instanceIce.position = pos
@@ -36,11 +37,20 @@ func instLight(pos):
 	add_child(instanceLight)
 
 func _process(_delta):
+	print("target", targetPosition)
+	print("ball", ball.global_position)
 	player.SpellType = currentSpell
 	if isFiring == true:
-		fire_ball()
+		if ball.global_position != targetPosition:
+			ball.visible = true
+			ball.global_position = ball.global_position.move_toward(targetPosition, 3)
+		if ball.global_position == targetPosition:
+			isFiring = false
+			ball.visible = false
+			ball.position = player.global_position
 	if Input.is_action_just_pressed("Fire") && OutOfAmmo != true && isFiring == false:
 		targetPosition = hitPosition
+		ball.position = player.global_position
 		Fired.emit()
 		match currentSpell:
 			1:
@@ -60,14 +70,7 @@ func _process(_delta):
 				instLight(hitPosition)
 		print("wawawa")
 		isFiring = true
-func fire_ball():
-	if ball.global_position != targetPosition:
-		ball.visible = true
-		ball.global_position = ball.global_position.move_toward(targetPosition, 3)
-	else:
-		isFiring = false
-		ball.visible = false
-		ball.position = Vector2(0,0)
+	
 func _on_player_ammo_out():
 	OutOfAmmo = true # Replace with function body.
 

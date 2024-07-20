@@ -11,6 +11,9 @@
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)
 
+[node name="SpellBall" parent="." instance=ExtResource("4_y80bv")]
+position = Vector2(26, 7)
+
 [node name="Player" parent="." instance=ExtResource("1_5ty26")]
 unique_name_in_owner = true
 
@@ -18,9 +21,6 @@ unique_name_in_owner = true
 zoom = Vector2(2.96, 2.96)
 process_callback = 0
 position_smoothing_enabled = true
-
-[node name="SpellBall" parent="Player" instance=ExtResource("4_y80bv")]
-position = Vector2(26, 7)
 
 [node name="Spell Manager" type="Node2D" parent="."]
 script = ExtResource("2_y522a")
