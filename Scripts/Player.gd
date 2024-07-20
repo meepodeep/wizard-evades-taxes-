@@ -9,23 +9,23 @@ var canDash = 1.0
 var dashSpeed = 500
 var stopped = Vector2(0,0)
 var ammoCount = 4
-var SpellType = "light"
+var SpellType = 1
 @onready var animator = $AnimatedSprite2D
 @onready var PotionAnimator = $GunParent/Gun/Potions
 @onready var GunSprite = $GunParent/Gun
 # Get the gravity from the project settings to be synced with RigidBody nodes.)
 func _process(_delta):
 	match SpellType:
-		"poison":
+		1:
 			WhatSpell.emit(1) 
 			PotionAnimator.play_backwards("Poison")
-		"health":
+		3:
 			PotionAnimator.play_backwards("Health")
-		"light":
+		5:
 			PotionAnimator.play_backwards("Light")
-		"ice":
+		2:
 			PotionAnimator.play_backwards("Ice")
-		"fire":
+		4:
 			PotionAnimator.play_backwards("Fire")
 		
 	match ammoCount:

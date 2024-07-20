@@ -1,24 +1,50 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhlyxfpg5udx2"]
+[gd_scene load_steps=9 format=3 uid="uid://bhlyxfpg5udx2"]
 
 [ext_resource type="Texture2D" uid="uid://bbncskncupoop" path="res://Assets/sprite ball.png" id="1_jnfxr"]
+[ext_resource type="Script" path="res://Scripts/spell_ball.gd" id="1_pq082"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8qut"]
+atlas = ExtResource("1_jnfxr")
+region = Rect2(60, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vhfy"]
+atlas = ExtResource("1_jnfxr")
+region = Rect2(120, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tty8k"]
+atlas = ExtResource("1_jnfxr")
+region = Rect2(0, 0, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c27r5"]
 atlas = ExtResource("1_jnfxr")
 region = Rect2(30, 0, 15, 15)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_d285a"]
+atlas = ExtResource("1_jnfxr")
+region = Rect2(90, 0, 15, 15)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_5ijhg"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8qut")
+}],
 "loop": true,
 "name": &"fireBall",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vhfy")
+}],
 "loop": true,
 "name": &"healthBall",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tty8k")
+}],
 "loop": true,
 "name": &"iceBall",
 "speed": 5.0
@@ -31,15 +57,19 @@ animations = [{
 "name": &"lightBall",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d285a")
+}],
 "loop": true,
 "name": &"poisonBall",
 "speed": 5.0
 }]
 
 [node name="SpellBall" type="Node2D"]
+script = ExtResource("1_pq082")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.360001, 0.360001)
 sprite_frames = SubResource("SpriteFrames_5ijhg")
-animation = &"lightBall"
+animation = &"fireBall"
