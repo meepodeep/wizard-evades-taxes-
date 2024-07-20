@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cggp3k8uohyqy"
-path="res://.godot/imported/brewing station.png-117d6f905e2644cc397bf59ff71fae38.ctex"
+uid="uid://mxcem8adglfx"
+path="res://.godot/imported/items.png-2b6f2df606498c92da15ffac7f0464b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/brewing station.png"
-dest_files=["res://.godot/imported/brewing station.png-117d6f905e2644cc397bf59ff71fae38.ctex"]
+source_file="res://Assets/items.png"
+dest_files=["res://.godot/imported/items.png-2b6f2df606498c92da15ffac7f0464b0.ctex"]
 
 [params]
 
