@@ -4,6 +4,8 @@ signal AmmoOut
 signal AmmoFilled
 signal transferHitPosition
 var SPEED
+var inventory = []
+var itemCount: int = 0
 var angular_force = 50000
 var canDash = 1.0
 var dashSpeed = 500
@@ -14,6 +16,8 @@ var SpellType = 1
 @onready var PotionAnimator = $GunParent/Gun/Potions
 @onready var GunSprite = $GunParent/Gun
 # Get the gravity from the project settings to be synced with RigidBody nodes.)
+func _ready():
+	inventory.resize(64)
 func _process(_delta):
 	match SpellType:
 		1:
@@ -83,6 +87,12 @@ func reload():
 func _on_spell_manager_fired():
 	ammoCount -= 1 # Replace with function body.
 
-
 func _on_ray_cast_2d_collision_point(posit):
 	transferHitPosition.emit(posit) # Replace with function body.
+
+func _on_area_2d_body_entered(body):
+	if itemCount != 64:
+		inventory[itemCount] = body.get_groups()
+		itemCount +=1
+		print(inventory)
+		body.queue_free()

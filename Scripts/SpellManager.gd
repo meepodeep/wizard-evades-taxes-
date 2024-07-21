@@ -52,7 +52,17 @@ func _process(_delta):
 		targetPosition = hitPosition
 		ball.position = player.global_position
 		Fired.emit()
-		
+		match currentSpell:
+			1:
+				ball.poison()
+			2:
+				ball.ice()
+			3:
+				ball.health()
+			4:
+				ball.fire()
+			5:
+				ball.light()
 		isFiring = true
 	
 func _on_player_ammo_out():
@@ -68,17 +78,12 @@ func _on_player_transfer_hit_position(pos):
 func _on_landed():
 	match currentSpell:
 			1:
-				ball.poison()
 				instPoison(hitPosition)
 			2:
-				ball.ice()
 				instIce(hitPosition)
 			3:
-				ball.health()
 				instHealth(hitPosition)
 			4:
-				ball.fire()
 				instFire(hitPosition)
 			5:
-				ball.light()
 				instLight(hitPosition)

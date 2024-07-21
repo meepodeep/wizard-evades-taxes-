@@ -327,6 +327,14 @@ sprite_frames = SubResource("SpriteFrames_enpul")
 animation = &"idleForward"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 10)
+shape = SubResource("CircleShape2D_pdbr4")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1, 5)
 shape = SubResource("CircleShape2D_pdbr4")
 
@@ -348,4 +356,5 @@ target_position = Vector2(1000, 0)
 collision_mask = 2049
 script = ExtResource("4_onfna")
 
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="collisionPoint" from="GunParent/RayCast2D" to="." method="_on_ray_cast_2d_collision_point"]

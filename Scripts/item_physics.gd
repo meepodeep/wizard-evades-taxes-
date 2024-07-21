@@ -11,28 +11,8 @@ var level = ""
 var random 
 var rng = RandomNumberGenerator.new()
 func _ready():
-	level = get_tree().get_current_scene()
-	match level:
-		"level1":
-			random = rng.randf_range(0, 2)
-		"level2":
-			random = rng.randf_range(0, 3)
-		"level3":
-			random = rng.randf_range(0, 3)
-		"level4":
-			random = rng.randf_range(0, 3)
-		"level5":
-			random = rng.randf_range(0, 4)
-		"level6":
-			random = rng.randf_range(0, 4)
-		"level7":
-			random = rng.randf_range(0, 5)
-		"level8":
-			random = rng.randf_range(0, 5)
-		"level9":
-			random = rng.randf_range(0, 5)
-		"level10":
-			random = rng.randf_range(0, 5)
+	randomiz()
+	
 func _process(delta):
 	if draggable:
 		if Input.is_action_just_pressed("Fire"):
@@ -63,7 +43,41 @@ func _on_mouse_shape_exited(shape_idx):
 	if not Global.is_dragging:
 		draggable = false
 		scale = Vector2(1,1)
-
+func randomiz():
+	match level:
+		"level1":
+			random = rng.randi_range(0, 2)
+		"level2":
+			random = rng.randi_range(0, 3)
+		"level3":
+			random = rng.randi_range(0, 3)
+		"level4":
+			random = rng.randi_range(0, 3)
+		"level5":
+			random = rng.randi_range(0, 4)
+		"level6":
+			random = rng.randi_range(0, 4)
+		"level7":
+			random = rng.randi_range(0, 5)
+		"level8":
+			random = rng.randi_range(0, 5)
+		"level9":
+			random = rng.randi_range(0, 5)
+		"level10":
+			random = rng.randi_range(0, 5)
+	match random:
+		1:
+			grass()
+		2:
+			mushroom()
+		3:
+			fireflies()
+		4:
+			heart()
+		5:
+			crystal()
+		6:
+			flint()
 func fireflies():
 	animator.play("fireflies")
 	add_to_group("fireflies")

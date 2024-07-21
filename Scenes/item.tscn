@@ -1,0 +1,172 @@
+[gd_scene load_steps=21 format=3 uid="uid://c54fvv132p6e3"]
+
+[ext_resource type="Texture2D" uid="uid://db2m8xiru4r4i" path="res://Assets/items.png" id="1_5ru1r"]
+[ext_resource type="Script" path="res://Scripts/item.gd" id="1_onx8r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjdkc"]
+atlas = ExtResource("1_5ru1r")
+region = Rect2(0, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nstm"]
+atlas = ExtResource("1_5ru1r")
+region = Rect2(15, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rthmr"]
+atlas = ExtResource("1_5ru1r")
+region = Rect2(30, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivmam"]
+atlas = ExtResource("1_5ru1r")
+region = Rect2(45, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk1x4"]
+atlas = ExtResource("1_5ru1r")
+region = Rect2(60, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwx6n"]
+atlas = ExtResource("1_5ru1r")
+region = Rect2(0, 30, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64uie"]
+atlas = ExtResource("1_5ru1r")
+region = Rect2(0, 15, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hynnj"]
+atlas = ExtResource("1_5ru1r")
+region = Rect2(15, 15, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spoxd"]
+atlas = ExtResource("1_5ru1r")
+region = Rect2(30, 15, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42mhs"]
+atlas = ExtResource("1_5ru1r")
+region = Rect2(45, 15, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_th66y"]
+atlas = ExtResource("1_5ru1r")
+region = Rect2(0, 75, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcxw6"]
+atlas = ExtResource("1_5ru1r")
+region = Rect2(15, 75, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfoyx"]
+atlas = ExtResource("1_5ru1r")
+region = Rect2(30, 75, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrkl1"]
+atlas = ExtResource("1_5ru1r")
+region = Rect2(0, 60, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvahq"]
+atlas = ExtResource("1_5ru1r")
+region = Rect2(15, 60, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_th2m1"]
+atlas = ExtResource("1_5ru1r")
+region = Rect2(0, 45, 15, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r50p8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjdkc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nstm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rthmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivmam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk1x4")
+}],
+"loop": false,
+"name": &"fireflies",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwx6n")
+}],
+"loop": true,
+"name": &"flint",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64uie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hynnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spoxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42mhs")
+}],
+"loop": false,
+"name": &"grass",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_th66y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcxw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfoyx")
+}],
+"loop": false,
+"name": &"heart",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrkl1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvahq")
+}],
+"loop": false,
+"name": &"iceCrystal",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_th2m1")
+}],
+"loop": true,
+"name": &"mushroom",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1i18m"]
+size = Vector2(15, 14)
+
+[node name="item" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 8
+freeze = true
+freeze_mode = 1
+continuous_cd = 2
+max_contacts_reported = 6
+contact_monitor = true
+script = ExtResource("1_onx8r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_r50p8")
+animation = &"fireflies"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_1i18m")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
