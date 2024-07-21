@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dr0vw38qauc2q"]
+[gd_scene load_steps=8 format=3 uid="uid://dr0vw38qauc2q"]
 
 [ext_resource type="PackedScene" uid="uid://c7i8u3biltbfd" path="res://Scenes/potion_brew.tscn" id="1_pnj8d"]
-[ext_resource type="PackedScene" uid="uid://dqmo2rrv65kyx" path="res://Scenes/item_physics.tscn" id="2_7xwnf"]
 [ext_resource type="PackedScene" uid="uid://bhlyxfpg5udx2" path="res://Scenes/spell_ball.tscn" id="3_hjef4"]
 [ext_resource type="PackedScene" uid="uid://cealsvi7aqafc" path="res://Scenes/Player.tscn" id="4_3gks3"]
 [ext_resource type="Script" path="res://Scripts/SpellManager.gd" id="5_dbx3i"]
@@ -10,13 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://c54fvv132p6e3" path="res://Scenes/item.tscn" id="8_8qwao"]
 
 [node name="level1" type="Node2D" groups=["Spells"]]
-
-[node name="PotionBrew" parent="." instance=ExtResource("1_pnj8d")]
-position = Vector2(-67, -302)
-scale = Vector2(2.65608, 2.65608)
-
-[node name="ItemPhysics" parent="." instance=ExtResource("2_7xwnf")]
-position = Vector2(257, -335)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)
@@ -32,6 +24,13 @@ zoom = Vector2(2.96, 2.96)
 process_callback = 0
 position_smoothing_enabled = true
 
+[node name="PotionBrew" parent="Player" instance=ExtResource("1_pnj8d")]
+position = Vector2(-207, 90)
+scale = Vector2(2.8, 2.8)
+
+[node name="Light4" parent="Player/PotionBrew" instance=ExtResource("7_t1p24")]
+position = Vector2(73.9286, -32.5)
+
 [node name="Spell Manager" type="Node2D" parent="."]
 script = ExtResource("5_dbx3i")
 
@@ -44,9 +43,6 @@ position = Vector2(151, -63)
 [node name="Light2" parent="." instance=ExtResource("7_t1p24")]
 position = Vector2(59, -376)
 
-[node name="Light3" parent="." instance=ExtResource("7_t1p24")]
-position = Vector2(302, -366)
-
 [node name="item2" parent="." instance=ExtResource("8_8qwao")]
 position = Vector2(-80, -70)
 
@@ -56,6 +52,7 @@ position = Vector2(-80, -70)
 [node name="item" parent="." instance=ExtResource("8_8qwao")]
 position = Vector2(-40, -35)
 
+[connection signal="AddToInv" from="Player" to="Player/PotionBrew" method="_on_player_add_to_inv"]
 [connection signal="AmmoFilled" from="Player" to="Spell Manager" method="_on_player_ammo_filled"]
 [connection signal="AmmoOut" from="Player" to="Spell Manager" method="_on_player_ammo_out"]
 [connection signal="transferHitPosition" from="Player" to="Spell Manager" method="_on_player_transfer_hit_position"]

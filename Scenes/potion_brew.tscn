@@ -1,6 +1,7 @@
-[gd_scene load_steps=98 format=3 uid="uid://c7i8u3biltbfd"]
+[gd_scene load_steps=99 format=3 uid="uid://c7i8u3biltbfd"]
 
 [ext_resource type="Texture2D" uid="uid://b0wjwgbamvwdk" path="res://Assets/inventory backdrop.png" id="1_6b0fn"]
+[ext_resource type="Script" path="res://Scripts/potion_brew.gd" id="1_iebfh"]
 [ext_resource type="Texture2D" uid="uid://cggp3k8uohyqy" path="res://Assets/brewing station.png" id="1_uqh77"]
 [ext_resource type="Script" path="res://Scripts/Collider.gd" id="3_y20gs"]
 
@@ -681,6 +682,7 @@ size = Vector2(266, 20)
 
 [node name="PotionBrew" type="Node2D"]
 scale = Vector2(1.64025, 1.64025)
+script = ExtResource("1_iebfh")
 
 [node name="InventoryBackdrop" type="Sprite2D" parent="."]
 position = Vector2(78, -36)
@@ -697,6 +699,8 @@ frame_progress = 1.0
 [node name="Collider" type="RigidBody2D" parent="." groups=["Droppable"]]
 position = Vector2(2.43865, -21.3382)
 rotation = 3.14159
+collision_layer = 0
+collision_mask = 8
 freeze = true
 freeze_mode = 1
 script = ExtResource("3_y20gs")
@@ -713,6 +717,8 @@ offset_bottom = 7.38301
 [node name="RigidBody2D2" type="RigidBody2D" parent="."]
 position = Vector2(-94, 48)
 rotation = 3.14159
+collision_layer = 128
+collision_mask = 128
 freeze = true
 freeze_mode = 1
 

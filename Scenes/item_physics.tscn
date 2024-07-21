@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://db2m8xiru4r4i" path="res://Assets/items.png" id="1_kkl70"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcsex"]
-size = Vector2(55, 53)
+size = Vector2(28, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xjdkc"]
 atlas = ExtResource("1_kkl70")
@@ -82,19 +82,22 @@ animations = [{
 }]
 
 [node name="ItemPhysics" type="RigidBody2D"]
+collision_layer = 137
+collision_mask = 129
 input_pickable = true
-freeze = true
+can_sleep = false
 freeze_mode = 1
+contact_monitor = true
 script = ExtResource("1_f7dhf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 1.5)
+position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_wcsex")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(3.80903, 3.80903)
+[node name="PhysicsItemAnimator" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3.08, 3.08)
 sprite_frames = SubResource("SpriteFrames_kdt3g")
-animation = &"iceCrystal"
+animation = &"fireflies"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
