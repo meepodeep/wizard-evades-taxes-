@@ -1,5 +1,6 @@
-[gd_scene load_steps=93 format=3 uid="uid://c7i8u3biltbfd"]
+[gd_scene load_steps=96 format=3 uid="uid://c7i8u3biltbfd"]
 
+[ext_resource type="Texture2D" uid="uid://b0wjwgbamvwdk" path="res://Assets/inventory backdrop.png" id="1_6b0fn"]
 [ext_resource type="Texture2D" uid="uid://cggp3k8uohyqy" path="res://Assets/brewing station.png" id="1_uqh77"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a8ft5"]
@@ -254,10 +255,6 @@ region = Rect2(48, 81, 48, 27)
 atlas = ExtResource("1_uqh77")
 region = Rect2(96, 81, 48, 27)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lodmv"]
-atlas = ExtResource("1_uqh77")
-region = Rect2(144, 81, 48, 27)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_xygi4"]
 atlas = ExtResource("1_uqh77")
 region = Rect2(192, 81, 48, 27)
@@ -297,6 +294,10 @@ region = Rect2(96, 108, 48, 27)
 [sub_resource type="AtlasTexture" id="AtlasTexture_vfcc3"]
 atlas = ExtResource("1_uqh77")
 region = Rect2(144, 108, 48, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eu74u"]
+atlas = ExtResource("1_uqh77")
+region = Rect2(192, 108, 48, 27)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pjr2o"]
 atlas = ExtResource("1_uqh77")
@@ -397,9 +398,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yd667")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a8ft5")
 }],
 "loop": false,
 "name": &"Bad",
@@ -453,9 +451,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0wjec")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0ufqo")
 }],
 "loop": false,
 "name": &"Fire",
@@ -509,9 +504,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oywoo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bmp4n")
 }],
 "loop": false,
 "name": &"Health",
@@ -565,9 +557,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cme3t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hvwp6")
 }],
 "loop": false,
 "name": &"Ice",
@@ -587,7 +576,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_q6ge5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lodmv")
+"texture": SubResource("AtlasTexture_xygi4")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xygi4")
@@ -620,7 +609,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_vfcc3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mo6ca")
+"texture": SubResource("AtlasTexture_eu74u")
 }],
 "loop": false,
 "name": &"Light",
@@ -674,19 +663,59 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nub2r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pjr2o")
 }],
 "loop": false,
 "name": &"Poison",
 "speed": 15.0
 }]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3qy3e"]
+normal = Vector2(6.57706e-08, -1)
+distance = 51.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xq7hf"]
+size = Vector2(266, 20)
+
 [node name="PotionBrew" type="Node2D"]
+scale = Vector2(1.64025, 1.64025)
+
+[node name="InventoryBackdrop" type="Sprite2D" parent="."]
+position = Vector2(78, -36)
+texture = ExtResource("1_6b0fn")
 
 [node name="Brewer" type="AnimatedSprite2D" parent="."]
+position = Vector2(33, -23)
+scale = Vector2(2.8, 2.8)
 sprite_frames = SubResource("SpriteFrames_jg4lm")
-animation = &"Poison"
-frame = 16
+animation = &"Fire"
+frame = 15
 frame_progress = 1.0
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="."]
+position = Vector2(199, 51)
+freeze = true
+freeze_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
+position = Vector2(51, -82)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_3qy3e")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+position = Vector2(-94, 48)
+rotation = 3.14159
+freeze = true
+freeze_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+position = Vector2(7.62939e-06, 96)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_3qy3e")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(74, 25)
+freeze = true
+freeze_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_xq7hf")

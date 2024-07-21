@@ -1,12 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://dr0vw38qauc2q"]
+[gd_scene load_steps=8 format=3 uid="uid://dr0vw38qauc2q"]
 
 [ext_resource type="PackedScene" uid="uid://cealsvi7aqafc" path="res://Scenes/Player.tscn" id="1_5ty26"]
 [ext_resource type="Script" path="res://Scripts/SpellManager.gd" id="2_y522a"]
 [ext_resource type="PackedScene" uid="uid://801kiy05g0j6" path="res://Scenes/mouse_collider.tscn" id="3_yxe1q"]
 [ext_resource type="PackedScene" uid="uid://bhlyxfpg5udx2" path="res://Scenes/spell_ball.tscn" id="4_y80bv"]
 [ext_resource type="PackedScene" uid="uid://ssfef8ie87v6" path="res://Scenes/light.tscn" id="5_pxdy7"]
+[ext_resource type="PackedScene" uid="uid://c7i8u3biltbfd" path="res://Scenes/potion_brew.tscn" id="6_gy8ec"]
+[ext_resource type="PackedScene" uid="uid://dqmo2rrv65kyx" path="res://Scenes/item_physics.tscn" id="7_ydtxg"]
 
 [node name="Node2D" type="Node2D" groups=["Spells"]]
+
+[node name="PotionBrew" parent="." instance=ExtResource("6_gy8ec")]
+position = Vector2(-60, 30)
+
+[node name="ItemPhysics" parent="." instance=ExtResource("7_ydtxg")]
+position = Vector2(-20, -24)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)
