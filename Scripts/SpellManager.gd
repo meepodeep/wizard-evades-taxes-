@@ -8,6 +8,7 @@ extends Node2D
 @onready var player = %Player
 var targetPosition
 signal Fired
+signal landed
 var currentSpell = 1
 var OutOfAmmo = false
 var hitPosition
@@ -37,14 +38,13 @@ func instLight(pos):
 	add_child(instanceLight)
 
 func _process(_delta):
-	print("target", targetPosition)
-	print("ball", ball.global_position)
 	player.SpellType = currentSpell
 	if isFiring == true:
 		if ball.global_position != targetPosition:
 			ball.visible = true
 			ball.global_position = ball.global_position.move_toward(targetPosition, 3)
 		if ball.global_position == targetPosition:
+			landed.emit()
 			isFiring = false
 			ball.visible = false
 			ball.position = player.global_position
@@ -52,7 +52,21 @@ func _process(_delta):
 		targetPosition = hitPosition
 		ball.position = player.global_position
 		Fired.emit()
-		match currentSpell:
+		
+		isFiring = true
+	
+func _on_player_ammo_out():
+	OutOfAmmo = true # Replace with function body.
+
+func _on_player_ammo_filled():
+	OutOfAmmo = false
+
+func _on_player_transfer_hit_position(pos):
+	hitPosition = pos # Replace with function body.
+
+
+func _on_landed():
+	match currentSpell:
 			1:
 				ball.poison()
 				instPoison(hitPosition)
@@ -68,14 +82,3 @@ func _process(_delta):
 			5:
 				ball.light()
 				instLight(hitPosition)
-		print("wawawa")
-		isFiring = true
-	
-func _on_player_ammo_out():
-	OutOfAmmo = true # Replace with function body.
-
-func _on_player_ammo_filled():
-	OutOfAmmo = false
-
-func _on_player_transfer_hit_position(pos):
-	hitPosition = pos # Replace with function body.

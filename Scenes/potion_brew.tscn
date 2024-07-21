@@ -1,7 +1,8 @@
-[gd_scene load_steps=96 format=3 uid="uid://c7i8u3biltbfd"]
+[gd_scene load_steps=98 format=3 uid="uid://c7i8u3biltbfd"]
 
 [ext_resource type="Texture2D" uid="uid://b0wjwgbamvwdk" path="res://Assets/inventory backdrop.png" id="1_6b0fn"]
 [ext_resource type="Texture2D" uid="uid://cggp3k8uohyqy" path="res://Assets/brewing station.png" id="1_uqh77"]
+[ext_resource type="Script" path="res://Scripts/Collider.gd" id="3_y20gs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a8ft5"]
 atlas = ExtResource("1_uqh77")
@@ -669,6 +670,8 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hqiw"]
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3qy3e"]
 normal = Vector2(6.57706e-08, -1)
 distance = 51.0
@@ -691,15 +694,21 @@ animation = &"Fire"
 frame = 15
 frame_progress = 1.0
 
-[node name="RigidBody2D3" type="RigidBody2D" parent="."]
-position = Vector2(199, 51)
+[node name="Collider" type="RigidBody2D" parent="." groups=["Droppable"]]
+position = Vector2(2.43865, -21.3382)
+rotation = 3.14159
 freeze = true
 freeze_mode = 1
+script = ExtResource("3_y20gs")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
-position = Vector2(51, -82)
-rotation = -1.5708
-shape = SubResource("WorldBoundaryShape2D_3qy3e")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+shape = SubResource("RectangleShape2D_7hqiw")
+
+[node name="ColorRect" type="ColorRect" parent="Collider"]
+offset_left = -7.92561
+offset_top = -5.48699
+offset_right = 8.59939
+offset_bottom = 7.38301
 
 [node name="RigidBody2D2" type="RigidBody2D" parent="."]
 position = Vector2(-94, 48)
@@ -712,10 +721,12 @@ position = Vector2(7.62939e-06, 96)
 rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_3qy3e")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(74, 25)
-freeze = true
-freeze_mode = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D2"]
+position = Vector2(-168, 22.9996)
+rotation = -3.14159
 shape = SubResource("RectangleShape2D_xq7hf")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="RigidBody2D2"]
+position = Vector2(-344, 78.9991)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_3qy3e")

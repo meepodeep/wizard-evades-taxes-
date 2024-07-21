@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://dqmo2rrv65kyx"]
+[gd_scene load_steps=21 format=3 uid="uid://dqmo2rrv65kyx"]
 
+[ext_resource type="Script" path="res://Scripts/item_physics.gd" id="1_f7dhf"]
 [ext_resource type="Texture2D" uid="uid://db2m8xiru4r4i" path="res://Assets/items.png" id="1_kkl70"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcsex"]
@@ -151,6 +152,10 @@ animations = [{
 }]
 
 [node name="ItemPhysics" type="RigidBody2D"]
+input_pickable = true
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_f7dhf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wcsex")
@@ -158,3 +163,8 @@ shape = SubResource("RectangleShape2D_wcsex")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kdt3g")
 animation = &"fireflies"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]
+[connection signal="mouse_shape_exited" from="." to="." method="_on_mouse_shape_exited"]

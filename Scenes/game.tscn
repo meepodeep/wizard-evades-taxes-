@@ -43,3 +43,4 @@ position = Vector2(15, 14)
 [connection signal="AmmoOut" from="Player" to="Spell Manager" method="_on_player_ammo_out"]
 [connection signal="transferHitPosition" from="Player" to="Spell Manager" method="_on_player_transfer_hit_position"]
 [connection signal="Fired" from="Spell Manager" to="Player" method="_on_spell_manager_fired"]
+[connection signal="landed" from="Spell Manager" to="Spell Manager" method="_on_landed"]
