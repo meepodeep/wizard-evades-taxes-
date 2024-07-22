@@ -11,11 +11,20 @@ var dashSpeed = 500
 var stopped = Vector2(0,0)
 var ammoCount = 4
 var SpellType = 1
+
 @onready var animator = $AnimatedSprite2D
 @onready var PotionAnimator = $GunParent/Gun/Potions
 @onready var GunSprite = $GunParent/Gun
 
 func _process(_delta):
+	if Global.inMenu == true:
+		set_physics_process(false)
+		self_modulate = Color(1, 1, 1, 0)
+		GunSprite.self_modulate = Color(1, 1, 1, 0)
+	else:
+		set_physics_process(true)
+		self_modulate = Color(1, 1, 1, 1)
+		GunSprite.self_modulate = Color(1, 1, 1, 1)
 	match SpellType:
 		1:
 			WhatSpell.emit(1) 
@@ -90,3 +99,8 @@ func _on_ray_cast_2d_collision_point(posit):
 func _on_area_2d_body_entered(body):
 	emit_signal("AddToInv", body.get_groups())
 	body.queue_free()
+
+
+func _on_potion_brew_open_inv():
+	Global.inMenu = !Global.inMenu
+

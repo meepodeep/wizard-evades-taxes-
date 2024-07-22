@@ -25,6 +25,7 @@ process_callback = 0
 position_smoothing_enabled = true
 
 [node name="PotionBrew" parent="Player" instance=ExtResource("1_pnj8d")]
+visible = false
 position = Vector2(-207, 90)
 scale = Vector2(2.8, 2.8)
 
@@ -56,5 +57,6 @@ position = Vector2(-40, -35)
 [connection signal="AmmoFilled" from="Player" to="Spell Manager" method="_on_player_ammo_filled"]
 [connection signal="AmmoOut" from="Player" to="Spell Manager" method="_on_player_ammo_out"]
 [connection signal="transferHitPosition" from="Player" to="Spell Manager" method="_on_player_transfer_hit_position"]
+[connection signal="OpenInv" from="Player/PotionBrew" to="Player" method="_on_potion_brew_open_inv"]
 [connection signal="Fired" from="Spell Manager" to="Player" method="_on_spell_manager_fired"]
 [connection signal="landed" from="Spell Manager" to="Spell Manager" method="_on_landed"]

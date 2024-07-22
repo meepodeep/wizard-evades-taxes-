@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://c7i8u3biltbfd"]
+[gd_scene load_steps=100 format=3 uid="uid://c7i8u3biltbfd"]
 
 [ext_resource type="Texture2D" uid="uid://b0wjwgbamvwdk" path="res://Assets/inventory backdrop.png" id="1_6b0fn"]
 [ext_resource type="Script" path="res://Scripts/potion_brew.gd" id="1_iebfh"]
@@ -675,12 +675,16 @@ animations = [{
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3qy3e"]
 normal = Vector2(6.57706e-08, -1)
-distance = 51.0
+distance = 53.69
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xq7hf"]
 size = Vector2(266, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfpok"]
+size = Vector2(232.891, 901.205)
+
 [node name="PotionBrew" type="Node2D"]
+z_index = 5
 scale = Vector2(1.64025, 1.64025)
 script = ExtResource("1_iebfh")
 
@@ -733,6 +737,17 @@ rotation = -3.14159
 shape = SubResource("RectangleShape2D_xq7hf")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="RigidBody2D2"]
-position = Vector2(-344, 78.9991)
+position = Vector2(-342.743, 79.0919)
 rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_3qy3e")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 536870912
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(77.4272, -435.848)
+shape = SubResource("RectangleShape2D_gfpok")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
