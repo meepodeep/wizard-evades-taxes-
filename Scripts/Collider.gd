@@ -14,7 +14,6 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("brewDebug"):
 		brew()
-		print("brew")
 	
 	if Global.is_dragging:
 		visible = true
@@ -32,6 +31,7 @@ func _on_body_entered(body):
 	currentBody = body
 
 func brew():
+	itemsCount = 0
 	for ingredient in potionItems:
 		if ingredient != null:
 			if ingredient == [&"grass"]:
@@ -43,6 +43,9 @@ func brew():
 			
 func resetBrew():
 	for ingredient in potionItems:
-		ingredient = null
+		potionItems[itemsCount] = null
+		itemsCount += 1
+		
+		
 func _on_body_exited(body):
 	currentBody = null
