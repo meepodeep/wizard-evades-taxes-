@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ssfef8ie87v6" path="res://Scenes/light.tscn" id="7_t1p24"]
 [ext_resource type="PackedScene" uid="uid://c54fvv132p6e3" path="res://Scenes/item.tscn" id="8_8qwao"]
 
-[node name="level1" type="Node2D" groups=["Spells"]]
+[node name="level10" type="Node2D" groups=["Spells"]]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)
@@ -19,18 +19,18 @@ position = Vector2(26, 7)
 [node name="Player" parent="." instance=ExtResource("4_3gks3")]
 unique_name_in_owner = true
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2.96, 2.96)
-process_callback = 0
-position_smoothing_enabled = true
-
 [node name="PotionBrew" parent="Player" instance=ExtResource("1_pnj8d")]
 visible = false
-position = Vector2(-207, 90)
+position = Vector2(-209, 101)
 scale = Vector2(2.8, 2.8)
 
 [node name="Light4" parent="Player/PotionBrew" instance=ExtResource("7_t1p24")]
-position = Vector2(73.9286, -32.5)
+position = Vector2(74.2857, -35)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(1.75, 1.75)
+process_callback = 0
+position_smoothing_enabled = true
 
 [node name="Spell Manager" type="Node2D" parent="."]
 script = ExtResource("5_dbx3i")
@@ -44,8 +44,14 @@ position = Vector2(151, -63)
 [node name="Light2" parent="." instance=ExtResource("7_t1p24")]
 position = Vector2(59, -376)
 
+[node name="item4" parent="." instance=ExtResource("8_8qwao")]
+position = Vector2(-57, 46)
+
+[node name="item5" parent="." instance=ExtResource("8_8qwao")]
+position = Vector2(-78, 9)
+
 [node name="item2" parent="." instance=ExtResource("8_8qwao")]
-position = Vector2(-80, -70)
+position = Vector2(-99, -28)
 
 [node name="item3" parent="." instance=ExtResource("8_8qwao")]
 position = Vector2(-80, -70)

@@ -32,7 +32,7 @@ func _process(delta):
 							instItem(itemPos,1)
 						[&"fireflies"]:
 							instItem(itemPos,5)
-						[&"crystal"]:
+						[&"iceCrystal"]:
 							instItem(itemPos,3)
 						[&"heart"]:
 							instItem(itemPos,4)
