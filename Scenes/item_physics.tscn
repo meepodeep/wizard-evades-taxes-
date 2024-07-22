@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqmo2rrv65kyx"]
+[gd_scene load_steps=21 format=3 uid="uid://dqmo2rrv65kyx"]
 
 [ext_resource type="Script" path="res://Scripts/item_physics.gd" id="1_f7dhf"]
 [ext_resource type="Texture2D" uid="uid://db2m8xiru4r4i" path="res://Assets/items.png" id="1_kkl70"]
@@ -10,6 +10,22 @@ size = Vector2(28, 37)
 atlas = ExtResource("1_kkl70")
 region = Rect2(0, 0, 15, 15)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nstm"]
+atlas = ExtResource("1_kkl70")
+region = Rect2(15, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rthmr"]
+atlas = ExtResource("1_kkl70")
+region = Rect2(30, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivmam"]
+atlas = ExtResource("1_kkl70")
+region = Rect2(45, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk1x4"]
+atlas = ExtResource("1_kkl70")
+region = Rect2(60, 0, 15, 15)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_xwx6n"]
 atlas = ExtResource("1_kkl70")
 region = Rect2(0, 30, 15, 15)
@@ -18,23 +34,59 @@ region = Rect2(0, 30, 15, 15)
 atlas = ExtResource("1_kkl70")
 region = Rect2(0, 15, 15, 15)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hynnj"]
+atlas = ExtResource("1_kkl70")
+region = Rect2(15, 15, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spoxd"]
+atlas = ExtResource("1_kkl70")
+region = Rect2(30, 15, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42mhs"]
+atlas = ExtResource("1_kkl70")
+region = Rect2(45, 15, 15, 15)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_th66y"]
 atlas = ExtResource("1_kkl70")
 region = Rect2(0, 75, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcxw6"]
+atlas = ExtResource("1_kkl70")
+region = Rect2(15, 75, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfoyx"]
+atlas = ExtResource("1_kkl70")
+region = Rect2(30, 75, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rrkl1"]
 atlas = ExtResource("1_kkl70")
 region = Rect2(0, 60, 15, 15)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvahq"]
+atlas = ExtResource("1_kkl70")
+region = Rect2(15, 60, 15, 15)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_th2m1"]
 atlas = ExtResource("1_kkl70")
 region = Rect2(0, 45, 15, 15)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_kdt3g"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ugnrt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xjdkc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nstm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rthmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivmam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk1x4")
 }],
 "loop": false,
 "name": &"fireflies",
@@ -51,6 +103,15 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_64uie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hynnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spoxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42mhs")
 }],
 "loop": false,
 "name": &"grass",
@@ -59,6 +120,12 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_th66y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcxw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfoyx")
 }],
 "loop": false,
 "name": &"heart",
@@ -67,6 +134,9 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rrkl1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvahq")
 }],
 "loop": false,
 "name": &"iceCrystal",
@@ -96,8 +166,8 @@ position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_wcsex")
 
 [node name="PhysicsItemAnimator" type="AnimatedSprite2D" parent="."]
-scale = Vector2(3.08, 3.08)
-sprite_frames = SubResource("SpriteFrames_kdt3g")
+scale = Vector2(3.10231, 3.10231)
+sprite_frames = SubResource("SpriteFrames_ugnrt")
 animation = &"fireflies"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

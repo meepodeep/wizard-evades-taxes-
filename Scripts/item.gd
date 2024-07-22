@@ -1,5 +1,5 @@
 extends RigidBody2D
-@onready var animator = $AnimatedSprite2D
+@onready var animator = $ItemAnimator
 var level = ""
 var random 
 var rng = RandomNumberGenerator.new()

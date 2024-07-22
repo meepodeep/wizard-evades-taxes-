@@ -31,6 +31,7 @@ func _on_body_exited(body):
 		body.modulate = Color(Color.MEDIUM_PURPLE, 0.7)
 func _on_mouse_shape_entered(shape_idx):
 	if not Global.is_dragging:
+		print("wawa")
 		draggable= true
 
 func _on_mouse_shape_exited(shape_idx):
@@ -38,19 +39,36 @@ func _on_mouse_shape_exited(shape_idx):
 		draggable = false
 
 func fireflies():
+	var animator = $PhysicsItemAnimator
+	animator.play("fireflies")
+	animator.pause()
 	add_to_group("fireflies")
 func mushroom():
+	var animator = $PhysicsItemAnimator
 	animator.play("mushroom")
+	animator.pause()
 	add_to_group("mushroom")
 func grass():
+	var animator = $PhysicsItemAnimator
 	animator.play("grass")
+	animator.pause()
 	add_to_group("grass")
 func flint():
+	var animator = $PhysicsItemAnimator
 	animator.play("flint")
+	animator.pause()
 	add_to_group("flint")
 func crystal():
+	var animator = $PhysicsItemAnimator
 	animator.play("iceCrystal")
+	animator.pause()
 	add_to_group("iceCrystal")
 func heart():
+	var animator = $PhysicsItemAnimator
 	animator.play("heart")
+	animator.pause()
 	add_to_group("heart")
+func playAnim():
+	animator.play()
+func destroy():
+	queue_free()

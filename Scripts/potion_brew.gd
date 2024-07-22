@@ -13,6 +13,7 @@ func _ready():
 	invItems.resize(64)
 func _process(delta):
 	if !Global.inMenu:
+		invItemCount = 0
 		for item in invItems:
 			if item != null:
 				destroy(item)
@@ -22,19 +23,43 @@ func _process(delta):
 		if Global.inMenu:
 			for item in inventory:
 				if item != null:
-					instItem(itemPos)
+					match item:
+						[&"grass"]:
+							instItem(itemPos,6)
+						[&"mushroom"]:
+							instItem(itemPos,2)
+						[&"flint"]:
+							instItem(itemPos,1)
+						[&"fireflies"]:
+							instItem(itemPos,5)
+						[&"crystal"]:
+							instItem(itemPos,3)
+						[&"heart"]:
+							instItem(itemPos,4)
 
 	
 func _on_player_add_to_inv(bodyGroup):
 	if itemCount != 64:
 		inventory[itemCount] = bodyGroup
 		itemCount +=1
-		print(inventory)
+		print(inventory[0])
 		
 		
-func instItem(pos):
+func instItem(pos, itemType):
 	var instanceItem = item.instantiate()
-	instanceItem.fireflies()
+	match itemType:
+		1:
+			instanceItem.flint()
+		2:
+			instanceItem.mushroom()
+		3:
+			instanceItem.crystal()
+		4:
+			instanceItem.heart()
+		5:
+			instanceItem.fireflies()
+		6:
+			instanceItem.grass()
 	instanceItem.position = pos
 	add_child(instanceItem)
 

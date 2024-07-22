@@ -78,12 +78,12 @@ func _on_player_transfer_hit_position(pos):
 func _on_landed():
 	match currentSpell:
 			1:
-				instPoison(hitPosition)
+				instPoison(targetPosition)
 			2:
-				instIce(hitPosition)
+				instIce(targetPosition)
 			3:
-				instHealth(hitPosition)
+				instHealth(targetPosition)
 			4:
-				instFire(hitPosition)
+				instFire(targetPosition)
 			5:
-				instLight(hitPosition)
+				instLight(targetPosition)

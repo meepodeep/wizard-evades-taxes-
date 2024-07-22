@@ -12,3 +12,9 @@ func _process(delta):
 		visible = true
 	else:
 		visible = false
+
+
+func _on_body_entered(body):
+	body.playAnim()
+	body.destroy()
+	print("wawa")

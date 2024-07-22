@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://c7i8u3biltbfd"]
+[gd_scene load_steps=101 format=3 uid="uid://c7i8u3biltbfd"]
 
 [ext_resource type="Texture2D" uid="uid://b0wjwgbamvwdk" path="res://Assets/inventory backdrop.png" id="1_6b0fn"]
 [ext_resource type="Script" path="res://Scripts/potion_brew.gd" id="1_iebfh"]
@@ -673,9 +673,12 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hqiw"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_my13g"]
+size = Vector2(20.1189, 3.0483)
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3qy3e"]
 normal = Vector2(6.57706e-08, -1)
-distance = 53.69
+distance = 53.6503
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xq7hf"]
 size = Vector2(266, 20)
@@ -718,6 +721,26 @@ offset_top = -5.48699
 offset_right = 8.59939
 offset_bottom = 7.38301
 
+[node name="Collider2" type="RigidBody2D" parent="." groups=["Droppable"]]
+position = Vector2(2.43865, -21.3382)
+rotation = 3.14159
+collision_layer = 0
+collision_mask = 8
+freeze = true
+freeze_mode = 1
+max_contacts_reported = 6
+contact_monitor = true
+script = ExtResource("3_y20gs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider2"]
+shape = SubResource("RectangleShape2D_7hqiw")
+
+[node name="ColorRect" type="ColorRect" parent="Collider2"]
+offset_left = -7.92561
+offset_top = -5.48699
+offset_right = 8.59939
+offset_bottom = 7.38301
+
 [node name="RigidBody2D2" type="RigidBody2D" parent="."]
 position = Vector2(-94, 48)
 rotation = 3.14159
@@ -725,6 +748,18 @@ collision_layer = 128
 collision_mask = 128
 freeze = true
 freeze_mode = 1
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="RigidBody2D2"]
+position = Vector2(-96.7437, 62.9365)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_my13g")
+one_way_collision = true
+one_way_collision_margin = 2.1
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="RigidBody2D2"]
+position = Vector2(-174.476, 306.497)
+rotation = 6.28179
+shape = SubResource("WorldBoundaryShape2D_3qy3e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
 position = Vector2(7.62939e-06, 96)
@@ -749,5 +784,7 @@ collision_mask = 536870912
 position = Vector2(77.4272, -435.848)
 shape = SubResource("RectangleShape2D_gfpok")
 
+[connection signal="body_entered" from="Collider" to="Collider" method="_on_body_entered"]
+[connection signal="body_entered" from="Collider2" to="Collider2" method="_on_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]

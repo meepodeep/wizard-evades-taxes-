@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c54fvv132p6e3"]
+[gd_scene load_steps=11 format=3 uid="uid://c54fvv132p6e3"]
 
 [ext_resource type="Texture2D" uid="uid://db2m8xiru4r4i" path="res://Assets/items.png" id="1_5ru1r"]
 [ext_resource type="Script" path="res://Scripts/item.gd" id="1_onx8r"]
@@ -6,22 +6,6 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_xjdkc"]
 atlas = ExtResource("1_5ru1r")
 region = Rect2(0, 0, 15, 15)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7nstm"]
-atlas = ExtResource("1_5ru1r")
-region = Rect2(15, 0, 15, 15)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rthmr"]
-atlas = ExtResource("1_5ru1r")
-region = Rect2(30, 0, 15, 15)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ivmam"]
-atlas = ExtResource("1_5ru1r")
-region = Rect2(45, 0, 15, 15)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nk1x4"]
-atlas = ExtResource("1_5ru1r")
-region = Rect2(60, 0, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xwx6n"]
 atlas = ExtResource("1_5ru1r")
@@ -31,59 +15,23 @@ region = Rect2(0, 30, 15, 15)
 atlas = ExtResource("1_5ru1r")
 region = Rect2(0, 15, 15, 15)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hynnj"]
-atlas = ExtResource("1_5ru1r")
-region = Rect2(15, 15, 15, 15)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_spoxd"]
-atlas = ExtResource("1_5ru1r")
-region = Rect2(30, 15, 15, 15)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_42mhs"]
-atlas = ExtResource("1_5ru1r")
-region = Rect2(45, 15, 15, 15)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_th66y"]
 atlas = ExtResource("1_5ru1r")
 region = Rect2(0, 75, 15, 15)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hcxw6"]
-atlas = ExtResource("1_5ru1r")
-region = Rect2(15, 75, 15, 15)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cfoyx"]
-atlas = ExtResource("1_5ru1r")
-region = Rect2(30, 75, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rrkl1"]
 atlas = ExtResource("1_5ru1r")
 region = Rect2(0, 60, 15, 15)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hvahq"]
-atlas = ExtResource("1_5ru1r")
-region = Rect2(15, 60, 15, 15)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_th2m1"]
 atlas = ExtResource("1_5ru1r")
 region = Rect2(0, 45, 15, 15)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_r50p8"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_5plsb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xjdkc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7nstm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rthmr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ivmam")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nk1x4")
 }],
 "loop": false,
 "name": &"fireflies",
@@ -100,15 +48,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_64uie")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hynnj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_spoxd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_42mhs")
 }],
 "loop": false,
 "name": &"grass",
@@ -117,12 +56,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_th66y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hcxw6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cfoyx")
 }],
 "loop": false,
 "name": &"heart",
@@ -131,9 +64,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rrkl1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hvahq")
 }],
 "loop": false,
 "name": &"iceCrystal",
@@ -161,9 +91,10 @@ max_contacts_reported = 6
 contact_monitor = true
 script = ExtResource("1_onx8r")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_r50p8")
-animation = &"fireflies"
+[node name="ItemAnimator" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.12784, 1.12784)
+sprite_frames = SubResource("SpriteFrames_5plsb")
+animation = &"flint"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
