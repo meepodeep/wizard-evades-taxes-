@@ -768,5 +768,6 @@ shape = SubResource("RectangleShape2D_gfpok")
 
 [connection signal="body_entered" from="BrewCollider" to="BrewCollider" method="_on_body_entered"]
 [connection signal="body_exited" from="BrewCollider" to="BrewCollider" method="_on_body_exited"]
+[connection signal="removeInv" from="BrewCollider" to="." method="_on_brew_collider_remove_inv"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]

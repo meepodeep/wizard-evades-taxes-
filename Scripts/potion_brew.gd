@@ -5,7 +5,7 @@ var inventory = []
 var invItems = []
 var invItemCount: int = 0
 var itemCount: int = 0
-var itemPos = Vector2(0,0)
+var itemPos = Vector2(140,0)
 signal OpenInv
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -70,3 +70,18 @@ func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shap
 
 func destroy(thing):
 	thing.queue_free()
+func deleteItem(itemToDel):
+	var didDelete = false
+	var index = 0
+	for items in inventory:
+		if items != null:
+			if items == itemToDel:
+				if didDelete == false:
+					inventory[index] = null 
+				didDelete = true
+		index += 1
+	index = 0
+
+
+func _on_brew_collider_remove_inv(itemCalled):
+	deleteItem(itemCalled)

@@ -11,6 +11,8 @@ var hasCrystal = false
 var hasFireflies = false
 var hasFlint = false
 var hasHeart = false
+signal loadIce
+signal removeInv
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	modulate = Color(Color.MEDIUM_PURPLE, 0.7)
@@ -30,11 +32,11 @@ func _process(delta):
 		potionItems[itemsCount] = currentBody.get_groups()
 		itemsCount += 1
 		currentBody.destroy()
+		removeInv.emit(currentBody.get_groups())
 		print(potionItems)
 
 
 func _on_body_entered(body):
-	print("wawa")
 	currentBody = body
 
 func brew():
@@ -62,7 +64,6 @@ func brew():
 						hasHeart = true
 	
 	finBrew()
-	print(potionItems)
 			
 func resetBrew():
 	for ingredient in potionItems:
@@ -92,4 +93,5 @@ func finBrew():
 	hasFireflies = false
 	hasCrystal = false
 	hasHeart = false
+	hasGrass = false
 	resetBrew()
