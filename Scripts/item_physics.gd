@@ -8,6 +8,7 @@ var body_ref
 var offset: Vector2
 var initialPos: Vector2
 var level = ""
+signal AnimDone
 func _process(delta):
 	if draggable:
 		if Input.is_action_just_pressed("Fire"):
@@ -31,7 +32,6 @@ func _on_body_exited(body):
 		body.modulate = Color(Color.MEDIUM_PURPLE, 0.7)
 func _on_mouse_shape_entered(shape_idx):
 	if not Global.is_dragging:
-		print("wawa")
 		draggable= true
 
 func _on_mouse_shape_exited(shape_idx):
@@ -70,5 +70,7 @@ func heart():
 	add_to_group("heart")
 func playAnim():
 	animator.play()
+
 func destroy():
 	queue_free()
+

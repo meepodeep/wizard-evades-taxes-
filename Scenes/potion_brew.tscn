@@ -703,25 +703,7 @@ animation = &"Fire"
 frame = 15
 frame_progress = 1.0
 
-[node name="Collider" type="RigidBody2D" parent="." groups=["Droppable"]]
-position = Vector2(2.43865, -21.3382)
-rotation = 3.14159
-collision_layer = 0
-collision_mask = 8
-freeze = true
-freeze_mode = 1
-script = ExtResource("3_y20gs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
-shape = SubResource("RectangleShape2D_7hqiw")
-
-[node name="ColorRect" type="ColorRect" parent="Collider"]
-offset_left = -7.92561
-offset_top = -5.48699
-offset_right = 8.59939
-offset_bottom = 7.38301
-
-[node name="Collider2" type="RigidBody2D" parent="." groups=["Droppable"]]
+[node name="BrewCollider" type="RigidBody2D" parent="." groups=["Droppable"]]
 position = Vector2(2.43865, -21.3382)
 rotation = 3.14159
 collision_layer = 0
@@ -732,16 +714,16 @@ max_contacts_reported = 6
 contact_monitor = true
 script = ExtResource("3_y20gs")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BrewCollider"]
 shape = SubResource("RectangleShape2D_7hqiw")
 
-[node name="ColorRect" type="ColorRect" parent="Collider2"]
+[node name="ColorRect" type="ColorRect" parent="BrewCollider"]
 offset_left = -7.92561
 offset_top = -5.48699
 offset_right = 8.59939
 offset_bottom = 7.38301
 
-[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+[node name="ColliderBoundary" type="RigidBody2D" parent="."]
 position = Vector2(-94, 48)
 rotation = 3.14159
 collision_layer = 128
@@ -749,29 +731,29 @@ collision_mask = 128
 freeze = true
 freeze_mode = 1
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="RigidBody2D2"]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="ColliderBoundary"]
 position = Vector2(-96.7437, 62.9365)
 rotation = -3.14159
 shape = SubResource("RectangleShape2D_my13g")
 one_way_collision = true
 one_way_collision_margin = 2.1
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="RigidBody2D2"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="ColliderBoundary"]
 position = Vector2(-174.476, 306.497)
 rotation = 6.28179
 shape = SubResource("WorldBoundaryShape2D_3qy3e")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColliderBoundary"]
 position = Vector2(7.62939e-06, 96)
 rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_3qy3e")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D2"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ColliderBoundary"]
 position = Vector2(-168, 22.9996)
 rotation = -3.14159
 shape = SubResource("RectangleShape2D_xq7hf")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="RigidBody2D2"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ColliderBoundary"]
 position = Vector2(-342.743, 79.0919)
 rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_3qy3e")
@@ -784,7 +766,7 @@ collision_mask = 536870912
 position = Vector2(77.4272, -435.848)
 shape = SubResource("RectangleShape2D_gfpok")
 
-[connection signal="body_entered" from="Collider" to="Collider" method="_on_body_entered"]
-[connection signal="body_entered" from="Collider2" to="Collider2" method="_on_body_entered"]
+[connection signal="body_entered" from="BrewCollider" to="BrewCollider" method="_on_body_entered"]
+[connection signal="body_exited" from="BrewCollider" to="BrewCollider" method="_on_body_exited"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]

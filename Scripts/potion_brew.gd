@@ -42,7 +42,6 @@ func _on_player_add_to_inv(bodyGroup):
 	if itemCount != 64:
 		inventory[itemCount] = bodyGroup
 		itemCount +=1
-		print(inventory[0])
 		
 		
 func instItem(pos, itemType):
@@ -68,7 +67,6 @@ func instItem(pos, itemType):
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	invItems[invItemCount] = body
 	invItemCount +=1
-	print("weweww")
 
 func destroy(thing):
 	thing.queue_free()

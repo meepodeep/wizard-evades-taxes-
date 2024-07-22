@@ -174,3 +174,4 @@ animation = &"fireflies"
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]
 [connection signal="mouse_shape_exited" from="." to="." method="_on_mouse_shape_exited"]
+[connection signal="animation_finished" from="PhysicsItemAnimator" to="." method="_on_physics_item_animator_animation_finished"]
