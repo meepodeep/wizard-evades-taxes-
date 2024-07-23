@@ -12,6 +12,10 @@ var hasFireflies = false
 var hasFlint = false
 var hasHeart = false
 signal loadIce
+signal loadFire
+signal loadHealth
+signal loadLight
+signal loadPoison
 signal removeInv
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -77,14 +81,19 @@ func _on_body_exited(_body):
 func finBrew():
 	if hasGrass:
 		if hasCrystal:
+			loadIce.emit()
 			brewer.play("Ice")
 		if hasFireflies:
+			loadLight.emit()
 			brewer.play("Light")
 		if hasFlint:
+			loadFire.emit()
 			brewer.play("Fire")
 		if hasMushroom:
+			loadPoison.emit()
 			brewer.play("Poison")
 		if hasHeart:
+			loadHealth.emit()
 			brewer.play("Health")
 	else:
 		brewer.play("Bad")

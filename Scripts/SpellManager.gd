@@ -87,3 +87,7 @@ func _on_landed():
 				instFire(targetPosition)
 			5:
 				instLight(targetPosition)
+
+
+func _on_player_current_spell(spell):
+	currentSpell = spell

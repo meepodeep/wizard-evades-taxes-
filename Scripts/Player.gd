@@ -1,9 +1,9 @@
 extends CharacterBody2D
-signal WhatSpell
 signal AmmoOut
 signal AmmoFilled
 signal transferHitPosition
 signal AddToInv
+signal currentSpell
 var SPEED
 var angular_force = 50000
 var canDash = 1.0
@@ -25,18 +25,6 @@ func _process(_delta):
 		set_physics_process(true)
 		self_modulate = Color(1, 1, 1, 1)
 		GunSprite.self_modulate = Color(1, 1, 1, 1)
-	match SpellType:
-		1:
-			WhatSpell.emit(1) 
-			PotionAnimator.play_backwards("Poison")
-		3:
-			PotionAnimator.play_backwards("Health")
-		5:
-			PotionAnimator.play_backwards("Light")
-		2:
-			PotionAnimator.play_backwards("Ice")
-		4:
-			PotionAnimator.play_backwards("Fire")
 		
 	match ammoCount:
 		0:
@@ -56,8 +44,6 @@ func _physics_process(delta):
 	var direction = Input.get_vector("Left","Right","Up", "Down")
 	var dash = Input.get_action_strength("Dash")
 	var updown = Input.get_axis("Up","Down")
-	if Input.is_action_just_pressed("Reload"):
-		reload()
 	# Get the input direction and handle the movement/deceleration.
 
 
@@ -86,7 +72,19 @@ func _physics_process(delta):
 		velocity.y = move_toward(velocity.y, 0, 10)
 
 	move_and_slide()
-
+func ChangeSpell():
+	currentSpell.emit(SpellType)
+	match SpellType:
+		1:
+			PotionAnimator.play_backwards("Poison")
+		3:
+			PotionAnimator.play_backwards("Health")
+		5:
+			PotionAnimator.play_backwards("Light")
+		2:
+			PotionAnimator.play_backwards("Ice")
+		4:
+			PotionAnimator.play_backwards("Fire")
 func reload():
 	ammoCount = 4
 
@@ -104,3 +102,30 @@ func _on_area_2d_body_entered(body):
 func _on_potion_brew_open_inv():
 	Global.inMenu = !Global.inMenu
 
+
+
+func _on_potion_brew_pass_load_fire():
+	SpellType = 4
+	reload()
+	ChangeSpell()
+
+
+func _on_potion_brew_pass_load_health():
+	SpellType = 3
+	reload()
+	ChangeSpell()
+
+func _on_potion_brew_pass_load_ice():
+	SpellType = 2
+	reload()
+	ChangeSpell()
+
+func _on_potion_brew_pass_load_light():
+	SpellType = 5
+	reload()
+	ChangeSpell()
+
+func _on_potion_brew_pass_load_poison():
+	SpellType = 1
+	reload()
+	ChangeSpell()

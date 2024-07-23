@@ -704,6 +704,7 @@ frame = 15
 frame_progress = 1.0
 
 [node name="BrewCollider" type="RigidBody2D" parent="." groups=["Droppable"]]
+visible = false
 position = Vector2(2.43865, -21.3382)
 rotation = 3.14159
 collision_layer = 0
@@ -768,6 +769,11 @@ shape = SubResource("RectangleShape2D_gfpok")
 
 [connection signal="body_entered" from="BrewCollider" to="BrewCollider" method="_on_body_entered"]
 [connection signal="body_exited" from="BrewCollider" to="BrewCollider" method="_on_body_exited"]
+[connection signal="loadFire" from="BrewCollider" to="." method="_on_brew_collider_load_fire"]
+[connection signal="loadHealth" from="BrewCollider" to="." method="_on_brew_collider_load_health"]
+[connection signal="loadIce" from="BrewCollider" to="." method="_on_brew_collider_load_ice"]
+[connection signal="loadLight" from="BrewCollider" to="." method="_on_brew_collider_load_light"]
+[connection signal="loadPoison" from="BrewCollider" to="." method="_on_brew_collider_load_poison"]
 [connection signal="removeInv" from="BrewCollider" to="." method="_on_brew_collider_remove_inv"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]

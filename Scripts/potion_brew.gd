@@ -6,6 +6,11 @@ var invItems = []
 var invItemCount: int = 0
 var itemCount: int = 0
 var itemPos = Vector2(140,0)
+signal passLoadIce
+signal passLoadFire
+signal passLoadHealth
+signal passLoadLight
+signal passLoadPoison
 signal OpenInv
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -85,3 +90,23 @@ func deleteItem(itemToDel):
 
 func _on_brew_collider_remove_inv(itemCalled):
 	deleteItem(itemCalled)
+
+
+func _on_brew_collider_load_fire():
+	passLoadFire.emit()
+
+
+func _on_brew_collider_load_health():
+	passLoadHealth.emit()
+
+
+func _on_brew_collider_load_ice():
+	passLoadIce.emit()
+
+
+func _on_brew_collider_load_light():
+	passLoadLight.emit()
+
+
+func _on_brew_collider_load_poison():
+	passLoadPoison.emit()
