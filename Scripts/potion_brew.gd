@@ -16,7 +16,7 @@ signal OpenInv
 func _ready():
 	inventory.resize(64)
 	invItems.resize(64)
-func _process(delta):
+func _process(_delta):
 	if !Global.inMenu:
 		invItemCount = 0
 		for item in invItems:
@@ -69,7 +69,7 @@ func instItem(pos, itemType):
 
 
 
-func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+func _on_area_2d_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
 	invItems[invItemCount] = body
 	invItemCount +=1
 

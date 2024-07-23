@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dr0vw38qauc2q"]
+[gd_scene load_steps=9 format=3 uid="uid://dr0vw38qauc2q"]
 
 [ext_resource type="PackedScene" uid="uid://c7i8u3biltbfd" path="res://Scenes/potion_brew.tscn" id="1_pnj8d"]
 [ext_resource type="PackedScene" uid="uid://bhlyxfpg5udx2" path="res://Scenes/spell_ball.tscn" id="3_hjef4"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://801kiy05g0j6" path="res://Scenes/mouse_collider.tscn" id="6_77jte"]
 [ext_resource type="PackedScene" uid="uid://ssfef8ie87v6" path="res://Scenes/light.tscn" id="7_t1p24"]
 [ext_resource type="PackedScene" uid="uid://c54fvv132p6e3" path="res://Scenes/item.tscn" id="8_8qwao"]
+[ext_resource type="PackedScene" uid="uid://dfsakfex6dkab" path="res://Scenes/Enemy.tscn" id="8_oybfu"]
 
 [node name="level10" type="Node2D" groups=["Spells"]]
 
@@ -39,7 +40,7 @@ script = ExtResource("5_dbx3i")
 position = Vector2(91, 10)
 
 [node name="Light" parent="." instance=ExtResource("7_t1p24")]
-position = Vector2(151, -63)
+position = Vector2(4, 9)
 
 [node name="Light2" parent="." instance=ExtResource("7_t1p24")]
 position = Vector2(59, -376)
@@ -58,6 +59,15 @@ position = Vector2(-80, -70)
 
 [node name="item" parent="." instance=ExtResource("8_8qwao")]
 position = Vector2(-40, -35)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("8_oybfu")]
+position = Vector2(146, -62)
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("8_oybfu")]
+position = Vector2(-172, -119)
+
+[node name="CharacterBody2D3" parent="." instance=ExtResource("8_oybfu")]
+position = Vector2(-237, 65)
 
 [connection signal="AddToInv" from="Player" to="Player/PotionBrew" method="_on_player_add_to_inv"]
 [connection signal="AmmoFilled" from="Player" to="Spell Manager" method="_on_player_ammo_filled"]
