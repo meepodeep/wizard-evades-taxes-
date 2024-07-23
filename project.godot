@@ -79,7 +79,9 @@ clearInvDebug={
 
 [layer_names]
 
+2d_physics/layer_1="Player"
 2d_physics/layer_5="ItemLayer"
+2d_physics/layer_13="EnemyLayer"
 
 [rendering]
 

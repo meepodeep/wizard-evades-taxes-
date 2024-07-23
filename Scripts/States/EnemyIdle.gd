@@ -6,7 +6,6 @@ class_name EnemyIdle
 var player : CharacterBody2D
 var move_direction : Vector2
 var wander_time : float
-
 func randomize_wander():
 	move_direction = Vector2(randf_range(-1,1), randf_range(-1,1)).normalized()
 	wander_time = randf_range(1,3)
@@ -25,4 +24,6 @@ func Physics_Update(delta: float):
 	var direction = player.global_position - enemy.global_position
 	if enemy:
 		enemy.velocity = move_direction * move_speed
-
+	if direction.length() < 200:
+		print("follwo")
+		Transitioned.emit(self, "Follow") 
