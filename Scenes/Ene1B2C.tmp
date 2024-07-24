@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfsakfex6dkab"]
+[gd_scene load_steps=7 format=3 uid="uid://dfsakfex6dkab"]
 
 [ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="1_pkuyn"]
 [ext_resource type="Texture2D" uid="uid://dmjmrhg613png" path="res://icon.svg" id="2_vwxpk"]
 [ext_resource type="Script" path="res://Scripts/States/State Machine.gd" id="3_3snjx"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyIdle.gd" id="4_o3hk2"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyFollow.gd" id="5_jiyem"]
-[ext_resource type="Script" path="res://Scripts/States/slashAttack.gd" id="6_d8wnn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pr78t"]
 radius = 13.0384
@@ -32,10 +31,6 @@ enemy = NodePath("../..")
 
 [node name="Follow" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("5_jiyem")
-enemy = NodePath("../..")
-
-[node name="Slash" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("6_d8wnn")
 enemy = NodePath("../..")
 
 [node name="Raycasts" type="Node2D" parent="."]

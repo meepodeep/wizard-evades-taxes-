@@ -1,16 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://b77lgv747e4bf"]
+[gd_scene load_steps=3 format=3 uid="uid://b77lgv747e4bf"]
 
+[ext_resource type="Script" path="res://Scripts/Spells/ice.gd" id="1_fm365"]
 [ext_resource type="Texture2D" uid="uid://cps56woktyw7w" path="res://Assets/ice.png" id="1_y68vl"]
 
 [node name="Ice" type="Node2D"]
 z_index = -4
+script = ExtResource("1_fm365")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_y68vl")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(-18, 15, -38, 8, -38, -2, -3, -20, 22, -22, 41, -7, 41, -1, 9, 15, -18, 15)
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-texture = ExtResource("1_y68vl")
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

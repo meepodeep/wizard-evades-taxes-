@@ -25,5 +25,4 @@ func Physics_Update(delta: float):
 	if enemy:
 		enemy.velocity = move_direction * move_speed
 	if direction.length() < 200:
-		print("follwo")
 		Transitioned.emit(self, "Follow") 

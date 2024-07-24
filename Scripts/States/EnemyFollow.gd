@@ -2,11 +2,12 @@ extends State
 class_name EnemyFollow
 @onready var raycast = $"../../Raycasts"
 @export var enemy : CharacterBody2D
-@export var move_speed := 40.0
+@export var move_speed := 4000.0
 var player : CharacterBody2D
 var directionDodge = Vector2(0,0)
 var raycastCollisions = []
 var collisionCount
+var canSlash = true
 func Enter():
 	player = get_tree().get_first_node_in_group("Player")
 	raycastCollisions.resize(64)
@@ -16,7 +17,6 @@ func Physics_Update(delta: float):
 		directionDodge = Vector2(0,0)
 	
 	for child in raycast.get_children():
-		print(collisionCount)
 		raycastCollisions[collisionCount] = child.is_colliding()
 		if collisionCount <=8:
 			collisionCount +=1
@@ -53,10 +53,11 @@ func Physics_Update(delta: float):
 				
 	var direction = player.global_position - enemy.global_position + directionDodge
 	if direction.length() > 40:
-		enemy.velocity = direction.normalized() * move_speed
-	else:
-		enemy.velocity = Vector2()
+		canSlash = true
+		enemy.velocity = direction.normalized() * move_speed * delta
+	elif canSlash:
+		Transitioned.emit(self, "Slash")
+		canSlash = false
 	
 	if direction.length() > 200:
-		print("idel")
 		Transitioned.emit(self, "idle")
