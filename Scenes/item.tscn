@@ -82,8 +82,8 @@ animations = [{
 size = Vector2(15, 14)
 
 [node name="item" type="RigidBody2D"]
-collision_layer = 16
-collision_mask = 16
+collision_layer = 256
+collision_mask = 256
 freeze = true
 freeze_mode = 1
 continuous_cd = 2

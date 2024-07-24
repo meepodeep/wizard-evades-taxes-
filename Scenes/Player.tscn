@@ -331,8 +331,8 @@ position = Vector2(1, 5)
 shape = SubResource("CircleShape2D_pdbr4")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 16
+collision_layer = 256
+collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1, 5)
