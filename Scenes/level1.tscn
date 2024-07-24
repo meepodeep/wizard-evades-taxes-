@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://c7i8u3biltbfd" path="res://Scenes/potion_brew.tscn" id="1_pnj8d"]
 [ext_resource type="PackedScene" uid="uid://bhlyxfpg5udx2" path="res://Scenes/spell_ball.tscn" id="3_hjef4"]
 [ext_resource type="PackedScene" uid="uid://cealsvi7aqafc" path="res://Scenes/Player.tscn" id="4_3gks3"]
+[ext_resource type="PackedScene" uid="uid://dqbdekj57kccg" path="res://Scenes/lightUnPhysics.tscn" id="4_ef0o6"]
 [ext_resource type="Script" path="res://Scripts/SpellManager.gd" id="5_dbx3i"]
 [ext_resource type="PackedScene" uid="uid://801kiy05g0j6" path="res://Scenes/mouse_collider.tscn" id="6_77jte"]
-[ext_resource type="PackedScene" uid="uid://ssfef8ie87v6" path="res://Scenes/light.tscn" id="7_t1p24"]
 [ext_resource type="PackedScene" uid="uid://c54fvv132p6e3" path="res://Scenes/item.tscn" id="8_8qwao"]
 [ext_resource type="PackedScene" uid="uid://dfsakfex6dkab" path="res://Scenes/Enemy.tscn" id="8_oybfu"]
 
@@ -25,8 +25,8 @@ visible = false
 position = Vector2(-209, 101)
 scale = Vector2(2.8, 2.8)
 
-[node name="Light4" parent="Player/PotionBrew" instance=ExtResource("7_t1p24")]
-position = Vector2(74.2857, -35)
+[node name="Light" parent="Player/PotionBrew" instance=ExtResource("4_ef0o6")]
+position = Vector2(75.3571, -37.1429)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(1.8, 1.8)
@@ -38,12 +38,6 @@ script = ExtResource("5_dbx3i")
 
 [node name="MouseCollider" parent="." instance=ExtResource("6_77jte")]
 position = Vector2(91, 10)
-
-[node name="Light" parent="." instance=ExtResource("7_t1p24")]
-position = Vector2(4, 9)
-
-[node name="Light2" parent="." instance=ExtResource("7_t1p24")]
-position = Vector2(59, -376)
 
 [node name="item4" parent="." instance=ExtResource("8_8qwao")]
 position = Vector2(-57, 46)
@@ -68,6 +62,9 @@ position = Vector2(-172, -119)
 
 [node name="CharacterBody2D3" parent="." instance=ExtResource("8_oybfu")]
 position = Vector2(-237, 65)
+
+[node name="Light" parent="." instance=ExtResource("4_ef0o6")]
+position = Vector2(0, 3)
 
 [connection signal="AddToInv" from="Player" to="Player/PotionBrew" method="_on_player_add_to_inv"]
 [connection signal="AmmoFilled" from="Player" to="Spell Manager" method="_on_player_ammo_filled"]

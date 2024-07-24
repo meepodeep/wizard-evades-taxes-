@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqbdekj57kccg"]
+
+[ext_resource type="Texture2D" uid="uid://g00s7nv46m6x" path="res://Assets/2d_lights_and_shadows_neutral_point_light.webp" id="1_gb345"]
+
+[node name="Light" type="Node2D"]
+z_index = -4
+z_as_relative = false
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(5.45979e-05, 0)
+scale = Vector2(1.75, 1.20312)
+energy = 0.94
+shadow_enabled = true
+texture = ExtResource("1_gb345")

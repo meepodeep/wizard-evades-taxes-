@@ -24,11 +24,11 @@ func randomiz():
 		"level7":
 			random = rng.randi_range(1, 5)
 		"level8":
-			random = rng.randi_range(1, 5)
+			random = rng.randi_range(1, 6)
 		"level9":
-			random = rng.randi_range(1, 5)
+			random = rng.randi_range(1, 6)
 		"level10":
-			random = rng.randi_range(1, 5)
+			random = rng.randi_range(1, 6)
 	match random:
 		1:
 			grass()
