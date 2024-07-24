@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://coha0wnl71xs7"]
+[gd_scene load_steps=4 format=3 uid="uid://coha0wnl71xs7"]
 
-[ext_resource type="Texture2D" uid="uid://d3h1dxo3evs38" path="res://Assets/fire.png" id="1_wbypy"]
 [ext_resource type="Script" path="res://Scripts/Spells/Fire.gd" id="1_y5388"]
+[ext_resource type="Texture2D" uid="uid://diemga5um71a7" path="res://Assets/fire sprites.png" id="2_rm2ug"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dtoq"]
+atlas = ExtResource("2_rm2ug")
+region = Rect2(194.462, 144.71, 70.4184, 57.3546)
 
 [node name="Fire" type="Node2D"]
 z_index = -4
@@ -13,10 +17,11 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(-18, 15, -38, 8, -38, -2, -3, -20, 22, -22, 41, -7, 41, -1, 9, 15, -18, 15)
+polygon = PackedVector2Array(-18, 15, -27, 6, -29, -3, -20, -10, -1, -12, 16, -11, 25, -2, 27, 3, 21, 13, 9, 15, -18, 15)
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
-texture = ExtResource("1_wbypy")
+position = Vector2(1, -11)
+texture = SubResource("AtlasTexture_5dtoq")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

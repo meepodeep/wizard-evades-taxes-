@@ -1,33 +1,36 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhlyxfpg5udx2"]
+[gd_scene load_steps=12 format=3 uid="uid://bhlyxfpg5udx2"]
 
 [ext_resource type="Texture2D" uid="uid://bbncskncupoop" path="res://Assets/sprite ball.png" id="1_jnfxr"]
 [ext_resource type="Script" path="res://Scripts/spell_ball.gd" id="1_pq082"]
+[ext_resource type="Texture2D" uid="uid://diemga5um71a7" path="res://Assets/fire sprites.png" id="2_auny8"]
+[ext_resource type="Texture2D" uid="uid://dy5odx6ybusw2" path="res://Assets/ice sprites.png" id="4_gxct6"]
+[ext_resource type="Texture2D" uid="uid://bbsjxxvmun8vm" path="res://Assets/poison sprites.png" id="5_7wqv3"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n8qut"]
-atlas = ExtResource("1_jnfxr")
-region = Rect2(60, 0, 15, 15)
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5cfs"]
+atlas = ExtResource("2_auny8")
+region = Rect2(185, 210, 37, 35)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5vhfy"]
 atlas = ExtResource("1_jnfxr")
 region = Rect2(120, 0, 15, 15)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tty8k"]
-atlas = ExtResource("1_jnfxr")
-region = Rect2(0, 0, 15, 15)
+[sub_resource type="AtlasTexture" id="AtlasTexture_omc1c"]
+atlas = ExtResource("4_gxct6")
+region = Rect2(257, 208, 23, 26)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c27r5"]
 atlas = ExtResource("1_jnfxr")
 region = Rect2(30, 0, 15, 15)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d285a"]
-atlas = ExtResource("1_jnfxr")
-region = Rect2(90, 0, 15, 15)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wtii"]
+atlas = ExtResource("5_7wqv3")
+region = Rect2(130, 168, 26, 56)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5ijhg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n8qut")
+"texture": SubResource("AtlasTexture_h5cfs")
 }],
 "loop": true,
 "name": &"fireBall",
@@ -43,7 +46,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tty8k")
+"texture": SubResource("AtlasTexture_omc1c")
 }],
 "loop": true,
 "name": &"iceBall",
@@ -59,7 +62,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d285a")
+"texture": SubResource("AtlasTexture_3wtii")
 }],
 "loop": true,
 "name": &"poisonBall",

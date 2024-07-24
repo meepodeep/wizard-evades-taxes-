@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://ceht8ltjnwuam"]
+[gd_scene load_steps=4 format=3 uid="uid://ceht8ltjnwuam"]
 
 [ext_resource type="Script" path="res://Scripts/Spells/poison.gd" id="1_ftbrg"]
-[ext_resource type="Texture2D" uid="uid://dk1q0poghnf5m" path="res://Assets/poison.png" id="1_kgrfr"]
+[ext_resource type="Texture2D" uid="uid://dborpb5ucdia5" path="res://Assets/mypoison.png" id="2_cn8c0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46ap1"]
+atlas = ExtResource("2_cn8c0")
+region = Rect2(22.5084, 21.324, 20.3785, 17.9774)
 
 [node name="Poison" type="Node2D"]
 z_index = -4
@@ -13,10 +17,12 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(-18, 15, -38, 8, -38, -2, -3, -20, 22, -22, 41, -7, 41, -1, 9, 15, -18, 15)
+polygon = PackedVector2Array(-11, 20, -23, 7, -23, 3, -18, -12, -11, -16, 6, -19, 21, -12, 25, -2, 25, 4, 19, 15, 9, 21, -4, 20)
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
-texture = ExtResource("1_kgrfr")
+position = Vector2(-2.38419e-07, 0)
+scale = Vector2(2.42647, 2.42647)
+texture = SubResource("AtlasTexture_46ap1")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

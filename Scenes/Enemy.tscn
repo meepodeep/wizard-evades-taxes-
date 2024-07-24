@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dfsakfex6dkab"]
 
-[ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="1_pkuyn"]
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_pab7c"]
 [ext_resource type="Texture2D" uid="uid://dmjmrhg613png" path="res://icon.svg" id="2_vwxpk"]
 [ext_resource type="Script" path="res://Scripts/States/State Machine.gd" id="3_3snjx"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyIdle.gd" id="4_o3hk2"]
@@ -13,7 +13,7 @@ radius = 13.0384
 [node name="Enemy" type="CharacterBody2D" groups=["dog"]]
 collision_layer = 4159
 collision_mask = 4129
-script = ExtResource("1_pkuyn")
+script = ExtResource("1_pab7c")
 
 [node name="Icon" type="Sprite2D" parent="."]
 scale = Vector2(0.225, 0.225)
