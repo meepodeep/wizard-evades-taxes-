@@ -1,23 +1,68 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfsakfex6dkab"]
+[gd_scene load_steps=13 format=3 uid="uid://dfsakfex6dkab"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_pab7c"]
-[ext_resource type="Texture2D" uid="uid://dmjmrhg613png" path="res://icon.svg" id="2_vwxpk"]
+[ext_resource type="Texture2D" uid="uid://ctaln3h4nuidk" path="res://Assets/enenmies.png" id="2_fhh1n"]
 [ext_resource type="Script" path="res://Scripts/States/State Machine.gd" id="3_3snjx"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyIdle.gd" id="4_o3hk2"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyFollow.gd" id="5_jiyem"]
-[ext_resource type="Script" path="res://Scripts/States/slashAttack.gd" id="6_d8wnn"]
+[ext_resource type="Script" path="res://Scripts/States/EnemyCast.gd" id="6_fpuq1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyrwa"]
+atlas = ExtResource("2_fhh1n")
+region = Rect2(200, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te2hf"]
+atlas = ExtResource("2_fhh1n")
+region = Rect2(100, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8hx5"]
+atlas = ExtResource("2_fhh1n")
+region = Rect2(0, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tq02r"]
+atlas = ExtResource("2_fhh1n")
+region = Rect2(0, 0, 100, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_spxwg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyrwa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te2hf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8hx5")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tq02r")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pr78t"]
-radius = 13.0384
+radius = 7.2111
 
 [node name="Enemy" type="CharacterBody2D" groups=["dog"]]
 collision_layer = 4159
 collision_mask = 4129
 script = ExtResource("1_pab7c")
 
-[node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.225, 0.225)
-texture = ExtResource("2_vwxpk")
+[node name="Animator" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 0)
+scale = Vector2(0.375, 0.375)
+sprite_frames = SubResource("SpriteFrames_spxwg")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.90914
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["dog"]]
 shape = SubResource("CircleShape2D_pr78t")
@@ -34,9 +79,8 @@ enemy = NodePath("../..")
 script = ExtResource("5_jiyem")
 enemy = NodePath("../..")
 
-[node name="Slash" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("6_d8wnn")
-enemy = NodePath("../..")
+[node name="Cast" type="Node" parent="State Machine"]
+script = ExtResource("6_fpuq1")
 
 [node name="Raycasts" type="Node2D" parent="."]
 

@@ -1,0 +1,112 @@
+[gd_scene load_steps=11 format=3 uid="uid://rluwp48ph85s"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_x7n68"]
+[ext_resource type="Texture2D" uid="uid://ctaln3h4nuidk" path="res://Assets/enenmies.png" id="2_tc5os"]
+[ext_resource type="Script" path="res://Scripts/States/State Machine.gd" id="3_ggl2n"]
+[ext_resource type="Script" path="res://Scripts/States/EnemyIdle.gd" id="4_bei65"]
+[ext_resource type="Script" path="res://Scripts/States/EnemyFollow.gd" id="5_yvrk7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_baw78"]
+atlas = ExtResource("2_tc5os")
+region = Rect2(0, 240, 69, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cy3of"]
+atlas = ExtResource("2_tc5os")
+region = Rect2(70, 241, 69, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cyjc"]
+atlas = ExtResource("2_tc5os")
+region = Rect2(0, 239, 69, 59)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_spxwg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_baw78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cy3of")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cyjc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pr78t"]
+radius = 7.2111
+
+[node name="casterEnemy" type="CharacterBody2D" groups=["dog"]]
+collision_layer = 4159
+collision_mask = 4129
+script = ExtResource("1_x7n68")
+
+[node name="Animator" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 0)
+scale = Vector2(0.375, 0.375)
+sprite_frames = SubResource("SpriteFrames_spxwg")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["dog"]]
+shape = SubResource("CircleShape2D_pr78t")
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_ggl2n")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_bei65")
+enemy = NodePath("../..")
+
+[node name="Follow" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("5_yvrk7")
+enemy = NodePath("../..")
+
+[node name="Raycasts" type="Node2D" parent="."]
+
+[node name="RayCastSouthEast" type="RayCast2D" parent="Raycasts"]
+rotation = -0.785398
+target_position = Vector2(0, 40)
+collision_mask = 4097
+
+[node name="RayCastNorthEast" type="RayCast2D" parent="Raycasts"]
+rotation = -2.35619
+target_position = Vector2(0, 40)
+collision_mask = 4097
+
+[node name="RayCastNorthWest" type="RayCast2D" parent="Raycasts"]
+rotation = 2.35619
+target_position = Vector2(0, 40)
+collision_mask = 4097
+
+[node name="RayCastSouthWest" type="RayCast2D" parent="Raycasts"]
+rotation = 0.785398
+target_position = Vector2(0, 40)
+collision_mask = 4097
+
+[node name="RayCastWest" type="RayCast2D" parent="Raycasts"]
+rotation = 1.5708
+target_position = Vector2(0, 40)
+collision_mask = 4097
+
+[node name="RayCastSouth" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(0, 40)
+collision_mask = 4097
+
+[node name="RayCastEast" type="RayCast2D" parent="Raycasts"]
+rotation = -1.5708
+target_position = Vector2(0, 40)
+collision_mask = 4097
+
+[node name="RayCastNorth" type="RayCast2D" parent="Raycasts"]
+rotation = 3.14159
+target_position = Vector2(0, 40)
+collision_mask = 4097
