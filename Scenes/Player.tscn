@@ -434,6 +434,7 @@ shape = SubResource("CircleShape2D_sjieb")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="collisionPoint" from="GunParent/RayCast2D" to="." method="_on_ray_cast_2d_collision_point"]
+[connection signal="DamageTaken" from="PlayerHealth" to="." method="_on_player_health_damage_taken"]
 [connection signal="timeout" from="PlayerHealth/Timer" to="PlayerHealth" method="_on_timer_timeout"]
 [connection signal="area_entered" from="PlayerHealth/Area2D" to="PlayerHealth" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="PlayerHealth/Area2D" to="PlayerHealth" method="_on_area_2d_area_exited"]

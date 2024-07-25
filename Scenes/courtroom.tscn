@@ -1,5 +1,6 @@
-[gd_scene load_steps=53 format=3 uid="uid://bkur03gtm26id"]
+[gd_scene load_steps=55 format=3 uid="uid://bkur03gtm26id"]
 
+[ext_resource type="Script" path="res://Scripts/courtroom.gd" id="1_eefio"]
 [ext_resource type="Texture2D" uid="uid://cyi2qwghjqv88" path="res://Assets/Courtroom Animation/Courtrooom1.png" id="1_ogxoo"]
 [ext_resource type="Texture2D" uid="uid://bew0ahhk68sfw" path="res://Assets/Courtroom Animation/Courtrooom2.png" id="2_1cfq8"]
 [ext_resource type="Texture2D" uid="uid://da5bu8rawrb16" path="res://Assets/Courtroom Animation/Courtrooom3.png" id="3_cdj0j"]
@@ -51,11 +52,12 @@
 [ext_resource type="Texture2D" uid="uid://dkbw6gsvpih11" path="res://Assets/Courtroom Animation/Courtrooom49.png" id="49_51cfx"]
 [ext_resource type="Texture2D" uid="uid://c0ujaxhvpd0sn" path="res://Assets/Courtroom Animation/Courtrooom50.png" id="50_qsbew"]
 [ext_resource type="Texture2D" uid="uid://murwewfih5" path="res://Assets/Courtroom Animation/Courtrooom51.png" id="51_mw14q"]
+[ext_resource type="FontFile" uid="uid://cya3revvfbalq" path="res://Assets/TeenyTinyPixls-o2zo.ttf" id="53_sw2bv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4ctpt"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 10.0,
 "texture": ExtResource("1_ogxoo")
 }, {
 "duration": 1.0,
@@ -205,7 +207,22 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("50_qsbew")
 }, {
-"duration": 1.0,
+"duration": 20.0,
+"texture": ExtResource("51_mw14q")
+}, {
+"duration": 20.0,
+"texture": ExtResource("51_mw14q")
+}, {
+"duration": 20.0,
+"texture": ExtResource("51_mw14q")
+}, {
+"duration": 10.0,
+"texture": ExtResource("51_mw14q")
+}, {
+"duration": 20.0,
+"texture": ExtResource("51_mw14q")
+}, {
+"duration": 20.0,
 "texture": ExtResource("51_mw14q")
 }],
 "loop": false,
@@ -214,7 +231,19 @@ animations = [{
 }]
 
 [node name="Courtroom" type="Node2D"]
+script = ExtResource("1_eefio")
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.055, 1.055)
 sprite_frames = SubResource("SpriteFrames_4ctpt")
-frame_progress = 0.352969
+
+[node name="Label" type="Label" parent="."]
+offset_left = -61.0
+offset_top = -145.0
+offset_right = 98.0
+offset_bottom = -139.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("53_sw2bv")
+theme_override_font_sizes/font_size = 5

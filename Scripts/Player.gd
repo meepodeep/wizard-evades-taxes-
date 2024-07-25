@@ -4,6 +4,7 @@ signal AmmoFilled
 signal transferHitPosition
 signal AddToInv
 signal currentSpell
+signal dpsToBar
 var SPEED
 var angular_force = 50000
 var canDash = 1.0
@@ -131,3 +132,7 @@ func _on_potion_brew_pass_load_poison():
 	reload()
 	ChangeSpell()
 
+
+
+func _on_player_health_damage_taken(dps):
+	dpsToBar.emit(dps)

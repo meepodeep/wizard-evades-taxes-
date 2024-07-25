@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dr0vw38qauc2q"]
+[gd_scene load_steps=10 format=3 uid="uid://dr0vw38qauc2q"]
 
 [ext_resource type="PackedScene" uid="uid://c7i8u3biltbfd" path="res://Scenes/potion_brew.tscn" id="1_pnj8d"]
 [ext_resource type="PackedScene" uid="uid://bhlyxfpg5udx2" path="res://Scenes/spell_ball.tscn" id="3_hjef4"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://Scripts/SpellManager.gd" id="5_dbx3i"]
 [ext_resource type="PackedScene" uid="uid://801kiy05g0j6" path="res://Scenes/mouse_collider.tscn" id="6_77jte"]
 [ext_resource type="PackedScene" uid="uid://c54fvv132p6e3" path="res://Scenes/item.tscn" id="8_8qwao"]
+[ext_resource type="PackedScene" uid="uid://bo23bowkhn4xp" path="res://Scenes/Hud.tscn" id="8_elyol"]
+[ext_resource type="PackedScene" uid="uid://bkur03gtm26id" path="res://Scenes/courtroom.tscn" id="9_xtmco"]
 
 [node name="level10" type="Node2D" groups=["Spells"]]
 
@@ -57,10 +59,16 @@ position = Vector2(-40, -35)
 [node name="Light" parent="." instance=ExtResource("4_ef0o6")]
 position = Vector2(0, 3)
 
+[node name="CanvasLayer" parent="." instance=ExtResource("8_elyol")]
+
+[node name="Courtroom" parent="." instance=ExtResource("9_xtmco")]
+position = Vector2(-1, 89)
+
 [connection signal="AddToInv" from="Player" to="Player/PotionBrew" method="_on_player_add_to_inv"]
 [connection signal="AmmoFilled" from="Player" to="Spell Manager" method="_on_player_ammo_filled"]
 [connection signal="AmmoOut" from="Player" to="Spell Manager" method="_on_player_ammo_out"]
 [connection signal="currentSpell" from="Player" to="Spell Manager" method="_on_player_current_spell"]
+[connection signal="dpsToBar" from="Player" to="CanvasLayer" method="_on_player_dps_to_bar"]
 [connection signal="transferHitPosition" from="Player" to="Spell Manager" method="_on_player_transfer_hit_position"]
 [connection signal="OpenInv" from="Player/PotionBrew" to="Player" method="_on_potion_brew_open_inv"]
 [connection signal="passLoadFire" from="Player/PotionBrew" to="Player" method="_on_potion_brew_pass_load_fire"]
