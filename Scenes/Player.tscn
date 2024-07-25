@@ -1,10 +1,65 @@
-[gd_scene load_steps=46 format=3 uid="uid://cealsvi7aqafc"]
+[gd_scene load_steps=52 format=3 uid="uid://cealsvi7aqafc"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_kikrh"]
+[ext_resource type="Texture2D" uid="uid://h4u0oxoh07we" path="res://Assets/Dps Particles.png" id="2_6vkqw"]
 [ext_resource type="Texture2D" uid="uid://db5jrmpoqseu6" path="res://Assets/Wizard.png" id="2_36n4y"]
 [ext_resource type="Script" path="res://Scripts/Gun.gd" id="2_060sx"]
 [ext_resource type="Script" path="res://Scripts/RayCast.gd" id="4_onfna"]
 [ext_resource type="Script" path="res://Scripts/PlayerHealth.gd" id="5_nttnt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3kgg"]
+atlas = ExtResource("2_6vkqw")
+region = Rect2(30, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4t2dt"]
+atlas = ExtResource("2_6vkqw")
+region = Rect2(60, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpplk"]
+atlas = ExtResource("2_6vkqw")
+region = Rect2(90, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8jsd"]
+atlas = ExtResource("2_6vkqw")
+region = Rect2(0, 0, 30, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_13cgi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3kgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4t2dt")
+}],
+"loop": true,
+"name": &"Fire",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpplk")
+}],
+"loop": true,
+"name": &"Ice",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"Nothing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8jsd")
+}],
+"loop": true,
+"name": &"Poison",
+"speed": 5.0
+}]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ib4te"]
 load_path = "res://.godot/imported/Wizard.png-2ebbcfc18e600834351ca1a6d7bec2ee.ctex"
@@ -323,6 +378,11 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_kikrh")
+
+[node name="DpsParticles" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 3)
+sprite_frames = SubResource("SpriteFrames_13cgi")
+animation = &"Nothing"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -1

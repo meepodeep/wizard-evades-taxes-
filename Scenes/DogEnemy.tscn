@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dfsakfex6dkab"]
+[gd_scene load_steps=21 format=3 uid="uid://dfsakfex6dkab"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_pab7c"]
 [ext_resource type="Texture2D" uid="uid://ctaln3h4nuidk" path="res://Assets/enenmies.png" id="2_fhh1n"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/States/DogFollow.gd" id="5_ortqp"]
 [ext_resource type="Script" path="res://Scripts/States/slashAttack.gd" id="6_m34a5"]
 [ext_resource type="Script" path="res://Scripts/DogHealthManager.gd" id="7_727lw"]
+[ext_resource type="Texture2D" uid="uid://h4u0oxoh07we" path="res://Assets/Dps Particles.png" id="8_hj1jn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tyrwa"]
 atlas = ExtResource("2_fhh1n")
@@ -54,6 +55,60 @@ radius = 7.2111
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_venon"]
 radius = 9.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3kgg"]
+atlas = ExtResource("8_hj1jn")
+region = Rect2(30, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4t2dt"]
+atlas = ExtResource("8_hj1jn")
+region = Rect2(60, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpplk"]
+atlas = ExtResource("8_hj1jn")
+region = Rect2(90, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8jsd"]
+atlas = ExtResource("8_hj1jn")
+region = Rect2(0, 0, 30, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4gbon"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3kgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4t2dt")
+}],
+"loop": true,
+"name": &"Fire",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpplk")
+}],
+"loop": true,
+"name": &"Ice",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"Nothing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8jsd")
+}],
+"loop": true,
+"name": &"Poison",
+"speed": 5.0
+}]
 
 [node name="Enemy" type="CharacterBody2D" groups=["dog"]]
 collision_layer = 4159
@@ -138,6 +193,11 @@ collision_mask = 62
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DogHealthManager/Area2D"]
 shape = SubResource("CircleShape2D_venon")
+
+[node name="DpsParticles" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 3)
+sprite_frames = SubResource("SpriteFrames_4gbon")
+animation = &"Nothing"
 
 [connection signal="area_entered" from="DogHealthManager/Area2D" to="DogHealthManager" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="DogHealthManager/Area2D" to="DogHealthManager" method="_on_area_2d_area_exited"]
