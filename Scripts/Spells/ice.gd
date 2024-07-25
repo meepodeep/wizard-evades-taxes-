@@ -13,13 +13,3 @@ func _process(delta):
 	scale.y = LifeTime/10
 	if LifeTime <= 0:
 		queue_free()
-func _on_area_2d_body_entered(body):
-	if body.is_in_group("dog"):
-		body.slowDown()
-	if body.is_in_group("caster"):
-		LifeTime = 1
-
-
-func _on_area_2d_body_exited(body):
-	if body.is_in_group("dog"):
-		body.speedUp()

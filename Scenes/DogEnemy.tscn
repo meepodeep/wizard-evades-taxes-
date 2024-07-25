@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dfsakfex6dkab"]
+[gd_scene load_steps=15 format=3 uid="uid://dfsakfex6dkab"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_pab7c"]
 [ext_resource type="Texture2D" uid="uid://ctaln3h4nuidk" path="res://Assets/enenmies.png" id="2_fhh1n"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/States/EnemyIdle.gd" id="4_o3hk2"]
 [ext_resource type="Script" path="res://Scripts/States/DogFollow.gd" id="5_ortqp"]
 [ext_resource type="Script" path="res://Scripts/States/slashAttack.gd" id="6_m34a5"]
+[ext_resource type="Script" path="res://Scripts/DogHealthManager.gd" id="7_727lw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tyrwa"]
 atlas = ExtResource("2_fhh1n")
@@ -51,6 +52,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_pr78t"]
 radius = 7.2111
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_venon"]
+radius = 9.0
+
 [node name="Enemy" type="CharacterBody2D" groups=["dog"]]
 collision_layer = 4159
 collision_mask = 4129
@@ -79,8 +83,9 @@ enemy = NodePath("../..")
 script = ExtResource("5_ortqp")
 enemy = NodePath("../..")
 
-[node name="Slash" type="Node" parent="State Machine"]
+[node name="Slash" type="Node" parent="State Machine" node_paths=PackedStringArray("dogEnemy")]
 script = ExtResource("6_m34a5")
+dogEnemy = NodePath("../..")
 
 [node name="Raycasts" type="Node2D" parent="."]
 
@@ -122,3 +127,17 @@ collision_mask = 4097
 rotation = 3.14159
 target_position = Vector2(0, 40)
 collision_mask = 4097
+
+[node name="DogHealthManager" type="Node2D" parent="." node_paths=PackedStringArray("dogEnemy")]
+script = ExtResource("7_727lw")
+dogEnemy = NodePath("..")
+
+[node name="Area2D" type="Area2D" parent="DogHealthManager"]
+collision_layer = 0
+collision_mask = 62
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DogHealthManager/Area2D"]
+shape = SubResource("CircleShape2D_venon")
+
+[connection signal="area_entered" from="DogHealthManager/Area2D" to="DogHealthManager" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="DogHealthManager/Area2D" to="DogHealthManager" method="_on_area_2d_area_exited"]

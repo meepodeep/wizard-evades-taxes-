@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://rluwp48ph85s"]
+[gd_scene load_steps=14 format=3 uid="uid://rluwp48ph85s"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_x7n68"]
 [ext_resource type="Texture2D" uid="uid://ctaln3h4nuidk" path="res://Assets/enenmies.png" id="2_tc5os"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/States/EnemyIdle.gd" id="4_bei65"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyFollow.gd" id="5_yvrk7"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyCast.gd" id="6_aybn1"]
+[ext_resource type="Script" path="res://Scripts/casterHealthManager.gd" id="7_mrqe3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_baw78"]
 atlas = ExtResource("2_tc5os")
@@ -43,6 +44,8 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pr78t"]
 radius = 7.2111
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w8t63"]
 
 [node name="casterEnemy" type="CharacterBody2D" groups=["caster"]]
 collision_layer = 4159
@@ -115,3 +118,17 @@ collision_mask = 4097
 rotation = 3.14159
 target_position = Vector2(0, 40)
 collision_mask = 4097
+
+[node name="casterHealthManager" type="Node2D" parent="." node_paths=PackedStringArray("caster")]
+script = ExtResource("7_mrqe3")
+caster = NodePath("..")
+
+[node name="Area2D" type="Area2D" parent="casterHealthManager"]
+collision_layer = 0
+collision_mask = 62
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="casterHealthManager/Area2D"]
+shape = SubResource("CircleShape2D_w8t63")
+
+[connection signal="area_entered" from="casterHealthManager/Area2D" to="casterHealthManager" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="casterHealthManager/Area2D" to="casterHealthManager" method="_on_area_2d_area_exited"]

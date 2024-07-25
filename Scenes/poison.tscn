@@ -12,7 +12,7 @@ z_index = -4
 z_as_relative = false
 script = ExtResource("1_ftbrg")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["poison"]]
 collision_layer = 4
 collision_mask = 4
 

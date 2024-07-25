@@ -14,7 +14,7 @@ script = ExtResource("1_fm365")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_mxhh6")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["ice"]]
 collision_layer = 2
 collision_mask = 2
 
