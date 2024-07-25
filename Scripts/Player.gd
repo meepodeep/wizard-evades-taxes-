@@ -11,12 +11,15 @@ var dashSpeed = 500
 var stopped = Vector2(0,0)
 var ammoCount = 4
 var SpellType = 1
+var playerHealth = 20
 
 @onready var animator = $AnimatedSprite2D
 @onready var PotionAnimator = $GunParent/Gun/Potions
 @onready var GunSprite = $GunParent/Gun
 
 func _process(_delta):
+	if playerHealth <= 0:
+		print("died")
 	if Global.inMenu == true:
 		set_physics_process(false)
 		self_modulate = Color(1, 1, 1, 0)

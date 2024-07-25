@@ -319,6 +319,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 63
 script = ExtResource("1_kikrh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

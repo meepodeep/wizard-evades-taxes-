@@ -8,18 +8,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	LifeTime -= 1 * delta
+	LifeTime -= .1 * delta
 	scale.x = LifeTime/10
 	scale.y = LifeTime/10
 	if LifeTime <= 0:
 		queue_free()
-func _on_area_2d_body_entered(body):
-	if body.is_in_group("dog"):
-		body.slowDown()
-	if body.is_in_group("caster"):
-		LifeTime = 1
-
-
-func _on_area_2d_body_exited(body):
-	if body.is_in_group("dog"):
-		body.speedUp()

@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://ctaln3h4nuidk" path="res://Assets/enenmies.png" id="2_fhh1n"]
 [ext_resource type="Script" path="res://Scripts/States/State Machine.gd" id="3_3snjx"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyIdle.gd" id="4_o3hk2"]
-[ext_resource type="Script" path="res://Scripts/States/EnemyFollow.gd" id="5_jiyem"]
-[ext_resource type="Script" path="res://Scripts/States/EnemyCast.gd" id="6_fpuq1"]
+[ext_resource type="Script" path="res://Scripts/States/DogFollow.gd" id="5_ortqp"]
+[ext_resource type="Script" path="res://Scripts/States/slashAttack.gd" id="6_m34a5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tyrwa"]
 atlas = ExtResource("2_fhh1n")
@@ -76,11 +76,11 @@ script = ExtResource("4_o3hk2")
 enemy = NodePath("../..")
 
 [node name="Follow" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("5_jiyem")
+script = ExtResource("5_ortqp")
 enemy = NodePath("../..")
 
-[node name="Cast" type="Node" parent="State Machine"]
-script = ExtResource("6_fpuq1")
+[node name="Slash" type="Node" parent="State Machine"]
+script = ExtResource("6_m34a5")
 
 [node name="Raycasts" type="Node2D" parent="."]
 

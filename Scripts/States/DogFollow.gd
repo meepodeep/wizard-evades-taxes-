@@ -1,12 +1,12 @@
 extends State
-class_name CasterFollow
+class_name DogFollow
 @onready var raycast = $"../../Raycasts"
-@export var casterEnemy : CharacterBody2D
+@export var enemy : CharacterBody2D
 var player : CharacterBody2D
 var directionDodge = Vector2(0,0)
 var raycastCollisions = []
 var collisionCount
-var canCast = true
+var canSlash = true
 func Enter():
 	player = get_tree().get_first_node_in_group("Player")
 	raycastCollisions.resize(64)
@@ -50,16 +50,17 @@ func Physics_Update(delta: float):
 
 					
 				
-	var direction = player.global_position - casterEnemy.global_position + directionDodge
-	if direction.length() > 100:
-		canCast = true
-		casterEnemy.velocity = direction.normalized() * casterEnemy.move_speed * delta
-	if direction.length() < 95:
-		direction = casterEnemy.global_position - player.global_position + directionDodge
-		casterEnemy.velocity = direction.normalized() * casterEnemy.move_speed * delta
-		if canCast: 
-			Transitioned.emit(self, "cast")
-			canCast = false
+	var direction = player.global_position - enemy.global_position + directionDodge
+	if direction.length() > 20:
+		canSlash = true
+		enemy.velocity = direction.normalized() * enemy.move_speed * delta
+	else:
+		direction = enemy.global_position - player.global_position + directionDodge
+		enemy.velocity = direction.normalized() * enemy.move_speed * delta
+		if canSlash: 
+			Transitioned.emit(self, "Slash")
+			print("castwed")
+			canSlash = false
 	
 
 	if direction.length() > 140:
