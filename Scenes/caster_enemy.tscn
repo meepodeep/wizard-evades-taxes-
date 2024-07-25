@@ -102,7 +102,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="casterEnemy" type="CharacterBody2D" groups=["caster"]]
+[node name="casterEnemy" type="CharacterBody2D" groups=["caster", "enemy"]]
 collision_layer = 4159
 collision_mask = 4129
 script = ExtResource("1_x7n68")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dbww08lb4qhr5"]
+[gd_scene load_steps=12 format=3 uid="uid://dbww08lb4qhr5"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_j1vxx"]
 [ext_resource type="Texture2D" uid="uid://ctaln3h4nuidk" path="res://Assets/enenmies.png" id="2_l36pg"]
 [ext_resource type="Script" path="res://Scripts/States/State Machine.gd" id="3_belcy"]
+[ext_resource type="Script" path="res://Scripts/States/HealFreindly.gd" id="5_jhopw"]
 [ext_resource type="Script" path="res://Scripts/States/HealerFollow.gd" id="5_qv874"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gg0j7"]
@@ -62,6 +63,10 @@ shape = SubResource("CircleShape2D_kmmlk")
 script = ExtResource("3_belcy")
 initial_state = NodePath("HealerFollow")
 
+[node name="Cast" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("5_jhopw")
+enemy = NodePath("../..")
+
 [node name="HealerFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("casterEnemy")]
 script = ExtResource("5_qv874")
 casterEnemy = NodePath("../..")
@@ -114,4 +119,3 @@ target_position = Vector2(0, 40)
 collision_mask = 4097
 
 [connection signal="body_entered" from="Area2D" to="StateMachine/HealerFollow" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="StateMachine/HealerFollow" method="_on_area_2d_body_exited"]
