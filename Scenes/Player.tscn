@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://db5jrmpoqseu6" path="res://Assets/Wizard.png" id="2_36n4y"]
 [ext_resource type="Script" path="res://Scripts/Gun.gd" id="2_060sx"]
 [ext_resource type="Script" path="res://Scripts/RayCast.gd" id="4_onfna"]
-[ext_resource type="Script" path="res://Scripts/PlayerHealth.gd" id="5_nttnt"]
+[ext_resource type="Script" path="res://Scripts/HealthManagers/PlayerHealth.gd" id="6_ocj2e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p3kgg"]
 atlas = ExtResource("2_6vkqw")
@@ -420,13 +420,13 @@ collision_mask = 2049
 script = ExtResource("4_onfna")
 
 [node name="PlayerHealth" type="Node2D" parent="."]
-script = ExtResource("5_nttnt")
+script = ExtResource("6_ocj2e")
 
 [node name="Timer" type="Timer" parent="PlayerHealth"]
 
 [node name="Area2D" type="Area2D" parent="PlayerHealth"]
 collision_layer = 0
-collision_mask = 62
+collision_mask = 126
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHealth/Area2D"]
 position = Vector2(1, 5)

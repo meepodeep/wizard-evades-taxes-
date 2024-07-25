@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://dbww08lb4qhr5"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_j1vxx"]
+[ext_resource type="Texture2D" uid="uid://ctaln3h4nuidk" path="res://Assets/enenmies.png" id="2_l36pg"]
+[ext_resource type="Script" path="res://Scripts/States/State Machine.gd" id="3_belcy"]
+[ext_resource type="Script" path="res://Scripts/States/EnemyIdle.gd" id="4_5kd4c"]
+[ext_resource type="Script" path="res://Scripts/States/EnemyFollow.gd" id="5_o2g6x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gg0j7"]
+atlas = ExtResource("2_l36pg")
+region = Rect2(0, 177, 72, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lt2jt"]
+atlas = ExtResource("2_l36pg")
+region = Rect2(72, 177, 72, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kt15r"]
+atlas = ExtResource("2_l36pg")
+region = Rect2(0, 177, 72, 59)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k013x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gg0j7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lt2jt")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kt15r")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kmmlk"]
+radius = 7.2111
+
+[node name="HealerEnemy" type="CharacterBody2D"]
+script = ExtResource("1_j1vxx")
+
+[node name="Animator" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 0)
+scale = Vector2(0.375, 0.375)
+sprite_frames = SubResource("SpriteFrames_k013x")
+animation = &"Run"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["caster"]]
+shape = SubResource("CircleShape2D_kmmlk")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("3_belcy")
+
+[node name="EnemyIdle" type="Node" parent="Node"]
+script = ExtResource("4_5kd4c")
+
+[node name="CasterFollow" type="Node" parent="Node"]
+script = ExtResource("5_o2g6x")

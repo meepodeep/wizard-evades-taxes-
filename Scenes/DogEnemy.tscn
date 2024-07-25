@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/States/EnemyIdle.gd" id="4_o3hk2"]
 [ext_resource type="Script" path="res://Scripts/States/DogFollow.gd" id="5_ortqp"]
 [ext_resource type="Script" path="res://Scripts/States/slashAttack.gd" id="6_m34a5"]
-[ext_resource type="Script" path="res://Scripts/DogHealthManager.gd" id="7_727lw"]
+[ext_resource type="Script" path="res://Scripts/HealthManagers/DogHealthManager.gd" id="7_727lw"]
 [ext_resource type="Texture2D" uid="uid://h4u0oxoh07we" path="res://Assets/Dps Particles.png" id="8_hj1jn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tyrwa"]
@@ -187,8 +187,8 @@ collision_mask = 4097
 script = ExtResource("7_727lw")
 dogEnemy = NodePath("..")
 
-[node name="Area2D" type="Area2D" parent="DogHealthManager"]
-collision_layer = 0
+[node name="Area2D" type="Area2D" parent="DogHealthManager" groups=["dog"]]
+collision_layer = 64
 collision_mask = 62
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DogHealthManager/Area2D"]

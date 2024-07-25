@@ -13,4 +13,5 @@ func _process(delta):
 
 
 func _on_player_dps_to_bar(dps):
+	
 	barAnim.frame -= dps

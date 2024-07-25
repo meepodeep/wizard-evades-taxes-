@@ -33,7 +33,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("CompressedTexture2D_jcr72")
 }, {
-"duration": 2.3,
+"duration": 0.2,
 "texture": SubResource("CompressedTexture2D_jcr72")
 }, {
 "duration": 1.0,
@@ -115,7 +115,7 @@ position = Vector2(0, 119)
 
 [node name="TheHole" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(2, 37)
+position = Vector2(2, 52)
 scale = Vector2(-2.36594, -2.36594)
 sprite_frames = SubResource("SpriteFrames_epimw")
 animation = &"Open"

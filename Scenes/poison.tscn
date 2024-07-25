@@ -23,6 +23,3 @@ polygon = PackedVector2Array(-11, 20, -23, 7, -23, 3, -18, -12, -11, -16, 6, -19
 position = Vector2(-2.38419e-07, 0)
 scale = Vector2(2.42647, 2.42647)
 texture = SubResource("AtlasTexture_46ap1")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -309,14 +309,13 @@ animations = [{
 script = ExtResource("1_0yxvf")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_left = -66.0
-offset_top = -34.0
-offset_right = 9.0
-offset_bottom = -19.0
-scale = Vector2(6.1634, 6.1634)
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 16.0
+scale = Vector2(3.94193, 3.94193)
 
 [node name="BarAnim" type="AnimatedSprite2D" parent="MarginContainer"]
-position = Vector2(40.7242, 12.8176)
+position = Vector2(29.9012, 7.27859)
 sprite_frames = SubResource("SpriteFrames_mrkis")
 animation = &"3Hearts"
 autoplay = "6Hearts"

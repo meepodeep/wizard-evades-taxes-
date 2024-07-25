@@ -1,7 +1,7 @@
 extends State
-class_name EnemyCast
+class_name EnemyCastHealth
 
-@onready var fire = load("res://Scenes/fire.tscn")
+@onready var health = load("res://Scenes/fire.tscn")
 var move_speed = 4000.0
 var player : CharacterBody2D
 @export var enemy : CharacterBody2D
@@ -12,14 +12,14 @@ func Enter():
 func Physics_Update(delta: float):
 	var direction = player.global_position - enemy.global_position
 	if canCast >=1:
-		instFire(player.global_position)
+		instHealth(player.global_position)
 		casted = true
 		canCast =0
 	if canCast <= 1:
 		canCast += 1 * delta
 	if casted == true:
 		Transitioned.emit(self, "Follow")
-func instFire(pos):
-	var instanceFire = fire.instantiate()
-	instanceFire.position = pos
-	add_sibling(instanceFire)
+func instHealth(pos):
+	var instanceHealth = health.instantiate()
+	instanceHealth.position = pos
+	add_sibling(instanceHealth)

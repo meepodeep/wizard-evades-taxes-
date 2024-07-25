@@ -17,8 +17,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(playerHealth)
-	if !inPoison && !inFire && !inIce && !burning:
+	if !inPoison && !inFire && !inIce && !burning && !inHealth:
 		timer.stop()
 		dpsParticles.play("Nothing")
 	if inPoison:
@@ -40,10 +39,11 @@ func _process(delta):
 
 
 func _on_area_2d_area_entered(area):
+	if area.is_in_group("dog"):
+		DamageTaken.emit(-1)
 	if area.is_in_group("poison"):
 		inPoison = true
 		DamageTaken.emit(-2)
-		playerHealth -= 1
 		timer.start(2)
 	if area.is_in_group("ice"):
 		inIce = true
@@ -51,11 +51,11 @@ func _on_area_2d_area_entered(area):
 		inFire = true
 		burning	= true
 		DamageTaken.emit(-1)
-		playerHealth -= .5
 		timer.start(2)
 	if area.is_in_group("health"):
 		inHealth = true
 		timer.start(2)
+		DamageTaken.emit(2)
 
 func _on_area_2d_area_exited(area):
 	if area.is_in_group("poison"):
@@ -71,13 +71,10 @@ func _on_area_2d_area_exited(area):
 func _on_timer_timeout():
 	if inPoison:
 		DamageTaken.emit(-2)
-		playerHealth -= 1
 		timer.start(2)
 	if inFire || burning:
 		DamageTaken.emit(-1)
-		playerHealth -= .5
 		timer.start(2)
 	if inHealth:
-		DamageTaken.emit(2)
-		playerHealth += 1
+		DamageTaken.emit(1)
 		timer.start(2)

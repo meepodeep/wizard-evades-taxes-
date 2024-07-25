@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dr0vw38qauc2q"]
+[gd_scene load_steps=10 format=3 uid="uid://dr0vw38qauc2q"]
 
 [ext_resource type="PackedScene" uid="uid://c7i8u3biltbfd" path="res://Scenes/potion_brew.tscn" id="1_pnj8d"]
 [ext_resource type="PackedScene" uid="uid://bhlyxfpg5udx2" path="res://Scenes/spell_ball.tscn" id="3_hjef4"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://801kiy05g0j6" path="res://Scenes/mouse_collider.tscn" id="6_77jte"]
 [ext_resource type="PackedScene" uid="uid://c54fvv132p6e3" path="res://Scenes/item.tscn" id="8_8qwao"]
 [ext_resource type="PackedScene" uid="uid://bo23bowkhn4xp" path="res://Scenes/Hud.tscn" id="8_elyol"]
+[ext_resource type="PackedScene" uid="uid://rluwp48ph85s" path="res://Scenes/caster_enemy.tscn" id="9_u8rxo"]
 
 [node name="level10" type="Node2D" groups=["Spells"]]
 
@@ -29,7 +30,6 @@ scale = Vector2(2.8, 2.8)
 position = Vector2(75.3571, -37.1429)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(1.8, 1.8)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
@@ -59,6 +59,9 @@ position = Vector2(-40, -35)
 position = Vector2(0, 3)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("8_elyol")]
+
+[node name="casterEnemy" parent="." instance=ExtResource("9_u8rxo")]
+position = Vector2(-62, -32)
 
 [connection signal="AddToInv" from="Player" to="Player/PotionBrew" method="_on_player_add_to_inv"]
 [connection signal="AmmoFilled" from="Player" to="Spell Manager" method="_on_player_ammo_filled"]

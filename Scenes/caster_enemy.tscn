@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://Scripts/States/State Machine.gd" id="3_ggl2n"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyIdle.gd" id="4_bei65"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyFollow.gd" id="5_yvrk7"]
-[ext_resource type="Script" path="res://Scripts/States/EnemyCast.gd" id="6_aybn1"]
-[ext_resource type="Script" path="res://Scripts/casterHealthManager.gd" id="7_mrqe3"]
+[ext_resource type="Script" path="res://Scripts/States/EnemyCastFire.gd" id="6_aybn1"]
+[ext_resource type="Script" path="res://Scripts/HealthManagers/casterHealthManager.gd" id="7_mrqe3"]
 [ext_resource type="Texture2D" uid="uid://h4u0oxoh07we" path="res://Assets/Dps Particles.png" id="8_w8qk0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_baw78"]
