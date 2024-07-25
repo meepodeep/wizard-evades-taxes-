@@ -422,6 +422,8 @@ script = ExtResource("4_onfna")
 [node name="PlayerHealth" type="Node2D" parent="."]
 script = ExtResource("5_nttnt")
 
+[node name="Timer" type="Timer" parent="PlayerHealth"]
+
 [node name="Area2D" type="Area2D" parent="PlayerHealth"]
 collision_layer = 0
 collision_mask = 62
@@ -432,5 +434,6 @@ shape = SubResource("CircleShape2D_sjieb")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="collisionPoint" from="GunParent/RayCast2D" to="." method="_on_ray_cast_2d_collision_point"]
+[connection signal="timeout" from="PlayerHealth/Timer" to="PlayerHealth" method="_on_timer_timeout"]
 [connection signal="area_entered" from="PlayerHealth/Area2D" to="PlayerHealth" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="PlayerHealth/Area2D" to="PlayerHealth" method="_on_area_2d_area_exited"]

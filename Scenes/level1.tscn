@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dr0vw38qauc2q"]
+[gd_scene load_steps=8 format=3 uid="uid://dr0vw38qauc2q"]
 
 [ext_resource type="PackedScene" uid="uid://c7i8u3biltbfd" path="res://Scenes/potion_brew.tscn" id="1_pnj8d"]
 [ext_resource type="PackedScene" uid="uid://bhlyxfpg5udx2" path="res://Scenes/spell_ball.tscn" id="3_hjef4"]
@@ -7,8 +7,6 @@
 [ext_resource type="Script" path="res://Scripts/SpellManager.gd" id="5_dbx3i"]
 [ext_resource type="PackedScene" uid="uid://801kiy05g0j6" path="res://Scenes/mouse_collider.tscn" id="6_77jte"]
 [ext_resource type="PackedScene" uid="uid://c54fvv132p6e3" path="res://Scenes/item.tscn" id="8_8qwao"]
-[ext_resource type="PackedScene" uid="uid://rluwp48ph85s" path="res://Scenes/caster_enemy.tscn" id="8_e8ap1"]
-[ext_resource type="PackedScene" uid="uid://dfsakfex6dkab" path="res://Scenes/DogEnemy.tscn" id="9_wexkj"]
 
 [node name="level10" type="Node2D" groups=["Spells"]]
 
@@ -57,12 +55,6 @@ position = Vector2(-40, -35)
 
 [node name="Light" parent="." instance=ExtResource("4_ef0o6")]
 position = Vector2(0, 3)
-
-[node name="casterEnemy" parent="." instance=ExtResource("8_e8ap1")]
-position = Vector2(60, -79)
-
-[node name="Enemy" parent="." instance=ExtResource("9_wexkj")]
-position = Vector2(-17, -68)
 
 [connection signal="AddToInv" from="Player" to="Player/PotionBrew" method="_on_player_add_to_inv"]
 [connection signal="AmmoFilled" from="Player" to="Spell Manager" method="_on_player_ammo_filled"]

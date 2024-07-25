@@ -1,7 +1,8 @@
 extends Node2D
 @onready var dpsParticles = $"../DpsParticles"
+@onready var timer = $Timer
 var player
-var playerHealth = 20
+var playerHealth = 5
 var inPoison
 var inFire
 var inIce
@@ -16,10 +17,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	print(playerHealth)
-	if !inPoison && !inFire && !inIce:
+	if !inPoison && !inFire && !inIce && !burning:
+		timer.stop()
 		dpsParticles.play("Nothing")
 	if inPoison:
-		playerHealth -= 2 * delta
 		dpsParticles.play("Poison")
 	if inIce:
 		player.SPEED = 4000
@@ -28,13 +29,11 @@ func _process(delta):
 		player.SPEED = 9000
 	if inFire || burning:
 		dpsParticles.play("Fire")
-		playerHealth -= 1 * delta
-		FireTime -= 3 * delta
+		FireTime -= 2 * delta
 	if FireTime <= 0:
 		burning = false
 		FireTime =10
-	if inHealth:
-		playerHealth += 1 * delta
+
 	if playerHealth <= 0:
 		print("died")
 
@@ -42,13 +41,18 @@ func _process(delta):
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("poison"):
 		inPoison = true
+		playerHealth -= 1
+		timer.start(2)
 	if area.is_in_group("ice"):
 		inIce = true
 	if area.is_in_group("fire"):
 		inFire = true
 		burning	= true
+		playerHealth -= .5
+		timer.start(2)
 	if area.is_in_group("health"):
 		inHealth = true
+		timer.start(2)
 
 func _on_area_2d_area_exited(area):
 	if area.is_in_group("poison"):
@@ -59,3 +63,15 @@ func _on_area_2d_area_exited(area):
 		inHealth = false
 	if area.is_in_group("fire"):
 		inFire = false
+
+
+func _on_timer_timeout():
+	if inPoison:
+		playerHealth -= 1
+		timer.start(2)
+	if inFire || burning:
+		playerHealth -= .5
+		timer.start(2)
+	if inHealth:
+		playerHealth += 1
+		timer.start(2)
