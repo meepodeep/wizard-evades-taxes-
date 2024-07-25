@@ -9,6 +9,7 @@ var inIce
 var inHealth
 var FireTime = 10
 var burning = false
+signal DamageTaken
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
@@ -41,6 +42,7 @@ func _process(delta):
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("poison"):
 		inPoison = true
+		DamageTaken.emit(-2)
 		playerHealth -= 1
 		timer.start(2)
 	if area.is_in_group("ice"):
@@ -48,6 +50,7 @@ func _on_area_2d_area_entered(area):
 	if area.is_in_group("fire"):
 		inFire = true
 		burning	= true
+		DamageTaken.emit(-1)
 		playerHealth -= .5
 		timer.start(2)
 	if area.is_in_group("health"):
@@ -67,11 +70,14 @@ func _on_area_2d_area_exited(area):
 
 func _on_timer_timeout():
 	if inPoison:
+		DamageTaken.emit(-2)
 		playerHealth -= 1
 		timer.start(2)
 	if inFire || burning:
+		DamageTaken.emit(-1)
 		playerHealth -= .5
 		timer.start(2)
 	if inHealth:
+		DamageTaken.emit(2)
 		playerHealth += 1
 		timer.start(2)

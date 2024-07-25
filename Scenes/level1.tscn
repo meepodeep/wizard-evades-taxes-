@@ -31,6 +31,7 @@ position = Vector2(75.3571, -37.1429)
 zoom = Vector2(1.8, 1.8)
 process_callback = 0
 position_smoothing_enabled = true
+position_smoothing_speed = 3.0
 
 [node name="Spell Manager" type="Node2D" parent="."]
 script = ExtResource("5_dbx3i")
