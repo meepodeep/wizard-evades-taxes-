@@ -1,24 +1,48 @@
 extends Node2D
 @onready var label = $Label
 @onready var CourtAnim = $AnimatedSprite2D
-
+@onready var camera_2d = $Camera2D
+@onready var the_hole = $TheHole
+@onready var animated_sprite_2d_2 = $AnimatedSprite2D2
+@onready var timer = $Timer
+var isOpen = false
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	CourtAnim.play("default")
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Called every frame. elta' is the elapsed time since the previous frame.
 func _process(delta):
-	if CourtAnim.frame == 50:
-		label.text = "after a long deliberation..."
-	if CourtAnim.frame == 51:
-		label.text = "the council has decided..."
-	if CourtAnim.frame == 52:
-		label.text = "due to your many attempts of tax evasion..."
-	if CourtAnim.frame == 53:
-		label.text = "to sentance you..."
-	if CourtAnim.frame == 54:
-		label.text = "to DEATH!"
-	if CourtAnim.frame == 55:
+	if the_hole.visible != true:
+		if animated_sprite_2d_2.position.y <= 6:
+			animated_sprite_2d_2.stop()
+			CourtAnim.play("default")
+		else:
+			animated_sprite_2d_2.position.y -= 70 * delta
+	if CourtAnim.frame == 1:
+		label.text = "After a long deliberation..."
+	if CourtAnim.frame == 2:
+		label.text = "The council has decided..."
+	if CourtAnim.frame == 3:
+		label.text = "Due to your many attempts of tax evasion..."
+	if CourtAnim.frame == 4:
+		label.text = "To sentance you..."
+	if CourtAnim.frame == 5:
+		label.text = "To DEATH!"
+	if CourtAnim.frame == 6:
 		label.text = "Send them into the hole"
+		the_hole.visible = true
+	if camera_2d.position.y >= -115:
+		camera_2d.position.y -= 40 * delta
+	if isOpen:
+		animated_sprite_2d_2.position.y += 20
+
+
+func _on_the_hole_animation_finished():
+	the_hole.pause()
+	isOpen = true
+	CourtAnim.visible = false
+	label.text = ""
+
+
+func _on_animated_sprite_2d_animation_finished():
+	the_hole.play("Open")
+	CourtAnim.stop()
+	
