@@ -1,20 +1,24 @@
-[gd_scene load_steps=11 format=3 uid="uid://dbww08lb4qhr5"]
+[gd_scene load_steps=19 format=3 uid="uid://dbww08lb4qhr5"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_j1vxx"]
-[ext_resource type="Texture2D" uid="uid://ctaln3h4nuidk" path="res://Assets/enenmies.png" id="2_l36pg"]
 [ext_resource type="Script" path="res://Scripts/States/State Machine.gd" id="3_belcy"]
+[ext_resource type="Script" path="res://Scripts/HealthManagers/DogHealthManager.gd" id="5_jhdb7"]
 [ext_resource type="Script" path="res://Scripts/States/HealerFollow.gd" id="5_qv874"]
+[ext_resource type="Texture2D" uid="uid://h4u0oxoh07we" path="res://Assets/Dps Particles.png" id="6_ptwm1"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4c8jh"]
+load_path = "res://.godot/imported/enenmies.png-019f6617e83e430af8a25af9af76f4f7.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gg0j7"]
-atlas = ExtResource("2_l36pg")
+atlas = SubResource("CompressedTexture2D_4c8jh")
 region = Rect2(0, 177, 72, 59)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lt2jt"]
-atlas = ExtResource("2_l36pg")
+atlas = SubResource("CompressedTexture2D_4c8jh")
 region = Rect2(72, 177, 72, 59)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kt15r"]
-atlas = ExtResource("2_l36pg")
+atlas = SubResource("CompressedTexture2D_4c8jh")
 region = Rect2(0, 177, 72, 59)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k013x"]
@@ -44,6 +48,63 @@ radius = 7.2111
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pe10h"]
 radius = 169.756
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7vh7j"]
+radius = 9.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3kgg"]
+atlas = ExtResource("6_ptwm1")
+region = Rect2(30, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4t2dt"]
+atlas = ExtResource("6_ptwm1")
+region = Rect2(60, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpplk"]
+atlas = ExtResource("6_ptwm1")
+region = Rect2(90, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8jsd"]
+atlas = ExtResource("6_ptwm1")
+region = Rect2(0, 0, 30, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i377x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3kgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4t2dt")
+}],
+"loop": true,
+"name": &"Fire",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpplk")
+}],
+"loop": true,
+"name": &"Ice",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"Nothing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8jsd")
+}],
+"loop": true,
+"name": &"Poison",
+"speed": 5.0
+}]
 
 [node name="HealerEnemy" type="CharacterBody2D"]
 script = ExtResource("1_j1vxx")
@@ -113,5 +174,23 @@ rotation = 3.14159
 target_position = Vector2(0, 40)
 collision_mask = 4097
 
+[node name="DogHealerManager" type="Node2D" parent="." node_paths=PackedStringArray("dogEnemy")]
+script = ExtResource("5_jhdb7")
+dogEnemy = NodePath("..")
+
+[node name="Area2D" type="Area2D" parent="DogHealerManager" groups=["dog"]]
+collision_layer = 64
+collision_mask = 62
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DogHealerManager/Area2D"]
+shape = SubResource("CircleShape2D_7vh7j")
+
+[node name="DpsParticles" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 3)
+sprite_frames = SubResource("SpriteFrames_i377x")
+animation = &"Nothing"
+
 [connection signal="body_entered" from="Area2D" to="StateMachine/HealerFollow" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="StateMachine/HealerFollow" method="_on_area_2d_body_exited"]
+[connection signal="area_entered" from="DogHealerManager/Area2D" to="DogHealerManager" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="DogHealerManager/Area2D" to="DogHealerManager" method="_on_area_2d_area_exited"]

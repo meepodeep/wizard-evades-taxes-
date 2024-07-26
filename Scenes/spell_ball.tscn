@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://bhlyxfpg5udx2"]
 
-[ext_resource type="Texture2D" uid="uid://bbncskncupoop" path="res://Assets/sprite ball.png" id="1_jnfxr"]
+[ext_resource type="Texture2D" uid="uid://bbncskncupoop" path="res://Assets/Spells/sprite ball.png" id="1_jnfxr"]
 [ext_resource type="Script" path="res://Scripts/spell_ball.gd" id="1_pq082"]
-[ext_resource type="Texture2D" uid="uid://diemga5um71a7" path="res://Assets/fire sprites.png" id="2_auny8"]
-[ext_resource type="Texture2D" uid="uid://dy5odx6ybusw2" path="res://Assets/ice sprites.png" id="4_gxct6"]
-[ext_resource type="Texture2D" uid="uid://bbsjxxvmun8vm" path="res://Assets/poison sprites.png" id="5_7wqv3"]
+[ext_resource type="Texture2D" uid="uid://diemga5um71a7" path="res://Assets/Spells/fire sprites.png" id="2_auny8"]
+[ext_resource type="Texture2D" uid="uid://dy5odx6ybusw2" path="res://Assets/Spells/ice sprites.png" id="4_gxct6"]
+[ext_resource type="Texture2D" uid="uid://bbsjxxvmun8vm" path="res://Assets/Spells/poison sprites.png" id="5_7wqv3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h5cfs"]
 atlas = ExtResource("2_auny8")

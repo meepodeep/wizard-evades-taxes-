@@ -20,5 +20,4 @@ func die(pos):
 	var instanceItem = item.instantiate()
 	instanceItem.position = pos
 	add_sibling(instanceItem)
-	print("died")
 	queue_free()

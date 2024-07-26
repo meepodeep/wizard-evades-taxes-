@@ -22,7 +22,7 @@ func _process(delta):
 		if CourtAnim.frame == 2:
 			label.text = "The council has decided..."
 		if CourtAnim.frame == 3:
-			label.text = "Due to your many attempts of tax evasion..."
+			label.text = "Due to your many years of tax evasion..."
 		if CourtAnim.frame == 4:
 			label.text = "To sentance you..."
 		if CourtAnim.frame == 5:
@@ -33,7 +33,7 @@ func _process(delta):
 	if camera_2d.position.y >= -115:
 		camera_2d.position.y -= 40 * delta
 	if isOpen:
-		animated_sprite_2d_2.position.y += 200 * delta
+		animated_sprite_2d_2.position.y += 1600 * delta
 	if CourtAnim.frame == 0:
 		label.text = ""
 

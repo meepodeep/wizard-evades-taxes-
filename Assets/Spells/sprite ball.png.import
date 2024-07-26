@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm0aamq5sgvma"
-path="res://.godot/imported/enenmies.png-019f6617e83e430af8a25af9af76f4f7.ctex"
+uid="uid://bbncskncupoop"
+path="res://.godot/imported/sprite ball.png-7b57d9c1f6eca69184ad1694e079e0ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/enenmies.png"
-dest_files=["res://.godot/imported/enenmies.png-019f6617e83e430af8a25af9af76f4f7.ctex"]
+source_file="res://Assets/Spells/sprite ball.png"
+dest_files=["res://.godot/imported/sprite ball.png-7b57d9c1f6eca69184ad1694e079e0ce.ctex"]
 
 [params]
 

@@ -1,79 +1,53 @@
 extends Node2D
+@export var dogEnemy : CharacterBody2D
 @onready var dpsParticles = $"../DpsParticles"
-@onready var timer = $Timer
-var player
-var playerHealth = 6
+var dogHealth = 10
 var inPoison
 var inFire
 var inIce
 var inHealth
 var FireTime = 10
 var burning = false
-signal DamageTaken
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = get_tree().get_first_node_in_group("Player")
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if !inPoison && !inFire && !inIce && !burning && !inHealth:
-		timer.stop()
+	if !inPoison && !inFire && !inIce:
 		dpsParticles.play("Nothing")
-	if inPoison:
-		dpsParticles.play("Poison")
 	if inIce:
-		player.SPEED = 4000
 		dpsParticles.play("Ice")
+		dogEnemy.slowDown()
 	else:
-		player.SPEED = 9000
+		dogEnemy.speedUp()
 	if inFire || burning:
 		dpsParticles.play("Fire")
+		dogHealth -= 5 * delta
 		FireTime -= 2 * delta
 	if FireTime <= 0:
 		burning = false
 		FireTime =10
-
-
+	if inHealth:
+		dogHealth += 5 * delta
+	if dogHealth <= 0:
+		dogEnemy.die(global_position)
 
 
 func _on_area_2d_area_entered(area):
-	if area.is_in_group("dog"):
-		DamageTaken.emit(-1)
-	if area.is_in_group("poison"):
-		inPoison = true
-		DamageTaken.emit(-2)
-		timer.start(2)
 	if area.is_in_group("ice"):
 		inIce = true
 	if area.is_in_group("fire"):
 		inFire = true
-		burning	= true
-		DamageTaken.emit(-1)
-		timer.start(2)
+		burning = true
 	if area.is_in_group("health"):
 		inHealth = true
-		timer.start(2)
-		DamageTaken.emit(2)
 
 func _on_area_2d_area_exited(area):
-	if area.is_in_group("poison"):
-		inPoison = false
 	if area.is_in_group("ice"):
 		inIce = false
 	if area.is_in_group("health"):
 		inHealth = false
 	if area.is_in_group("fire"):
 		inFire = false
-
-
-func _on_timer_timeout():
-	if inPoison:
-		DamageTaken.emit(-2)
-		timer.start(2)
-	if inFire || burning:
-		DamageTaken.emit(-1)
-		timer.start(2)
-	if inHealth:
-		DamageTaken.emit(1)
-		timer.start(2)

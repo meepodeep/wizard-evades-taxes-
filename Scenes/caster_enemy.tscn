@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://rluwp48ph85s"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_x7n68"]
-[ext_resource type="Texture2D" uid="uid://ctaln3h4nuidk" path="res://Assets/enenmies.png" id="2_tc5os"]
+[ext_resource type="Texture2D" uid="uid://bm0aamq5sgvma" path="res://Assets/enenmies.png" id="2_tc5os"]
 [ext_resource type="Script" path="res://Scripts/States/State Machine.gd" id="3_ggl2n"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyIdle.gd" id="4_bei65"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyFollow.gd" id="5_yvrk7"]
@@ -9,26 +9,26 @@
 [ext_resource type="Script" path="res://Scripts/HealthManagers/casterHealthManager.gd" id="7_mrqe3"]
 [ext_resource type="Texture2D" uid="uid://h4u0oxoh07we" path="res://Assets/Dps Particles.png" id="8_w8qk0"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_baw78"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdckj"]
 atlas = ExtResource("2_tc5os")
-region = Rect2(0, 240, 69, 60)
+region = Rect2(150, 180, 75, 60)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cy3of"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3tyc"]
 atlas = ExtResource("2_tc5os")
-region = Rect2(70, 241, 69, 55)
+region = Rect2(225, 180, 75, 60)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2cyjc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sv5lb"]
 atlas = ExtResource("2_tc5os")
-region = Rect2(0, 239, 69, 59)
+region = Rect2(150, 180, 75, 60)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_spxwg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_baw78")
+"texture": SubResource("AtlasTexture_kdckj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cy3of")
+"texture": SubResource("AtlasTexture_s3tyc")
 }],
 "loop": true,
 "name": &"Run",
@@ -36,7 +36,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2cyjc")
+"texture": SubResource("AtlasTexture_sv5lb")
 }],
 "loop": true,
 "name": &"idle",
@@ -174,9 +174,8 @@ rotation = 3.14159
 target_position = Vector2(0, 40)
 collision_mask = 4097
 
-[node name="casterHealthManager" type="Node2D" parent="." node_paths=PackedStringArray("caster")]
+[node name="casterHealthManager" type="Node2D" parent="."]
 script = ExtResource("7_mrqe3")
-caster = NodePath("..")
 
 [node name="Area2D" type="Area2D" parent="casterHealthManager"]
 collision_layer = 0

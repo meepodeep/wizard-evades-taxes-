@@ -63,7 +63,6 @@ func Physics_Update(delta: float):
 				casted = true
 				canCast =0
 			if canCast <= 1:
-				print(canCast)
 				canCast += .5 * delta
 	else:
 		direction = casterEnemy.global_position

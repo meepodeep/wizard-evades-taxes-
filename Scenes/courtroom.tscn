@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://bkur03gtm26id"]
+[gd_scene load_steps=19 format=3 uid="uid://bkur03gtm26id"]
 
 [ext_resource type="Script" path="res://Scripts/courtroom.gd" id="1_eefio"]
+[ext_resource type="Texture2D" uid="uid://dntnswyxc4dqa" path="res://Assets/png-clipart-rectangle-black-square-samsung-galaxy-tab-s-10-5-text-box-angle-color-thumbnail.png" id="2_swl6u"]
 [ext_resource type="Texture2D" uid="uid://dj215qild8ado" path="res://Assets/The hole/thehole1.png" id="2_yh8g7"]
 [ext_resource type="Texture2D" uid="uid://dny82use2dskv" path="res://Assets/The hole/thehole2.png" id="3_ropxe"]
 [ext_resource type="Texture2D" uid="uid://cnsobcxj012q4" path="res://Assets/The hole/thehole3.png" id="4_tuak7"]
@@ -33,7 +34,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("CompressedTexture2D_jcr72")
 }, {
-"duration": 0.2,
+"duration": 0.7,
 "texture": SubResource("CompressedTexture2D_jcr72")
 }, {
 "duration": 1.0,
@@ -106,9 +107,17 @@ animations = [{
 [node name="Courtroom" type="Node2D"]
 script = ExtResource("1_eefio")
 
+[node name="Png-clipart-rectangle-black-square-samsung-galaxy-tab-s-10-5-text-box-angle-color-thumbnail" type="Sprite2D" parent="."]
+position = Vector2(-2, 40)
+rotation = 3.14159
+scale = Vector2(16.9802, 16.9802)
+texture = ExtResource("2_swl6u")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_4ctpt")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 119)

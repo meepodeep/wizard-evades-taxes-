@@ -186,7 +186,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ty8rg")
 }],
-"loop": true,
+"loop": false,
 "name": &"3Hearts",
 "speed": 0.0
 }, {
@@ -218,7 +218,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7ber2")
 }],
-"loop": true,
+"loop": false,
 "name": &"4Hearts",
 "speed": 0.0
 }, {
@@ -256,7 +256,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tpeyv")
 }],
-"loop": true,
+"loop": false,
 "name": &"5Hearts",
 "speed": 0.0
 }, {
@@ -300,7 +300,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wt76i")
 }],
-"loop": true,
+"loop": false,
 "name": &"6Hearts",
 "speed": 0.0
 }]
@@ -318,4 +318,5 @@ scale = Vector2(3.94193, 3.94193)
 position = Vector2(29.9012, 7.27859)
 sprite_frames = SubResource("SpriteFrames_mrkis")
 animation = &"3Hearts"
-autoplay = "6Hearts"
+
+[connection signal="animation_finished" from="MarginContainer/BarAnim" to="." method="_on_bar_anim_animation_finished"]

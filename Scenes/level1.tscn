@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dr0vw38qauc2q"]
+[gd_scene load_steps=12 format=3 uid="uid://dr0vw38qauc2q"]
 
 [ext_resource type="PackedScene" uid="uid://c7i8u3biltbfd" path="res://Scenes/potion_brew.tscn" id="1_pnj8d"]
 [ext_resource type="PackedScene" uid="uid://bhlyxfpg5udx2" path="res://Scenes/spell_ball.tscn" id="3_hjef4"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bo23bowkhn4xp" path="res://Scenes/Hud.tscn" id="8_elyol"]
 [ext_resource type="PackedScene" uid="uid://dfsakfex6dkab" path="res://Scenes/DogEnemy.tscn" id="9_rwa2t"]
 [ext_resource type="PackedScene" uid="uid://dbww08lb4qhr5" path="res://Scenes/healer_enemy.tscn" id="10_vrui2"]
+[ext_resource type="PackedScene" uid="uid://c87258r3vnjtu" path="res://Scenes/poison_enemy.tscn" id="11_rvc7m"]
 
 [node name="level10" type="Node2D" groups=["Spells"]]
 
@@ -66,6 +67,9 @@ position = Vector2(52, -55)
 
 [node name="HealerEnemy" parent="." instance=ExtResource("10_vrui2")]
 position = Vector2(-183, -88)
+
+[node name="poisonEnemy" parent="." instance=ExtResource("11_rvc7m")]
+position = Vector2(-62, 73)
 
 [connection signal="AddToInv" from="Player" to="Player/PotionBrew" method="_on_player_add_to_inv"]
 [connection signal="AmmoFilled" from="Player" to="Spell Manager" method="_on_player_ammo_filled"]

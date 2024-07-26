@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk1q0poghnf5m"
-path="res://.godot/imported/poison.png-a28b192a51dc6d6ba531227526f667e0.ctex"
+uid="uid://dy5odx6ybusw2"
+path="res://.godot/imported/ice sprites.png-bf5ceea4476f1582a7d9ba0dc6cbbd16.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/poison.png"
-dest_files=["res://.godot/imported/poison.png-a28b192a51dc6d6ba531227526f667e0.ctex"]
+source_file="res://Assets/Spells/ice sprites.png"
+dest_files=["res://.godot/imported/ice sprites.png-bf5ceea4476f1582a7d9ba0dc6cbbd16.ctex"]
 
 [params]
 

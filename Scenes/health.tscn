@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://8lyesn6ie3gf"]
 
 [ext_resource type="Script" path="res://Scripts/Spells/Health.gd" id="1_oj0bu"]
-[ext_resource type="Texture2D" uid="uid://bprpl013b2qso" path="res://Assets/health.png" id="1_xdjcw"]
+[ext_resource type="Texture2D" uid="uid://bprpl013b2qso" path="res://Assets/Spells/health.png" id="1_xdjcw"]
 
 [node name="Health" type="Node2D"]
 z_index = -4

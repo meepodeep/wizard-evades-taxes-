@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b77lgv747e4bf"]
 
 [ext_resource type="Script" path="res://Scripts/Spells/ice.gd" id="1_fm365"]
-[ext_resource type="Texture2D" uid="uid://dy5odx6ybusw2" path="res://Assets/ice sprites.png" id="2_jmfa5"]
+[ext_resource type="Texture2D" uid="uid://dy5odx6ybusw2" path="res://Assets/Spells/ice sprites.png" id="2_jmfa5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mxhh6"]
 atlas = ExtResource("2_jmfa5")
