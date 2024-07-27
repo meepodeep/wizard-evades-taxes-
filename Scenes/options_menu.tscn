@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://3jlv6dgern6r"]
+[gd_scene load_steps=7 format=3 uid="uid://3jlv6dgern6r"]
 
 [ext_resource type="Script" path="res://Scripts/options_menu.gd" id="1_n8nwj"]
 [ext_resource type="FontFile" uid="uid://cya3revvfbalq" path="res://Assets/TeenyTinyPixls-o2zo.ttf" id="2_lwgga"]
 [ext_resource type="Texture2D" uid="uid://mcs0xmql6o4" path="res://Assets/Courtrooom.png" id="2_qw640"]
 [ext_resource type="Texture2D" uid="uid://dlwprhhp4jh6d" path="res://Assets/SquareBackground.png" id="3_klaps"]
 [ext_resource type="Texture2D" uid="uid://dsur0yaajg2kv" path="res://Assets/Back.png" id="3_lpnv5"]
+[ext_resource type="AudioStream" uid="uid://dkqgxu438km5n" path="res://Assets/SoundFx/08_Step_rock_02.mp3" id="6_gcq4d"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -46,6 +47,8 @@ text = "Volume"
 
 [node name="Volume" type="HSlider" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+min_value = -10.0
+max_value = 10.0
 
 [node name="Mute" type="CheckBox" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -69,6 +72,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("3_lpnv5")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_gcq4d")
+volume_db = -20.0
+
+[connection signal="changed" from="MarginContainer/VBoxContainer/Volume" to="." method="_on_volume_changed"]
+[connection signal="drag_ended" from="MarginContainer/VBoxContainer/Volume" to="." method="_on_volume_drag_ended"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Volume" to="." method="_on_volume_value_changed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/Mute" to="." method="_on_mute_toggled"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]

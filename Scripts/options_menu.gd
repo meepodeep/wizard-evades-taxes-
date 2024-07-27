@@ -1,6 +1,7 @@
 extends Control
 
 
+@onready var audio_stream_player = $AudioStreamPlayer
 
 
 func _on_back_pressed():
@@ -18,3 +19,7 @@ func _on_fullscreen_toggled(toggled_on):
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+func _on_volume_drag_ended(value_changed):
+	audio_stream_player.play()

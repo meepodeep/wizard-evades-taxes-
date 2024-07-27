@@ -27,3 +27,5 @@ texture = SubResource("AtlasTexture_46ap1")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_2nm8c")
+volume_db = -24.605
+autoplay = true

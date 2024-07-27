@@ -24,6 +24,8 @@ polygon = PackedVector2Array(-9, 32, -13, 29, -36, 29, -36.7717, 20.8973, -27, 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_be2yk")
+volume_db = 1.175
+autoplay = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
