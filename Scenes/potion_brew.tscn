@@ -700,7 +700,7 @@ position = Vector2(33, -23)
 scale = Vector2(2.8, 2.8)
 sprite_frames = SubResource("SpriteFrames_jg4lm")
 animation = &"Fire"
-frame = 15
+frame = 14
 frame_progress = 1.0
 
 [node name="BrewCollider" type="RigidBody2D" parent="." groups=["Droppable"]]

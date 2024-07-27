@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://coha0wnl71xs7"]
+[gd_scene load_steps=5 format=3 uid="uid://coha0wnl71xs7"]
 
 [ext_resource type="Script" path="res://Scripts/Spells/Fire.gd" id="1_unblo"]
 [ext_resource type="Texture2D" uid="uid://diemga5um71a7" path="res://Assets/Spells/fire sprites.png" id="2_q7aue"]
+[ext_resource type="AudioStream" uid="uid://cudxlddmx2b1l" path="res://Assets/SoundFx/04_Fire_explosion_04_medium.wav" id="3_1wwpv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5dtoq"]
 atlas = ExtResource("2_q7aue")
@@ -24,6 +25,10 @@ polygon = PackedVector2Array(-18, 15, -27, 6, -29, -3, -20, -10, -1, -12, 16, -1
 position = Vector2(1, -19)
 scale = Vector2(1.76, 1.76)
 texture = SubResource("AtlasTexture_5dtoq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1wwpv")
+autoplay = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

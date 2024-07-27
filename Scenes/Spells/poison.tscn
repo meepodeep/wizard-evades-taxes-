@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ceht8ltjnwuam"]
+[gd_scene load_steps=5 format=3 uid="uid://ceht8ltjnwuam"]
 
 [ext_resource type="Script" path="res://Scripts/Spells/poison.gd" id="1_ai3n4"]
 [ext_resource type="Texture2D" uid="uid://dborpb5ucdia5" path="res://Assets/Spells/mypoison.png" id="2_xjgcp"]
+[ext_resource type="AudioStream" uid="uid://bgsht8gq2fuxd" path="res://Assets/SoundFx/46_Poison_01.wav" id="3_2nm8c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_46ap1"]
 atlas = ExtResource("2_xjgcp")
@@ -23,3 +24,6 @@ polygon = PackedVector2Array(-11, 20, -23, 7, -23, 3, -18, -12, -11, -16, 6, -19
 position = Vector2(-2.38419e-07, 0)
 scale = Vector2(2.42647, 2.42647)
 texture = SubResource("AtlasTexture_46ap1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_2nm8c")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://cealsvi7aqafc"]
+[gd_scene load_steps=56 format=3 uid="uid://cealsvi7aqafc"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_kikrh"]
 [ext_resource type="Texture2D" uid="uid://h4u0oxoh07we" path="res://Assets/Dps Particles.png" id="2_6vkqw"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://Scripts/Gun.gd" id="2_060sx"]
 [ext_resource type="Script" path="res://Scripts/RayCast.gd" id="4_onfna"]
 [ext_resource type="Script" path="res://Scripts/HealthManagers/PlayerHealth.gd" id="6_ocj2e"]
+[ext_resource type="Texture2D" uid="uid://c1y5bxfplbilp" path="res://Assets/Walking.png" id="7_q8t4f"]
+[ext_resource type="AudioStream" uid="uid://dh8uoajokjgkt" path="res://Assets/SoundFx/61_Hit_03.wav" id="8_0sqnd"]
+[ext_resource type="AudioStream" uid="uid://dkqgxu438km5n" path="res://Assets/SoundFx/08_Step_rock_02.mp3" id="8_21s5a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p3kgg"]
 atlas = ExtResource("2_6vkqw")
@@ -376,6 +379,20 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sjieb"]
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vea56"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(13.67, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -720.0
+angle_max = 720.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+gravity = Vector3(0, 7.09, 0)
+scale_min = 0.0
+scale_max = 0.8
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_kikrh")
 
@@ -432,9 +449,28 @@ collision_mask = 126
 position = Vector2(1, 5)
 shape = SubResource("CircleShape2D_sjieb")
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, 15)
+amount = 18
+process_material = SubResource("ParticleProcessMaterial_vea56")
+texture = ExtResource("7_q8t4f")
+lifetime = 0.03
+speed_scale = 0.22
+explosiveness = 0.05
+visibility_rect = Rect2(-9.83, -4.995, 22.285, 9.425)
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_0sqnd")
+volume_db = -15.155
+
+[node name="Footsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_21s5a")
+volume_db = -20.0
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="collisionPoint" from="GunParent/RayCast2D" to="." method="_on_ray_cast_2d_collision_point"]
 [connection signal="DamageTaken" from="PlayerHealth" to="." method="_on_player_health_damage_taken"]
 [connection signal="timeout" from="PlayerHealth/Timer" to="PlayerHealth" method="_on_timer_timeout"]
 [connection signal="area_entered" from="PlayerHealth/Area2D" to="PlayerHealth" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="PlayerHealth/Area2D" to="PlayerHealth" method="_on_area_2d_area_exited"]
+[connection signal="finished" from="Footsteps" to="." method="_on_footsteps_finished"]

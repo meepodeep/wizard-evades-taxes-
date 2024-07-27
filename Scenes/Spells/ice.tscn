@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b77lgv747e4bf"]
+[gd_scene load_steps=5 format=3 uid="uid://b77lgv747e4bf"]
 
 [ext_resource type="Script" path="res://Scripts/Spells/ice.gd" id="1_f8qqp"]
 [ext_resource type="Texture2D" uid="uid://dy5odx6ybusw2" path="res://Assets/Spells/ice sprites.png" id="2_c3yke"]
+[ext_resource type="AudioStream" uid="uid://chrs8lso3gfhs" path="res://Assets/SoundFx/13_Ice_explosion_01.wav" id="3_be2yk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mxhh6"]
 atlas = ExtResource("2_c3yke")
@@ -20,6 +21,9 @@ collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(-9, 32, -13, 29, -36, 29, -36.7717, 20.8973, -27, 13, -47, 5, -47, -1, -38, -5, -46, -24, -22, -25, -25, -44, -8, -28, 2, -47, 9, -25, 35, -34, 27, -21, 42, -15, 38, -8, 34, 1, 42, 17, 35, 20, 37, 30, 30, 32, 29, 38, 12, 35, 8, 47, -1, 47)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_be2yk")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

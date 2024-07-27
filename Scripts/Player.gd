@@ -13,12 +13,13 @@ var dashSpeed = 500
 var stopped = Vector2(0,0)
 var ammoCount = 4
 var SpellType = 1
-
-
+var canPlay = true
+@onready var footsteps = $Footsteps
+@onready var gpuparticles2d = $GPUParticles2D
 @onready var animator = $AnimatedSprite2D
 @onready var PotionAnimator = $GunParent/Gun/Potions
 @onready var GunSprite = $GunParent/Gun
-
+var direction
 func _process(_delta):
 	if Global.inMenu == true:
 		set_physics_process(false)
@@ -44,19 +45,27 @@ func _process(_delta):
 			PotionAnimator.frame = 0
 
 func _physics_process(delta):
-	var direction = Input.get_vector("Left","Right","Up", "Down")
+	direction = Input.get_vector("Left","Right","Up", "Down")
 	var dash = Input.get_action_strength("Dash")
 	var updown = Input.get_axis("Up","Down")
 	# Get the input direction and handle the movement/deceleration.
-
-
+	if direction && canPlay == true:
+		footsteps.play()
+		canPlay = false
+	if !direction:
+		canPlay = true
 	if velocity == stopped:
+		gpuparticles2d.visible = false
 		animator.play("idleForward")
 		GunSprite.z_index = 1
+	else:
+		gpuparticles2d.visible = true
 	if updown == 1:
+		gpuparticles2d.z_index = -2
 		GunSprite.z_index = 1
 		animator.play("RunForward")
 	if updown == -1:
+		gpuparticles2d.z_index = 1
 		GunSprite.z_index = -2
 		animator.play("RunBackward")
 
@@ -141,3 +150,8 @@ func _on_potion_brew_pass_load_poison():
 
 func _on_player_health_damage_taken(dps):
 	dpsToBar.emit(dps)
+
+
+func _on_footsteps_finished():
+	if direction:
+		footsteps.play()
