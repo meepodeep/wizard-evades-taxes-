@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://caqgk5wuwvg0w"]
+[gd_scene load_steps=5 format=3 uid="uid://caqgk5wuwvg0w"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/Menu.gd" id="1_txf44"]
+[ext_resource type="Texture2D" uid="uid://62vq17lc3yli" path="res://Assets/buttonPlay.png" id="2_e4tst"]
+[ext_resource type="Texture2D" uid="uid://ctttqiy82mg08" path="res://Assets/buttonOptions.png" id="3_fromw"]
+[ext_resource type="Texture2D" uid="uid://dwy3q17aavwcf" path="res://Assets/buttonImplode.png" id="4_xalee"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -18,28 +21,46 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -36.0
-offset_top = -50.5
-offset_right = 36.0
-offset_bottom = 50.5
+offset_left = -20.0
+offset_top = -34.0
+offset_right = 20.0
+offset_bottom = 34.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Play" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Play"
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture_normal = ExtResource("2_e4tst")
+stretch_mode = 0
 
-[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Options" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Options"
+size_flags_vertical = 6
+tooltip_text = "wawa"
+texture_normal = ExtResource("3_fromw")
+stretch_mode = 0
 
-[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Exit" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Implode"
+size_flags_vertical = 6
+tooltip_text = "wawa"
+texture_normal = ExtResource("4_xalee")
+stretch_mode = 0
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(319, 179)
+zoom = Vector2(2.415, 2.415)
+
+[connection signal="button_down" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_button_down"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_button_up"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_button_down"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_button_down"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
