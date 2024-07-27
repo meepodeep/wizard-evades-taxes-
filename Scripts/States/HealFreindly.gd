@@ -1,7 +1,7 @@
 extends State
 class_name EnemyCastHealth
 
-@onready var health = load("res://Scenes/health.tscn")
+@onready var health = load("res://Scenes/Spells/health.tscn")
 var move_speed = 4000.0
 var player : CharacterBody2D
 @export var enemy : CharacterBody2D

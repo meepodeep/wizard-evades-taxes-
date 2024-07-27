@@ -1,7 +1,16 @@
 extends CharacterBody2D
 class_name Enemy
-var item = load("res://Scenes/grass.tscn")
+var item 
 var move_speed := 6000.0
+func _ready():
+	if is_in_group("dog"):
+		item = load("res://Scenes/Items/grass.tscn")
+	if is_in_group("fireCaster"):
+		item = load("res://Scenes/Items/flint.tscn")
+	if is_in_group("healer"):
+		item = load("res://Scenes/Items/heart.tscn")
+	if is_in_group("poisonCaster"):
+		item = load("res://Scenes/Items/mushroom.tscn")
 func _physics_process(_delta):
 	move_and_slide()
 	

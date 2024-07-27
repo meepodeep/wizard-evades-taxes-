@@ -2,7 +2,7 @@ extends State
 class_name HealerFollow
 @onready var raycast = $"../../Raycasts"
 @export var casterEnemy : CharacterBody2D
-@onready var health = load("res://Scenes/health.tscn")
+@onready var health = load("res://Scenes/Spells/health.tscn")
 var player : CharacterBody2D
 var directionDodge = Vector2(0,0)
 var raycastCollisions = []

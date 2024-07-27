@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8dxvsuq1b11u"]
+
+[ext_resource type="Texture2D" uid="uid://xo3v5j5jv3j2" path="res://Assets/Health Bottle.png" id="1_s0aav"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_at885"]
+size = Vector2(8, 12)
+
+[node name="Health" type="RigidBody2D" groups=["health"]]
+collision_layer = 256
+collision_mask = 256
+freeze = true
+freeze_mode = 1
+continuous_cd = 2
+max_contacts_reported = 6
+contact_monitor = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["grass"]]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_at885")
+
+[node name="HealthBottle" type="Sprite2D" parent="."]
+position = Vector2(0, 2)
+texture = ExtResource("1_s0aav")

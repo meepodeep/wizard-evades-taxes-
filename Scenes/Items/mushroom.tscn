@@ -1,0 +1,100 @@
+[gd_scene load_steps=10 format=3 uid="uid://ci7wm7m1w2dl3"]
+
+[ext_resource type="Texture2D" uid="uid://db2m8xiru4r4i" path="res://Assets/items.png" id="1_55qvn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjdkc"]
+atlas = ExtResource("1_55qvn")
+region = Rect2(0, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwx6n"]
+atlas = ExtResource("1_55qvn")
+region = Rect2(0, 30, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64uie"]
+atlas = ExtResource("1_55qvn")
+region = Rect2(0, 15, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_th66y"]
+atlas = ExtResource("1_55qvn")
+region = Rect2(0, 75, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrkl1"]
+atlas = ExtResource("1_55qvn")
+region = Rect2(0, 60, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_th2m1"]
+atlas = ExtResource("1_55qvn")
+region = Rect2(0, 45, 15, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bd0h5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjdkc")
+}],
+"loop": false,
+"name": &"fireflies",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwx6n")
+}],
+"loop": true,
+"name": &"flint",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64uie")
+}],
+"loop": false,
+"name": &"grass",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_th66y")
+}],
+"loop": false,
+"name": &"heart",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrkl1")
+}],
+"loop": false,
+"name": &"iceCrystal",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_th2m1")
+}],
+"loop": true,
+"name": &"mushroom",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_at885"]
+size = Vector2(8, 12)
+
+[node name="Mushroom" type="RigidBody2D" groups=["mushroom"]]
+collision_layer = 256
+collision_mask = 256
+freeze = true
+freeze_mode = 1
+continuous_cd = 2
+max_contacts_reported = 6
+contact_monitor = true
+
+[node name="ItemAnimator" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.12784, 1.12784)
+sprite_frames = SubResource("SpriteFrames_bd0h5")
+animation = &"mushroom"
+autoplay = "mushroom"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["grass"]]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_at885")

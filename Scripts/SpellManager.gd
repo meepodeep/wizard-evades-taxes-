@@ -1,9 +1,9 @@
 extends Node2D
-@onready var ice = load("res://Scenes/ice.tscn")
-@onready var poison = load("res://Scenes/poison.tscn")
-@onready var health = load("res://Scenes/health.tscn")
-@onready var fire = load("res://Scenes/fire.tscn")
-@onready var light = load("res://Scenes/light.tscn")
+@onready var ice = load("res://Scenes/Spells/ice.tscn")
+@onready var poison = load("res://Scenes/Spells/poison.tscn")
+@onready var health = load("res://Scenes/Spells/health.tscn")
+@onready var fire = load("res://Scenes/Spells/fire.tscn")
+@onready var light = load("res://Scenes/Spells/light.tscn")
 @onready var ball = $"../SpellBall"
 @onready var player = %Player
 var targetPosition

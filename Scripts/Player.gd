@@ -5,6 +5,7 @@ signal transferHitPosition
 signal AddToInv
 signal currentSpell
 signal dpsToBar
+signal gainedVial
 var SPEED
 var angular_force = 50000
 var canDash = 1.0
@@ -95,10 +96,14 @@ func _on_spell_manager_fired():
 
 func _on_ray_cast_2d_collision_point(posit):
 	transferHitPosition.emit(posit) # Replace with function body.
-
+##Item Collection
 func _on_area_2d_body_entered(body):
-	emit_signal("AddToInv", body.get_groups())
-	body.queue_free()
+	if !body.is_in_group("health"):
+		emit_signal("AddToInv", body.get_groups())
+		body.queue_free()
+	else:
+		gainedVial.emit()
+		body.queue_free()
 
 
 func _on_potion_brew_open_inv():

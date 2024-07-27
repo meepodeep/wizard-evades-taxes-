@@ -1,16 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://dr0vw38qauc2q"]
+[gd_scene load_steps=15 format=3 uid="uid://dr0vw38qauc2q"]
 
 [ext_resource type="PackedScene" uid="uid://c7i8u3biltbfd" path="res://Scenes/potion_brew.tscn" id="1_pnj8d"]
-[ext_resource type="PackedScene" uid="uid://bhlyxfpg5udx2" path="res://Scenes/spell_ball.tscn" id="3_hjef4"]
+[ext_resource type="PackedScene" uid="uid://bhlyxfpg5udx2" path="res://Scenes/Spells/spell_ball.tscn" id="3_hjef4"]
 [ext_resource type="PackedScene" uid="uid://cealsvi7aqafc" path="res://Scenes/Player.tscn" id="4_3gks3"]
 [ext_resource type="PackedScene" uid="uid://dqbdekj57kccg" path="res://Scenes/lightUnPhysics.tscn" id="4_ef0o6"]
 [ext_resource type="Script" path="res://Scripts/SpellManager.gd" id="5_dbx3i"]
 [ext_resource type="PackedScene" uid="uid://801kiy05g0j6" path="res://Scenes/mouse_collider.tscn" id="6_77jte"]
-[ext_resource type="PackedScene" uid="uid://c54fvv132p6e3" path="res://Scenes/item.tscn" id="8_8qwao"]
+[ext_resource type="PackedScene" uid="uid://c54fvv132p6e3" path="res://Scenes/Items/item.tscn" id="8_8qwao"]
 [ext_resource type="PackedScene" uid="uid://bo23bowkhn4xp" path="res://Scenes/Hud.tscn" id="8_elyol"]
-[ext_resource type="PackedScene" uid="uid://dfsakfex6dkab" path="res://Scenes/DogEnemy.tscn" id="9_rwa2t"]
-[ext_resource type="PackedScene" uid="uid://dbww08lb4qhr5" path="res://Scenes/healer_enemy.tscn" id="10_vrui2"]
-[ext_resource type="PackedScene" uid="uid://c87258r3vnjtu" path="res://Scenes/poison_enemy.tscn" id="11_rvc7m"]
+[ext_resource type="PackedScene" uid="uid://dfsakfex6dkab" path="res://Scenes/enemies/DogEnemy.tscn" id="9_rwa2t"]
+[ext_resource type="PackedScene" uid="uid://dbww08lb4qhr5" path="res://Scenes/enemies/healer_enemy.tscn" id="10_vrui2"]
+[ext_resource type="PackedScene" uid="uid://c87258r3vnjtu" path="res://Scenes/enemies/poison_enemy.tscn" id="11_rvc7m"]
+[ext_resource type="PackedScene" uid="uid://c8dxvsuq1b11u" path="res://Scenes/Items/healthBottle.tscn" id="12_i2lvb"]
+[ext_resource type="PackedScene" uid="uid://dxd0i4vkjbkun" path="res://Scenes/Items/grass.tscn" id="13_hb23e"]
+[ext_resource type="PackedScene" uid="uid://rluwp48ph85s" path="res://Scenes/enemies/caster_enemy.tscn" id="14_xkfro"]
 
 [node name="level10" type="Node2D" groups=["Spells"]]
 
@@ -71,11 +74,33 @@ position = Vector2(-183, -88)
 [node name="poisonEnemy" parent="." instance=ExtResource("11_rvc7m")]
 position = Vector2(-293, 93)
 
+[node name="Health2" parent="." instance=ExtResource("12_i2lvb")]
+position = Vector2(332, 0)
+
+[node name="Health" parent="." instance=ExtResource("12_i2lvb")]
+position = Vector2(166, 0)
+
+[node name="Health3" parent="." instance=ExtResource("12_i2lvb")]
+position = Vector2(244, -43)
+
+[node name="Health4" parent="." instance=ExtResource("12_i2lvb")]
+position = Vector2(243, 67)
+
+[node name="Health5" parent="." instance=ExtResource("12_i2lvb")]
+position = Vector2(271, 11)
+
+[node name="Grass" parent="." instance=ExtResource("13_hb23e")]
+position = Vector2(0, 5)
+
+[node name="casterEnemy" parent="." instance=ExtResource("14_xkfro")]
+position = Vector2(122, 91)
+
 [connection signal="AddToInv" from="Player" to="Player/PotionBrew" method="_on_player_add_to_inv"]
 [connection signal="AmmoFilled" from="Player" to="Spell Manager" method="_on_player_ammo_filled"]
 [connection signal="AmmoOut" from="Player" to="Spell Manager" method="_on_player_ammo_out"]
 [connection signal="currentSpell" from="Player" to="Spell Manager" method="_on_player_current_spell"]
 [connection signal="dpsToBar" from="Player" to="CanvasLayer" method="_on_player_dps_to_bar"]
+[connection signal="gainedVial" from="Player" to="CanvasLayer" method="_on_player_gained_vial"]
 [connection signal="transferHitPosition" from="Player" to="Spell Manager" method="_on_player_transfer_hit_position"]
 [connection signal="OpenInv" from="Player/PotionBrew" to="Player" method="_on_potion_brew_open_inv"]
 [connection signal="passLoadFire" from="Player/PotionBrew" to="Player" method="_on_potion_brew_pass_load_fire"]

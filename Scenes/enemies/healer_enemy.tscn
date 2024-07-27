@@ -106,7 +106,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="HealerEnemy" type="CharacterBody2D"]
+[node name="HealerEnemy" type="CharacterBody2D" groups=["healer"]]
 script = ExtResource("1_j1vxx")
 
 [node name="Animator" type="AnimatedSprite2D" parent="."]

@@ -1,34 +1,34 @@
-[gd_scene load_steps=20 format=3 uid="uid://c87258r3vnjtu"]
+[gd_scene load_steps=20 format=3 uid="uid://rluwp48ph85s"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_03g7o"]
-[ext_resource type="Script" path="res://Scripts/States/State Machine.gd" id="2_2otor"]
-[ext_resource type="Texture2D" uid="uid://bm0aamq5sgvma" path="res://Assets/enenmies.png" id="2_h4jae"]
-[ext_resource type="Script" path="res://Scripts/States/EnemyIdle.gd" id="3_pymdb"]
-[ext_resource type="Script" path="res://Scripts/States/EnemyFollow.gd" id="4_mo7gr"]
-[ext_resource type="Script" path="res://Scripts/States/EnemyCastPoison.gd" id="5_176fc"]
-[ext_resource type="Script" path="res://Scripts/HealthManagers/casterPoisonHealthManager.gd" id="6_u082t"]
-[ext_resource type="Texture2D" uid="uid://h4u0oxoh07we" path="res://Assets/Dps Particles.png" id="7_5dbrj"]
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_x7n68"]
+[ext_resource type="Texture2D" uid="uid://bm0aamq5sgvma" path="res://Assets/enenmies.png" id="2_tc5os"]
+[ext_resource type="Script" path="res://Scripts/States/State Machine.gd" id="3_ggl2n"]
+[ext_resource type="Script" path="res://Scripts/States/EnemyIdle.gd" id="4_bei65"]
+[ext_resource type="Script" path="res://Scripts/States/EnemyFollow.gd" id="5_yvrk7"]
+[ext_resource type="Script" path="res://Scripts/States/EnemyCastFire.gd" id="6_aybn1"]
+[ext_resource type="Script" path="res://Scripts/HealthManagers/casterHealthManager.gd" id="7_mrqe3"]
+[ext_resource type="Texture2D" uid="uid://h4u0oxoh07we" path="res://Assets/Dps Particles.png" id="8_w8qk0"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kdckj"]
-atlas = ExtResource("2_h4jae")
-region = Rect2(150, 180, 75, 60)
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6qm0"]
+atlas = ExtResource("2_tc5os")
+region = Rect2(0, 240, 69, 60)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s3tyc"]
-atlas = ExtResource("2_h4jae")
-region = Rect2(225, 180, 75, 60)
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqwbk"]
+atlas = ExtResource("2_tc5os")
+region = Rect2(69, 240, 69, 60)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sv5lb"]
-atlas = ExtResource("2_h4jae")
-region = Rect2(150, 180, 75, 60)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0m3yk"]
+atlas = ExtResource("2_tc5os")
+region = Rect2(0, 240, 69, 60)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_spxwg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kdckj")
+"texture": SubResource("AtlasTexture_w6qm0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s3tyc")
+"texture": SubResource("AtlasTexture_dqwbk")
 }],
 "loop": true,
 "name": &"Run",
@@ -36,7 +36,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sv5lb")
+"texture": SubResource("AtlasTexture_0m3yk")
 }],
 "loop": true,
 "name": &"idle",
@@ -49,19 +49,19 @@ radius = 7.2111
 [sub_resource type="CircleShape2D" id="CircleShape2D_w8t63"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p3kgg"]
-atlas = ExtResource("7_5dbrj")
+atlas = ExtResource("8_w8qk0")
 region = Rect2(30, 0, 30, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4t2dt"]
-atlas = ExtResource("7_5dbrj")
+atlas = ExtResource("8_w8qk0")
 region = Rect2(60, 0, 30, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hpplk"]
-atlas = ExtResource("7_5dbrj")
+atlas = ExtResource("8_w8qk0")
 region = Rect2(90, 0, 30, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e8jsd"]
-atlas = ExtResource("7_5dbrj")
+atlas = ExtResource("8_w8qk0")
 region = Rect2(0, 0, 30, 30)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oa6p8"]
@@ -102,35 +102,35 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="poisonEnemy" type="CharacterBody2D" groups=["caster", "enemy"]]
+[node name="casterEnemy" type="CharacterBody2D" groups=["caster", "enemy", "fireCaster"]]
 collision_layer = 4159
 collision_mask = 4129
-script = ExtResource("1_03g7o")
+script = ExtResource("1_x7n68")
 
 [node name="Animator" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, 0)
 scale = Vector2(0.375, 0.375)
 sprite_frames = SubResource("SpriteFrames_spxwg")
-animation = &"Run"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["caster"]]
 shape = SubResource("CircleShape2D_pr78t")
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("2_2otor")
+script = ExtResource("3_ggl2n")
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("3_pymdb")
+script = ExtResource("4_bei65")
 enemy = NodePath("../..")
 
 [node name="Follow" type="Node" parent="State Machine" node_paths=PackedStringArray("casterEnemy")]
-script = ExtResource("4_mo7gr")
+script = ExtResource("5_yvrk7")
 casterEnemy = NodePath("../..")
 
 [node name="Cast" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("5_176fc")
+script = ExtResource("6_aybn1")
 enemy = NodePath("../..")
 
 [node name="Raycasts" type="Node2D" parent="."]
@@ -174,9 +174,8 @@ rotation = 3.14159
 target_position = Vector2(0, 40)
 collision_mask = 4097
 
-[node name="casterHealthManager" type="Node2D" parent="." node_paths=PackedStringArray("dogEnemy")]
-script = ExtResource("6_u082t")
-dogEnemy = NodePath("..")
+[node name="casterHealthManager" type="Node2D" parent="."]
+script = ExtResource("7_mrqe3")
 
 [node name="Area2D" type="Area2D" parent="casterHealthManager"]
 collision_layer = 0

@@ -1,29 +1,29 @@
-[gd_scene load_steps=10 format=3 uid="uid://dxd0i4vkjbkun"]
+[gd_scene load_steps=10 format=3 uid="uid://dbjalsfv6dsoe"]
 
-[ext_resource type="Texture2D" uid="uid://db2m8xiru4r4i" path="res://Assets/items.png" id="1_cblvc"]
+[ext_resource type="Texture2D" uid="uid://db2m8xiru4r4i" path="res://Assets/items.png" id="1_gqdp7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xjdkc"]
-atlas = ExtResource("1_cblvc")
+atlas = ExtResource("1_gqdp7")
 region = Rect2(0, 0, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xwx6n"]
-atlas = ExtResource("1_cblvc")
+atlas = ExtResource("1_gqdp7")
 region = Rect2(0, 30, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_64uie"]
-atlas = ExtResource("1_cblvc")
+atlas = ExtResource("1_gqdp7")
 region = Rect2(0, 15, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_th66y"]
-atlas = ExtResource("1_cblvc")
+atlas = ExtResource("1_gqdp7")
 region = Rect2(0, 75, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rrkl1"]
-atlas = ExtResource("1_cblvc")
+atlas = ExtResource("1_gqdp7")
 region = Rect2(0, 60, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_th2m1"]
-atlas = ExtResource("1_cblvc")
+atlas = ExtResource("1_gqdp7")
 region = Rect2(0, 45, 15, 15)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bd0h5"]
@@ -78,9 +78,9 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_at885"]
-size = Vector2(15, 14)
+size = Vector2(8, 12)
 
-[node name="Grass" type="RigidBody2D" groups=["grass"]]
+[node name="Health" type="RigidBody2D" groups=["heart"]]
 collision_layer = 256
 collision_mask = 256
 freeze = true
@@ -92,8 +92,8 @@ contact_monitor = true
 [node name="ItemAnimator" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.12784, 1.12784)
 sprite_frames = SubResource("SpriteFrames_bd0h5")
-animation = &"grass"
-autoplay = "grass"
+animation = &"heart"
+autoplay = "heart"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["grass"]]
 position = Vector2(0, 1)

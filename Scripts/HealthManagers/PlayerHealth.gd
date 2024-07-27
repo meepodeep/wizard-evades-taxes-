@@ -2,7 +2,6 @@ extends Node2D
 @onready var dpsParticles = $"../DpsParticles"
 @onready var timer = $Timer
 var player
-var playerHealth = 6
 var inPoison
 var inFire
 var inIce

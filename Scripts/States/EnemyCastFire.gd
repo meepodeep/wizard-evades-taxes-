@@ -1,7 +1,7 @@
 extends State
 class_name EnemyCastFire
 
-@onready var fire = load("res://Scenes/fire.tscn")
+@onready var fire = load("res://Scenes/Spells/fire.tscn")
 var move_speed = 4000.0
 var player : CharacterBody2D
 @export var enemy : CharacterBody2D

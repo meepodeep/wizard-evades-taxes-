@@ -1,16 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://ceht8ltjnwuam"]
 
-[ext_resource type="Script" path="res://Scripts/Spells/poison.gd" id="1_ftbrg"]
-[ext_resource type="Texture2D" uid="uid://dborpb5ucdia5" path="res://Assets/Spells/mypoison.png" id="2_cn8c0"]
+[ext_resource type="Script" path="res://Scripts/Spells/poison.gd" id="1_ai3n4"]
+[ext_resource type="Texture2D" uid="uid://dborpb5ucdia5" path="res://Assets/Spells/mypoison.png" id="2_xjgcp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_46ap1"]
-atlas = ExtResource("2_cn8c0")
+atlas = ExtResource("2_xjgcp")
 region = Rect2(22.5084, 21.324, 20.3785, 17.9774)
 
 [node name="Poison" type="Node2D"]
 z_index = -4
 z_as_relative = false
-script = ExtResource("1_ftbrg")
+script = ExtResource("1_ai3n4")
 
 [node name="Area2D" type="Area2D" parent="." groups=["poison"]]
 collision_layer = 4

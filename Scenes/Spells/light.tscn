@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ssfef8ie87v6"]
 
-[ext_resource type="Script" path="res://Scripts/Spells/light.gd" id="1_bk306"]
-[ext_resource type="Texture2D" uid="uid://g00s7nv46m6x" path="res://Assets/2d_lights_and_shadows_neutral_point_light.webp" id="1_lxet5"]
+[ext_resource type="Script" path="res://Scripts/Spells/light.gd" id="1_72o55"]
+[ext_resource type="Texture2D" uid="uid://g00s7nv46m6x" path="res://Assets/2d_lights_and_shadows_neutral_point_light.webp" id="2_4lsn6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pnei3"]
 radius = 154.742
@@ -9,14 +9,14 @@ radius = 154.742
 [node name="Light" type="Node2D"]
 z_index = -4
 z_as_relative = false
-script = ExtResource("1_bk306")
+script = ExtResource("1_72o55")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(5.45979e-05, 0)
 scale = Vector2(1.75, 1.20312)
 energy = 0.94
 shadow_enabled = true
-texture = ExtResource("1_lxet5")
+texture = ExtResource("2_4lsn6")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 32

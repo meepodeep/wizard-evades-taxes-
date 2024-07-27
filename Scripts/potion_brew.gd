@@ -1,6 +1,6 @@
 extends Node2D
 
-var item = load("res://Scenes/item_physics.tscn")
+var item = load("res://Scenes/Items/item_physics.tscn")
 var inventory = []
 var invItems = []
 var invItemCount: int = 0
