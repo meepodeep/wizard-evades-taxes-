@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://3jlv6dgern6r"]
+[gd_scene load_steps=6 format=3 uid="uid://3jlv6dgern6r"]
 
 [ext_resource type="Script" path="res://Scripts/options_menu.gd" id="1_n8nwj"]
 [ext_resource type="FontFile" uid="uid://cya3revvfbalq" path="res://Assets/TeenyTinyPixls-o2zo.ttf" id="2_lwgga"]
+[ext_resource type="Texture2D" uid="uid://mcs0xmql6o4" path="res://Assets/Courtrooom.png" id="2_qw640"]
+[ext_resource type="Texture2D" uid="uid://dlwprhhp4jh6d" path="res://Assets/SquareBackground.png" id="3_klaps"]
 [ext_resource type="Texture2D" uid="uid://dsur0yaajg2kv" path="res://Assets/Back.png" id="3_lpnv5"]
 
 [node name="Menu" type="Control"]
@@ -12,6 +14,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n8nwj")
+
+[node name="Courtrooom" type="Sprite2D" parent="."]
+position = Vector2(317, -34)
+scale = Vector2(5.95751, 5.95751)
+texture = ExtResource("2_qw640")
+
+[node name="SquareBackground" type="Sprite2D" parent="."]
+position = Vector2(317, 170)
+texture = ExtResource("3_klaps")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

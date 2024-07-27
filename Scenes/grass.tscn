@@ -1,33 +1,32 @@
-[gd_scene load_steps=11 format=3 uid="uid://c54fvv132p6e3"]
+[gd_scene load_steps=10 format=3 uid="uid://dxd0i4vkjbkun"]
 
-[ext_resource type="Texture2D" uid="uid://db2m8xiru4r4i" path="res://Assets/items.png" id="1_5ru1r"]
-[ext_resource type="Script" path="res://Scripts/item.gd" id="1_onx8r"]
+[ext_resource type="Texture2D" uid="uid://db2m8xiru4r4i" path="res://Assets/items.png" id="1_cblvc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xjdkc"]
-atlas = ExtResource("1_5ru1r")
+atlas = ExtResource("1_cblvc")
 region = Rect2(0, 0, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xwx6n"]
-atlas = ExtResource("1_5ru1r")
+atlas = ExtResource("1_cblvc")
 region = Rect2(0, 30, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_64uie"]
-atlas = ExtResource("1_5ru1r")
+atlas = ExtResource("1_cblvc")
 region = Rect2(0, 15, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_th66y"]
-atlas = ExtResource("1_5ru1r")
+atlas = ExtResource("1_cblvc")
 region = Rect2(0, 75, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rrkl1"]
-atlas = ExtResource("1_5ru1r")
+atlas = ExtResource("1_cblvc")
 region = Rect2(0, 60, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_th2m1"]
-atlas = ExtResource("1_5ru1r")
+atlas = ExtResource("1_cblvc")
 region = Rect2(0, 45, 15, 15)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_5plsb"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_bd0h5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -78,10 +77,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1i18m"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_at885"]
 size = Vector2(15, 14)
 
-[node name="item" type="RigidBody2D"]
+[node name="Grass" type="RigidBody2D" groups=["grass"]]
 collision_layer = 256
 collision_mask = 256
 freeze = true
@@ -89,15 +88,13 @@ freeze_mode = 1
 continuous_cd = 2
 max_contacts_reported = 6
 contact_monitor = true
-script = ExtResource("1_onx8r")
 
 [node name="ItemAnimator" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.12784, 1.12784)
-sprite_frames = SubResource("SpriteFrames_5plsb")
+sprite_frames = SubResource("SpriteFrames_bd0h5")
 animation = &"grass"
+autoplay = "grass"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["grass"]]
 position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_1i18m")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+shape = SubResource("RectangleShape2D_at885")

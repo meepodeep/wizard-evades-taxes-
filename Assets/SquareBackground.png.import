@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3neae8j484xf"
-path="res://.godot/imported/Spells & taxes logo.png-737a0eb2b127dd1aa00d8c875d253391.ctex"
+uid="uid://dlwprhhp4jh6d"
+path="res://.godot/imported/SquareBackground.png-d8f85cf1a5f155c5b1dc918a743c06cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Spells & taxes logo.png"
-dest_files=["res://.godot/imported/Spells & taxes logo.png-737a0eb2b127dd1aa00d8c875d253391.ctex"]
+source_file="res://Assets/SquareBackground.png"
+dest_files=["res://.godot/imported/SquareBackground.png-d8f85cf1a5f155c5b1dc918a743c06cd.ctex"]
 
 [params]
 

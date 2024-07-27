@@ -1,6 +1,6 @@
 extends CharacterBody2D
 class_name Enemy
-var item = load("res://Scenes/item.tscn")
+var item = load("res://Scenes/grass.tscn")
 var move_speed := 6000.0
 func _physics_process(_delta):
 	move_and_slide()

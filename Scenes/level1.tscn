@@ -69,7 +69,7 @@ position = Vector2(52, -55)
 position = Vector2(-183, -88)
 
 [node name="poisonEnemy" parent="." instance=ExtResource("11_rvc7m")]
-position = Vector2(-62, 73)
+position = Vector2(-293, 93)
 
 [connection signal="AddToInv" from="Player" to="Player/PotionBrew" method="_on_player_add_to_inv"]
 [connection signal="AmmoFilled" from="Player" to="Spell Manager" method="_on_player_ammo_filled"]
