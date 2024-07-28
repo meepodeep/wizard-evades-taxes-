@@ -47,15 +47,12 @@ func _on_area_2d_area_entered(area):
 		hit.play()
 	if area.is_in_group("poison"):
 		inPoison = true
-		hit.play()
 		timer.start(2)
 	if area.is_in_group("ice"):
 		inIce = true
 	if area.is_in_group("fire"):
 		inFire = true
 		burning	= true
-		hit.play()
-		DamageTaken.emit(-1)
 		timer.start(2)
 	if area.is_in_group("health"):
 		inHealth = true

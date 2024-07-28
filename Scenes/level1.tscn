@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dr0vw38qauc2q"]
+[gd_scene load_steps=20 format=3 uid="uid://dr0vw38qauc2q"]
 
 [ext_resource type="PackedScene" uid="uid://c7i8u3biltbfd" path="res://Scenes/potion_brew.tscn" id="1_pnj8d"]
 [ext_resource type="PackedScene" uid="uid://bhlyxfpg5udx2" path="res://Scenes/Spells/spell_ball.tscn" id="3_hjef4"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dfsakfex6dkab" path="res://Scenes/enemies/DogEnemy.tscn" id="14_2cdg0"]
 [ext_resource type="PackedScene" uid="uid://ci7wm7m1w2dl3" path="res://Scenes/Items/mushroom.tscn" id="15_yvb7n"]
 [ext_resource type="PackedScene" uid="uid://sr5s1x27nhe7" path="res://Scenes/enemy_counter.tscn" id="16_2qqjl"]
+[ext_resource type="PackedScene" uid="uid://4c8msk2p4600" path="res://Scenes/door.tscn" id="17_q0up1"]
 [ext_resource type="PackedScene" uid="uid://c54fvv132p6e3" path="res://Scenes/Items/item.tscn" id="17_r1mic"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2mhsd"]
@@ -224,6 +225,7 @@ sources/0 = SubResource("TileSetAtlasSource_2mhsd")
 [node name="level1" type="Node2D" groups=["Spells"]]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 scale = Vector2(-0.202183, 0.979107)
 color = Color(0.00351917, 0.00351917, 0.00351916, 1)
 
@@ -231,7 +233,7 @@ color = Color(0.00351917, 0.00351917, 0.00351916, 1)
 position = Vector2(-1, -140)
 
 [node name="SpellBall" parent="." instance=ExtResource("3_hjef4")]
-position = Vector2(26, 7)
+position = Vector2(38, 77)
 
 [node name="Player" parent="." instance=ExtResource("4_3gks3")]
 unique_name_in_owner = true
@@ -267,6 +269,7 @@ stream = ExtResource("10_qfs2q")
 autoplay = true
 
 [node name="TileMap" type="TileMap" parent="."]
+position = Vector2(0, -1)
 scale = Vector2(1.5, 1.49498)
 tile_set = SubResource("TileSet_1lr2h")
 format = 2
@@ -293,10 +296,11 @@ position = Vector2(-157, -305)
 position = Vector2(-148, -445)
 
 [node name="Grass" parent="." instance=ExtResource("13_hb23e")]
-position = Vector2(-3, -378)
+position = Vector2(-88, -1)
 
 [node name="Mushroom" parent="." instance=ExtResource("15_yvb7n")]
-position = Vector2(-3, -399)
+position = Vector2(76, 1)
+scale = Vector2(1.03245, 1.03245)
 
 [node name="LightParent" type="Node" parent="."]
 
@@ -352,8 +356,8 @@ position = Vector2(-148, -596)
 position = Vector2(-159, -752)
 
 [node name="EnemyCounter" parent="." instance=ExtResource("16_2qqjl")]
-visible = false
-position = Vector2(233, -296)
+position = Vector2(3, -167)
+scale = Vector2(0.135, 0.328)
 
 [node name="item" parent="." instance=ExtResource("17_r1mic")]
 position = Vector2(447, -390)
@@ -369,6 +373,44 @@ position = Vector2(42, -692)
 
 [node name="item5" parent="." instance=ExtResource("17_r1mic")]
 position = Vector2(-83, -690)
+
+[node name="Door2" parent="." instance=ExtResource("17_q0up1")]
+position = Vector2(4, -511)
+rotation = 3.14159
+scale = Vector2(1.96, 1)
+
+[node name="Door4" parent="." instance=ExtResource("17_q0up1")]
+position = Vector2(453, -510)
+rotation = -3.14159
+scale = Vector2(1.92074, 1.68681)
+
+[node name="Door5" parent="." instance=ExtResource("17_q0up1")]
+position = Vector2(453, -552)
+rotation = -6.28318
+scale = Vector2(1.96, 1.08)
+
+[node name="Door6" parent="." instance=ExtResource("17_q0up1")]
+position = Vector2(279, -704)
+rotation = -4.71238
+scale = Vector2(1.96, 1.96)
+
+[node name="Door3" parent="." instance=ExtResource("17_q0up1")]
+position = Vector2(284, -391)
+rotation = 1.57079
+scale = Vector2(1.4, 1.4)
+
+[node name="Door" parent="." instance=ExtResource("17_q0up1")]
+position = Vector2(194, -392)
+rotation = -1.57079
+scale = Vector2(1.4, 1)
+
+[node name="EnemyCounter3" parent="." instance=ExtResource("16_2qqjl")]
+position = Vector2(441, -687)
+scale = Vector2(0.113, 0.132)
+
+[node name="EnemyCounter2" parent="." instance=ExtResource("16_2qqjl")]
+position = Vector2(446, -390)
+scale = Vector2(0.115, 0.11)
 
 [connection signal="AddToInv" from="Player" to="Player/PotionBrew" method="_on_player_add_to_inv"]
 [connection signal="AmmoFilled" from="Player" to="Spell Manager" method="_on_player_ammo_filled"]

@@ -128,11 +128,10 @@ scale = Vector2(0.213334, 0.213334)
 
 [node name="PointLight2D3" type="PointLight2D" parent="Animator/Lights"]
 position = Vector2(-175, -62.4999)
-scale = Vector2(3.99998, 3.99998)
 color = Color(0.787393, 0.00108674, 0.000595474, 1)
 energy = 1.09
 texture = ExtResource("9_kvmpr")
-texture_scale = 0.05
+texture_scale = 0.1
 
 [node name="PointLight2D2" type="PointLight2D" parent="Animator/Lights"]
 position = Vector2(175, -49.9999)
@@ -145,11 +144,10 @@ texture_scale = 0.05
 
 [node name="PointLight2D" type="PointLight2D" parent="Animator/Lights"]
 position = Vector2(-125, -62.4999)
-scale = Vector2(-1.99999, -1.99999)
 color = Color(0.787393, 0.00108674, 0.000595474, 1)
 energy = 1.09
 texture = ExtResource("9_kvmpr")
-texture_scale = 0.05
+texture_scale = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["dog"]]
 shape = SubResource("CircleShape2D_pr78t")
