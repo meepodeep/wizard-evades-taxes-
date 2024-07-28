@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://c7i8u3biltbfd"]
+[gd_scene load_steps=102 format=3 uid="uid://c7i8u3biltbfd"]
 
 [ext_resource type="Texture2D" uid="uid://b0wjwgbamvwdk" path="res://Assets/inventory backdrop.png" id="1_6b0fn"]
 [ext_resource type="Script" path="res://Scripts/potion_brew.gd" id="1_iebfh"]
@@ -365,6 +365,10 @@ region = Rect2(384, 135, 48, 27)
 atlas = ExtResource("1_uqh77")
 region = Rect2(432, 135, 48, 27)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mnxq"]
+atlas = ExtResource("1_uqh77")
+region = Rect2(0, 243, 48, 27)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_jg4lm"]
 animations = [{
 "frames": [{
@@ -669,6 +673,14 @@ animations = [{
 "loop": false,
 "name": &"Poison",
 "speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mnxq")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hqiw"]
@@ -699,9 +711,7 @@ texture = ExtResource("1_6b0fn")
 position = Vector2(33, -23)
 scale = Vector2(2.8, 2.8)
 sprite_frames = SubResource("SpriteFrames_jg4lm")
-animation = &"Fire"
-frame = 14
-frame_progress = 1.0
+animation = &"new_animation"
 
 [node name="BrewCollider" type="RigidBody2D" parent="." groups=["Droppable"]]
 position = Vector2(2.43865, -21.3382)

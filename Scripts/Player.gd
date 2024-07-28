@@ -11,7 +11,7 @@ var angular_force = 50000
 var canDash = 1.0
 var dashSpeed = 500
 var stopped = Vector2(0,0)
-var ammoCount = 4
+var ammoCount = 0
 var SpellType = 1
 var canPlay = true
 @onready var footsteps = $Footsteps
@@ -107,12 +107,14 @@ func _on_ray_cast_2d_collision_point(posit):
 	transferHitPosition.emit(posit) # Replace with function body.
 ##Item Collection
 func _on_area_2d_body_entered(body):
-	if !body.is_in_group("health"):
+	if !body.is_in_group("health") || !body.is_in_group("Gun"):
 		emit_signal("AddToInv", body.get_groups())
 		body.queue_free()
-	else:
+	if body.is_in_group("health"):
 		gainedVial.emit()
 		body.queue_free()
+	if body.is_in_group("Gun"):
+		Global.hasGun = true
 
 
 func _on_potion_brew_open_inv():

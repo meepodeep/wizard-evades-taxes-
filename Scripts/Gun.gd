@@ -11,6 +11,11 @@ func _process(_delta):
 	else:
 		gun.flip_v = false
 		potion.flip_v = false
-
+	if Global.hasGun:
+		gun.visible = true
+		potion.visible = true
+	else:
+		gun.visible = false
+		potion.visible = false
 
 	

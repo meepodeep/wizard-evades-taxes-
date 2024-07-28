@@ -10,7 +10,7 @@ func randomiz():
 	level = get_parent().name
 	match level:
 		"level1":
-			random = rng.randi_range(1, 2)
+			random = rng.randi_range(1, 3)
 		"level2":
 			random = rng.randi_range(1, 3)
 		"level3":

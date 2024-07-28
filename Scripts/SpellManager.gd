@@ -48,7 +48,7 @@ func _process(_delta):
 			isFiring = false
 			ball.visible = false
 			ball.position = player.global_position
-	if Input.is_action_just_pressed("Fire") && OutOfAmmo != true && isFiring == false && Global.inMenu == false:
+	if Input.is_action_just_pressed("Fire") && OutOfAmmo != true && isFiring == false && Global.inMenu == false && Global.hasGun:
 		targetPosition = hitPosition
 		ball.position = player.global_position
 		Fired.emit()
