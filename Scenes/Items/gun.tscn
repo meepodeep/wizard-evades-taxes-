@@ -106,7 +106,7 @@ contact_monitor = true
 scale = Vector2(1.12784, 1.12784)
 sprite_frames = SubResource("SpriteFrames_bd0h5")
 animation = &"Gun"
-autoplay = "heart"
+autoplay = "Gun"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["grass"]]
 position = Vector2(-2.5, 0.5)
