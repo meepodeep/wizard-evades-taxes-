@@ -423,10 +423,12 @@ position = Vector2(5, 5)
 script = ExtResource("2_060sx")
 
 [node name="Gun" type="AnimatedSprite2D" parent="GunParent"]
+visible = false
 position = Vector2(5, 0)
 sprite_frames = SubResource("SpriteFrames_sjhyi")
 
 [node name="Potions" type="AnimatedSprite2D" parent="GunParent/Gun"]
+visible = false
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_33ysb")
 animation = &"Poison"
@@ -440,6 +442,8 @@ script = ExtResource("4_onfna")
 script = ExtResource("6_ocj2e")
 
 [node name="Timer" type="Timer" parent="PlayerHealth"]
+
+[node name="Timer2" type="Timer" parent="PlayerHealth"]
 
 [node name="Area2D" type="Area2D" parent="PlayerHealth"]
 collision_layer = 0
@@ -461,7 +465,7 @@ visibility_rect = Rect2(-9.83, -4.995, 22.285, 9.425)
 
 [node name="Hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_0sqnd")
-volume_db = -15.155
+volume_db = 5.997
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_21s5a")
@@ -471,6 +475,7 @@ volume_db = -20.0
 [connection signal="collisionPoint" from="GunParent/RayCast2D" to="." method="_on_ray_cast_2d_collision_point"]
 [connection signal="DamageTaken" from="PlayerHealth" to="." method="_on_player_health_damage_taken"]
 [connection signal="timeout" from="PlayerHealth/Timer" to="PlayerHealth" method="_on_timer_timeout"]
+[connection signal="timeout" from="PlayerHealth/Timer2" to="PlayerHealth" method="_on_timer_2_timeout"]
 [connection signal="area_entered" from="PlayerHealth/Area2D" to="PlayerHealth" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="PlayerHealth/Area2D" to="PlayerHealth" method="_on_area_2d_area_exited"]
 [connection signal="finished" from="Footsteps" to="." method="_on_footsteps_finished"]

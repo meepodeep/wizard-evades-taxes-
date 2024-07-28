@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Enemy
 var item 
 var move_speed := 6000.0
+@onready var tailLight = $Animator/Lights
 func _ready():
 	if is_in_group("dog"):
 		item = load("res://Scenes/Items/grass.tscn")
@@ -19,8 +20,10 @@ func _physics_process(_delta):
 	
 	if velocity.x > 0:
 		$Animator.flip_h = true
+		tailLight.position.x = -tailLight.position.x
 	if velocity.x < 0:
 		$Animator.flip_h = false
+		tailLight.position.x = tailLight.position.x
 func slowDown():
 	move_speed = 400
 func speedUp():

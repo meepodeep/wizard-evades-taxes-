@@ -2,6 +2,8 @@ extends Node2D
 @onready var dpsParticles = $"../DpsParticles"
 @onready var timer = $Timer
 @onready var hit = $"../Hit"
+@onready var timer_2 = $Timer2
+var canDogDps = true
 var player
 var inPoison
 var inFire
@@ -38,12 +40,14 @@ func _process(delta):
 
 
 func _on_area_2d_area_entered(area):
-	if area.is_in_group("dog"):
+	if area.is_in_group("dog") && canDogDps:
 		DamageTaken.emit(-1)
+		canDogDps = false 
+		timer_2.start(2)
+		hit.play()
 	if area.is_in_group("poison"):
 		inPoison = true
 		hit.play()
-		DamageTaken.emit(-2)
 		timer.start(2)
 	if area.is_in_group("ice"):
 		inIce = true
@@ -81,3 +85,7 @@ func _on_timer_timeout():
 	if inHealth:
 		DamageTaken.emit(1)
 		timer.start(2)
+
+
+func _on_timer_2_timeout():
+	canDogDps = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dfsakfex6dkab"]
+[gd_scene load_steps=22 format=3 uid="uid://dfsakfex6dkab"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_pab7c"]
 [ext_resource type="Texture2D" uid="uid://bm0aamq5sgvma" path="res://Assets/enenmies.png" id="2_fhh1n"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/States/slashAttack.gd" id="6_m34a5"]
 [ext_resource type="Script" path="res://Scripts/HealthManagers/DogHealthManager.gd" id="7_f8qm4"]
 [ext_resource type="Texture2D" uid="uid://h4u0oxoh07we" path="res://Assets/Dps Particles.png" id="8_hj1jn"]
+[ext_resource type="Texture2D" uid="uid://g00s7nv46m6x" path="res://Assets/2d_lights_and_shadows_neutral_point_light.webp" id="9_kvmpr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tyrwa"]
 atlas = ExtResource("2_fhh1n")
@@ -116,12 +117,39 @@ collision_mask = 4129
 script = ExtResource("1_pab7c")
 
 [node name="Animator" type="AnimatedSprite2D" parent="."]
-position = Vector2(2, 0)
 scale = Vector2(0.375, 0.375)
 sprite_frames = SubResource("SpriteFrames_spxwg")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.90914
+
+[node name="Lights" type="Node2D" parent="Animator"]
+scale = Vector2(0.213334, 0.213334)
+
+[node name="PointLight2D3" type="PointLight2D" parent="Animator/Lights"]
+position = Vector2(-175, -62.4999)
+scale = Vector2(3.99998, 3.99998)
+color = Color(0.787393, 0.00108674, 0.000595474, 1)
+energy = 1.09
+texture = ExtResource("9_kvmpr")
+texture_scale = 0.05
+
+[node name="PointLight2D2" type="PointLight2D" parent="Animator/Lights"]
+position = Vector2(175, -49.9999)
+rotation = 3.14159
+scale = Vector2(7.99993, 7.99993)
+color = Color(0.787393, 0.00108674, 0.000595474, 1)
+energy = 1.09
+texture = ExtResource("9_kvmpr")
+texture_scale = 0.05
+
+[node name="PointLight2D" type="PointLight2D" parent="Animator/Lights"]
+position = Vector2(-125, -62.4999)
+scale = Vector2(-1.99999, -1.99999)
+color = Color(0.787393, 0.00108674, 0.000595474, 1)
+energy = 1.09
+texture = ExtResource("9_kvmpr")
+texture_scale = 0.05
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["dog"]]
 shape = SubResource("CircleShape2D_pr78t")

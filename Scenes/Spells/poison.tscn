@@ -14,6 +14,7 @@ z_as_relative = false
 script = ExtResource("1_ai3n4")
 
 [node name="Area2D" type="Area2D" parent="." groups=["poison"]]
+scale = Vector2(2.02685, 2.02685)
 collision_layer = 4
 collision_mask = 4
 

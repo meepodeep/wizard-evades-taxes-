@@ -1,8 +1,6 @@
 extends Node2D
 
 var item = load("res://Scenes/Items/item_physics.tscn")
-var inventory = []
-var invItems = []
 var invItemCount: int = 0
 var itemCount: int = 0
 var itemPos = Vector2(140,0)
@@ -14,19 +12,21 @@ signal passLoadPoison
 signal OpenInv
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	inventory.resize(64)
-	invItems.resize(64)
+	Global.inventory.resize(64)
+	Global.invItems.resize(64)
+	
+	
 func _process(_delta):
 	if !Global.inMenu:
 		invItemCount = 0
-		for item in invItems:
+		for item in Global.invItems:
 			if item != null:
 				destroy(item)
 	if Input.is_action_just_pressed("Inventory"):
 		visible = !visible
 		emit_signal("OpenInv")
 		if Global.inMenu:
-			for item in inventory:
+			for item in Global.inventory:
 				if item != null:
 					match item:
 						[&"grass"]:
@@ -45,7 +45,7 @@ func _process(_delta):
 	
 func _on_player_add_to_inv(bodyGroup):
 	if itemCount != 64:
-		inventory[itemCount] = bodyGroup
+		Global.inventory[itemCount] = bodyGroup
 		itemCount +=1
 		
 		
@@ -70,7 +70,7 @@ func instItem(pos, itemType):
 
 
 func _on_area_2d_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
-	invItems[invItemCount] = body
+	Global.invItems[invItemCount] = body
 	invItemCount +=1
 
 func destroy(thing):
@@ -78,11 +78,11 @@ func destroy(thing):
 func deleteItem(itemToDel):
 	var didDelete = false
 	var index = 0
-	for items in inventory:
+	for items in Global.inventory:
 		if items != null:
 			if items == itemToDel:
 				if didDelete == false:
-					inventory[index] = null 
+					Global.inventory[index] = null 
 				didDelete = true
 		index += 1
 	index = 0
