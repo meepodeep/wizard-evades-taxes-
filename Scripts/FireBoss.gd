@@ -10,8 +10,8 @@ func _ready():
 	timer.start(2)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	random.x = rng.randf_range(0, 300)
-	random.y = rng.randf_range(0, 300)
+	random.x = rng.randf_range(-200, 200)
+	random.y = rng.randf_range(-200, 200)
 func instFireGuy(pos):
 	var instanceFire = fire.instantiate()
 	instanceFire.position = pos

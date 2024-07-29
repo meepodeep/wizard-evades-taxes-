@@ -7,6 +7,7 @@ var concurrentEnemies = 0
 var playerIn 
 var canChange = true
 signal RoomCleared
+@onready var crystal = $"../Crystal"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,11 +19,12 @@ func _ready():
 func _process(delta):
 	print(boss_health_manager.weakness)
 	if concurrentEnemies <=0 && canChange == true:
+		crystal.play("default")
 		boss_health_manager.weakness = true
 		canChange = false
 	if concurrentEnemies >0:
 		canChange = true
-
+		crystal.frame = 0
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("enemy"):
