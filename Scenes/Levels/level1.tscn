@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dr0vw38qauc2q"]
+[gd_scene load_steps=24 format=3 uid="uid://dr0vw38qauc2q"]
 
 [ext_resource type="PackedScene" uid="uid://c7i8u3biltbfd" path="res://Scenes/potion_brew.tscn" id="1_pnj8d"]
 [ext_resource type="PackedScene" uid="uid://bhlyxfpg5udx2" path="res://Scenes/Spells/spell_ball.tscn" id="3_hjef4"]
@@ -18,8 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://4c8msk2p4600" path="res://Scenes/door.tscn" id="17_q0up1"]
 [ext_resource type="PackedScene" uid="uid://c54fvv132p6e3" path="res://Scenes/Items/item.tscn" id="17_r1mic"]
 [ext_resource type="PackedScene" uid="uid://ce6saqp64g0sk" path="res://Scenes/ladder.tscn" id="18_b2myp"]
-[ext_resource type="PackedScene" uid="uid://c87258r3vnjtu" path="res://Scenes/enemies/poison_enemy.tscn" id="19_tqhyc"]
+[ext_resource type="PackedScene" uid="uid://rluwp48ph85s" path="res://Scenes/enemies/caster_enemy.tscn" id="19_o3b7s"]
 [ext_resource type="PackedScene" uid="uid://dbww08lb4qhr5" path="res://Scenes/enemies/healer_enemy.tscn" id="20_owydo"]
+[ext_resource type="Texture2D" uid="uid://bfr6e07nv11m6" path="res://Assets/Fountain.png" id="21_ahxv1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2mhsd"]
 texture = ExtResource("9_q3l1t")
@@ -306,7 +307,7 @@ scale = Vector2(0.252304, 0.26165)
 
 [node name="Light7" parent="LightParent" instance=ExtResource("4_ef0o6")]
 position = Vector2(1003, -694)
-scale = Vector2(0.771468, 0.487299)
+scale = Vector2(1.14379, 1.21134)
 
 [node name="Light8" parent="LightParent" instance=ExtResource("4_ef0o6")]
 position = Vector2(1001, -415)
@@ -330,7 +331,7 @@ scale = Vector2(0.960001, 0.6)
 
 [node name="Light5" parent="LightParent" instance=ExtResource("4_ef0o6")]
 position = Vector2(421, -699)
-scale = Vector2(0.632972, 0.694382)
+scale = Vector2(0.992973, 0.934384)
 
 [node name="Light4" parent="LightParent" instance=ExtResource("4_ef0o6")]
 position = Vector2(448, -391)
@@ -443,9 +444,6 @@ scale = Vector2(0.115, 0.11)
 [node name="Ladder" parent="." instance=ExtResource("18_b2myp")]
 position = Vector2(956, 314)
 
-[node name="poisonEnemy" parent="." instance=ExtResource("19_tqhyc")]
-position = Vector2(1030, -99)
-
 [node name="HealerEnemy" parent="." instance=ExtResource("20_owydo")]
 position = Vector2(1085, -54)
 
@@ -454,6 +452,25 @@ position = Vector2(1162, -628)
 
 [node name="Enemy11" parent="." instance=ExtResource("14_2cdg0")]
 position = Vector2(850, -786)
+
+[node name="casterEnemy" parent="." instance=ExtResource("19_o3b7s")]
+position = Vector2(1006, -109)
+
+[node name="Fountain" type="Sprite2D" parent="."]
+position = Vector2(1003, -401)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("21_ahxv1")
+
+[node name="Fountain2" type="Sprite2D" parent="."]
+position = Vector2(-21, -688)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("21_ahxv1")
+
+[node name="Grass2" parent="." instance=ExtResource("13_hb23e")]
+position = Vector2(1053, -401)
+
+[node name="Mushroom2" parent="." instance=ExtResource("15_yvb7n")]
+position = Vector2(948, -402)
 
 [connection signal="AddToInv" from="Player" to="Player/PotionBrew" method="_on_player_add_to_inv"]
 [connection signal="AmmoFilled" from="Player" to="Spell Manager" method="_on_player_ammo_filled"]

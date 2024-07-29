@@ -2,7 +2,7 @@ extends Node2D
 @export var caster: CharacterBody2D
 @onready var dpsParticles = $"../DpsParticles"
 
-var casterHealth = 20
+var casterHealth = 15
 var inPoison
 var inHealth
 # Called every frame. 'delta' is the elapsed time since the previous frame.
