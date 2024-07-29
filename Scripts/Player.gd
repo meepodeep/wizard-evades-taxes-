@@ -20,12 +20,15 @@ var canPlay = true
 @onready var PotionAnimator = $GunParent/Gun/Potions
 @onready var GunSprite = $GunParent/Gun
 var direction
+func _ready():
+	Global.canMove = true
 func _process(_delta):
-	if Global.inMenu == true:
+	if Global.inMenu == true || Global.canMove == false:
 		set_physics_process(false)
 		self_modulate = Color(1, 1, 1, 0)
 		GunSprite.self_modulate = Color(1, 1, 1, 0)
 	else:
+		Global.is_dragging = false
 		set_physics_process(true)
 		self_modulate = Color(1, 1, 1, 1)
 		GunSprite.self_modulate = Color(1, 1, 1, 1)

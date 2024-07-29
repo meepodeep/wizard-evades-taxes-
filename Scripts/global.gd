@@ -5,3 +5,4 @@ var inMenu = false
 var hasGun = false
 var inventory = []
 var invItems = []
+var canMove = true

@@ -1,29 +1,74 @@
-[gd_scene load_steps=5 format=3 uid="uid://ce6saqp64g0sk"]
+[gd_scene load_steps=14 format=3 uid="uid://ce6saqp64g0sk"]
 
 [ext_resource type="Script" path="res://Scripts/Ladder.gd" id="1_mn30a"]
-[ext_resource type="Texture2D" uid="uid://c3fnwusj2ojxp" path="res://Assets/ladder.png" id="2_gy3gd"]
+[ext_resource type="Texture2D" uid="uid://c8v7fs7p7x3x8" path="res://Assets/ladder/ladder1.png" id="2_47drt"]
+[ext_resource type="Texture2D" uid="uid://b221b88khwsx8" path="res://Assets/ladder/ladder2.png" id="3_3tyvb"]
 [ext_resource type="AudioStream" uid="uid://ctsgwib68ya34" path="res://Assets/SoundFx/LadderClimb.mp3" id="3_f6qpe"]
+[ext_resource type="Texture2D" uid="uid://bhg53a8j4rmhp" path="res://Assets/ladder/ladder3.png" id="4_cvlit"]
+[ext_resource type="Texture2D" uid="uid://c7lalxtyv8qs6" path="res://Assets/ladder/ladder4.png" id="5_0txwm"]
+[ext_resource type="Texture2D" uid="uid://booobq734lgfp" path="res://Assets/ladder/ladder5.png" id="6_6u4x3"]
+[ext_resource type="Texture2D" uid="uid://c0xkkdnamy7j" path="res://Assets/ladder/ladder6.png" id="7_63s18"]
+[ext_resource type="Texture2D" uid="uid://bm8hsgjnttyvw" path="res://Assets/ladder/ladder7.png" id="8_e2ixn"]
+[ext_resource type="Texture2D" uid="uid://b1dvv1jnwsstu" path="res://Assets/ladder/ladder8.png" id="9_uwlsq"]
+[ext_resource type="Texture2D" uid="uid://53jkrtqqfxi2" path="res://Assets/ladder/ladder9.png" id="10_1jf1g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ro2pc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_47drt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3tyvb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cvlit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0txwm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6u4x3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_63s18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_e2ixn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_uwlsq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1jf1g")
+}],
+"loop": true,
+"name": &"Climb",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k26kb"]
 size = Vector2(15, 18)
 
 [node name="Ladder" type="Node2D"]
+z_index = -6
 script = ExtResource("1_mn30a")
 
-[node name="Ladder" type="Sprite2D" parent="."]
-texture = ExtResource("2_gy3gd")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ro2pc")
+animation = &"Climb"
 
-[node name="Area2D" type="Area2D" parent="Ladder"]
-position = Vector2(-0.5, 41)
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
+position = Vector2(0, 41)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ladder/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
 shape = SubResource("RectangleShape2D_k26kb")
 
-[node name="Timer" type="Timer" parent="Ladder"]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Ladder"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_f6qpe")
 volume_db = 6.463
 
-[connection signal="body_entered" from="Ladder/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="timeout" from="Ladder/Timer" to="." method="_on_timer_timeout"]
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
