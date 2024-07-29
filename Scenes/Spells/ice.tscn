@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b77lgv747e4bf"]
+[gd_scene load_steps=6 format=3 uid="uid://b77lgv747e4bf"]
 
 [ext_resource type="Script" path="res://Scripts/Spells/ice.gd" id="1_f8qqp"]
+[ext_resource type="Texture2D" uid="uid://g00s7nv46m6x" path="res://Assets/2d_lights_and_shadows_neutral_point_light.webp" id="2_45c1x"]
 [ext_resource type="Texture2D" uid="uid://dy5odx6ybusw2" path="res://Assets/Spells/ice sprites.png" id="2_c3yke"]
 [ext_resource type="AudioStream" uid="uid://chrs8lso3gfhs" path="res://Assets/SoundFx/13_Ice_explosion_01.wav" id="3_be2yk"]
 
@@ -11,6 +12,11 @@ region = Rect2(38.2255, 154.433, 99.8654, 101.385)
 [node name="Ice" type="Node2D"]
 z_index = -4
 script = ExtResource("1_f8qqp")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0, 0.956902, 0.958751, 1)
+texture = ExtResource("2_45c1x")
+texture_scale = 0.3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_mxhh6")

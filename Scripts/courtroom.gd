@@ -53,4 +53,4 @@ func _on_animated_sprite_2d_animation_finished():
 
 
 func _on_timer_timeout():
-	get_tree().change_scene_to_file("res://Scenes/level1.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Levels/level1.tscn")

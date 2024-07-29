@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://rluwp48ph85s"]
+[gd_scene load_steps=21 format=3 uid="uid://rluwp48ph85s"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_x7n68"]
+[ext_resource type="Texture2D" uid="uid://g00s7nv46m6x" path="res://Assets/2d_lights_and_shadows_neutral_point_light.webp" id="2_j6hsd"]
 [ext_resource type="Texture2D" uid="uid://bm0aamq5sgvma" path="res://Assets/enenmies.png" id="2_tc5os"]
 [ext_resource type="Script" path="res://Scripts/States/State Machine.gd" id="3_ggl2n"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyIdle.gd" id="4_bei65"]
@@ -113,6 +114,20 @@ scale = Vector2(0.375, 0.375)
 sprite_frames = SubResource("SpriteFrames_spxwg")
 animation = &"idle"
 autoplay = "idle"
+
+[node name="PointLight2D4" type="PointLight2D" parent="Animator"]
+position = Vector2(-2.66667, -10.6667)
+color = Color(0.909804, 0.635294, 0, 1)
+energy = 1.09
+texture = ExtResource("2_j6hsd")
+texture_scale = 0.05
+
+[node name="PointLight2D5" type="PointLight2D" parent="Animator"]
+position = Vector2(-16, -10.6667)
+color = Color(0.909804, 0.635294, 0, 1)
+energy = 1.09
+texture = ExtResource("2_j6hsd")
+texture_scale = 0.05
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["caster"]]
 shape = SubResource("CircleShape2D_pr78t")
