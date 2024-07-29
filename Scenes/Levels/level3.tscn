@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://cwext4n2bvw7e"]
+
+[ext_resource type="PackedScene" uid="uid://bhlyxfpg5udx2" path="res://Scenes/Spells/spell_ball.tscn" id="1_n35v7"]
+[ext_resource type="PackedScene" uid="uid://cealsvi7aqafc" path="res://Scenes/Player.tscn" id="2_tlsbv"]
+[ext_resource type="PackedScene" uid="uid://c7i8u3biltbfd" path="res://Scenes/potion_brew.tscn" id="3_kvedt"]
+[ext_resource type="PackedScene" uid="uid://dqbdekj57kccg" path="res://Scenes/lightUnPhysics.tscn" id="4_w8jfo"]
+[ext_resource type="Script" path="res://Scripts/SpellManager.gd" id="5_qdr1l"]
+[ext_resource type="PackedScene" uid="uid://801kiy05g0j6" path="res://Scenes/mouse_collider.tscn" id="6_nebns"]
+[ext_resource type="PackedScene" uid="uid://bo23bowkhn4xp" path="res://Scenes/Hud.tscn" id="7_nq8k2"]
+
+[node name="level3" type="Node2D" groups=["Level", "Spells"]]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+scale = Vector2(-0.202183, 0.979107)
+color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+
+[node name="SpellBall" parent="." instance=ExtResource("1_n35v7")]
+position = Vector2(38, 77)
+
+[node name="Player" parent="." instance=ExtResource("2_tlsbv")]
+unique_name_in_owner = true
+
+[node name="PotionBrew" parent="Player" instance=ExtResource("3_kvedt")]
+visible = false
+position = Vector2(-209, 101)
+scale = Vector2(2.8, 2.8)
+
+[node name="Light" parent="Player/PotionBrew" instance=ExtResource("4_w8jfo")]
+position = Vector2(75.3571, -37.1429)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+
+[node name="Spell Manager" type="Node2D" parent="."]
+script = ExtResource("5_qdr1l")
+
+[node name="MouseCollider" parent="." instance=ExtResource("6_nebns")]
+position = Vector2(91, 10)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("7_nq8k2")]
+
+[connection signal="AddToInv" from="Player" to="Player/PotionBrew" method="_on_player_add_to_inv"]
+[connection signal="AmmoFilled" from="Player" to="Spell Manager" method="_on_player_ammo_filled"]
+[connection signal="AmmoOut" from="Player" to="Spell Manager" method="_on_player_ammo_out"]
+[connection signal="currentSpell" from="Player" to="Spell Manager" method="_on_player_current_spell"]
+[connection signal="dpsToBar" from="Player" to="CanvasLayer" method="_on_player_dps_to_bar"]
+[connection signal="gainedVial" from="Player" to="CanvasLayer" method="_on_player_gained_vial"]
+[connection signal="transferHitPosition" from="Player" to="Spell Manager" method="_on_player_transfer_hit_position"]
+[connection signal="OpenInv" from="Player/PotionBrew" to="Player" method="_on_potion_brew_open_inv"]
+[connection signal="passLoadFire" from="Player/PotionBrew" to="Player" method="_on_potion_brew_pass_load_fire"]
+[connection signal="passLoadHealth" from="Player/PotionBrew" to="Player" method="_on_potion_brew_pass_load_health"]
+[connection signal="passLoadIce" from="Player/PotionBrew" to="Player" method="_on_potion_brew_pass_load_ice"]
+[connection signal="passLoadLight" from="Player/PotionBrew" to="Player" method="_on_potion_brew_pass_load_light"]
+[connection signal="passLoadPoison" from="Player/PotionBrew" to="Player" method="_on_potion_brew_pass_load_poison"]
+[connection signal="Fired" from="Spell Manager" to="Player" method="_on_spell_manager_fired"]
+[connection signal="landed" from="Spell Manager" to="Spell Manager" method="_on_landed"]

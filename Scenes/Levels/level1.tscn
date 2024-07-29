@@ -228,7 +228,7 @@ tile_size = Vector2i(20, 20)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_2mhsd")
 
-[node name="level1" type="Node2D" groups=["Spells"]]
+[node name="level1" type="Node2D" groups=["Level", "Spells"]]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false

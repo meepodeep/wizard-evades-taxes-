@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbco08x5ah6fs"]
+
+[ext_resource type="Texture2D" uid="uid://b3wvtjpjug22t" path="res://Assets/log.png" id="1_smfnr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m7rk0"]
+size = Vector2(80, 20)
+
+[node name="Door" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+z_index = -6
+input_pickable = true
+
+[node name="Log" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_smfnr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_m7rk0")

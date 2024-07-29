@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://cj4l0j7lj1tnq"]
+
+[ext_resource type="Script" path="res://Scripts/FireBoss.gd" id="1_qa4a3"]
+[ext_resource type="Texture2D" uid="uid://db5jrmpoqseu6" path="res://Assets/Wizard.png" id="2_t8el2"]
+[ext_resource type="Script" path="res://Scripts/EnemyCounterBossBattle.gd" id="2_xym80"]
+[ext_resource type="PackedScene" uid="uid://cealsvi7aqafc" path="res://Scenes/Player.tscn" id="3_gwesj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_frvj0"]
+size = Vector2(931, 706)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tt7a4"]
+atlas = ExtResource("2_t8el2")
+region = Rect2(120, 0, 30, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_04krq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tt7a4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5byod"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_qa4a3")
+
+[node name="EnemyCounter" type="Node2D" parent="."]
+script = ExtResource("2_xym80")
+
+[node name="Area2D" type="Area2D" parent="EnemyCounter"]
+collision_layer = 4096
+collision_mask = 4097
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCounter/Area2D"]
+position = Vector2(-0.5, -9)
+shape = SubResource("RectangleShape2D_frvj0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_04krq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="AnimatedSprite2D" groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
+shape = SubResource("CircleShape2D_5byod")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="Timer"]
+
+[node name="Player" parent="." instance=ExtResource("3_gwesj")]
+position = Vector2(-28, -53)
+
+[connection signal="body_entered" from="EnemyCounter/Area2D" to="EnemyCounter" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="EnemyCounter/Area2D" to="EnemyCounter" method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

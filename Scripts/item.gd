@@ -7,16 +7,16 @@ var rng = RandomNumberGenerator.new()
 func _ready():
 	randomiz()
 func randomiz():
-	level = get_parent().name
+	level = get_tree().get_first_node_in_group("Level").name
 	match level:
 		"level1":
 			random = rng.randi_range(1, 3)
 		"level2":
-			random = rng.randi_range(1, 3)
+			random = rng.randi_range(1, 4)
 		"level3":
-			random = rng.randi_range(1, 3)
+			random = rng.randi_range(1, 4)
 		"level4":
-			random = rng.randi_range(1, 3)
+			random = rng.randi_range(1, 4)
 		"level5":
 			random = rng.randi_range(1, 4)
 		"level6":
@@ -35,11 +35,11 @@ func randomiz():
 		2:
 			mushroom()
 		3:
-			fireflies()
+			crystal()
 		4:
 			heart()
 		5:
-			crystal()
+			fireflies()
 		6:
 			flint()
 func fireflies():
