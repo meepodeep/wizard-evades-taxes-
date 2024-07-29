@@ -1,23 +1,27 @@
 extends Node2D
-
+@onready var boss_health_manager = $"../BossHealthManager"
 var enemyCountStart = 0
 var doorCount = 0 
 var doors = []
 var concurrentEnemies = 0
 var playerIn 
+var canChange = true
 signal RoomCleared
-@onready var static_body_2d = $"../AnimatedSprite2D/StaticBody2D"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	doors.resize(10)
-	static_body_2d.active = false
+	boss_health_manager.weakness = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if concurrentEnemies <=0:
-		static_body_2d.active = false
+	print(boss_health_manager.weakness)
+	if concurrentEnemies <=0 && canChange == true:
+		boss_health_manager.weakness = true
+		canChange = false
+	if concurrentEnemies >0:
+		canChange = true
 
 
 func _on_area_2d_body_entered(body):

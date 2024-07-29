@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cj4l0j7lj1tnq"]
+[gd_scene load_steps=15 format=3 uid="uid://cj4l0j7lj1tnq"]
 
 [ext_resource type="Script" path="res://Scripts/FireBoss.gd" id="1_qa4a3"]
 [ext_resource type="Texture2D" uid="uid://db5jrmpoqseu6" path="res://Assets/Wizard.png" id="2_t8el2"]
 [ext_resource type="Script" path="res://Scripts/EnemyCounterBossBattle.gd" id="2_xym80"]
-[ext_resource type="PackedScene" uid="uid://cealsvi7aqafc" path="res://Scenes/Player.tscn" id="3_gwesj"]
+[ext_resource type="Script" path="res://Scripts/HealthManagers/BossHealthManager.gd" id="5_niu65"]
+[ext_resource type="Texture2D" uid="uid://h4u0oxoh07we" path="res://Assets/Dps Particles.png" id="6_08x1c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_frvj0"]
 size = Vector2(931, 706)
@@ -23,7 +24,61 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5byod"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_vfv3h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3kgg"]
+atlas = ExtResource("6_08x1c")
+region = Rect2(30, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4t2dt"]
+atlas = ExtResource("6_08x1c")
+region = Rect2(60, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpplk"]
+atlas = ExtResource("6_08x1c")
+region = Rect2(90, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8jsd"]
+atlas = ExtResource("6_08x1c")
+region = Rect2(0, 0, 30, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vbju3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3kgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4t2dt")
+}],
+"loop": true,
+"name": &"Fire",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpplk")
+}],
+"loop": true,
+"name": &"Ice",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"Nothing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8jsd")
+}],
+"loop": true,
+"name": &"Poison",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_qa4a3")
@@ -42,18 +97,30 @@ shape = SubResource("RectangleShape2D_frvj0")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_04krq")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="AnimatedSprite2D" groups=["enemy"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
-shape = SubResource("CircleShape2D_5byod")
-
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="Timer"]
 
-[node name="Player" parent="." instance=ExtResource("3_gwesj")]
-position = Vector2(-28, -53)
+[node name="BossHealthManager" type="Node2D" parent="."]
+script = ExtResource("5_niu65")
+
+[node name="Area2D" type="Area2D" parent="BossHealthManager"]
+collision_layer = 0
+collision_mask = 62
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossHealthManager/Area2D"]
+shape = SubResource("CircleShape2D_vfv3h")
+
+[node name="Timer2" type="Timer" parent="."]
+
+[node name="DpsParticles" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 3)
+sprite_frames = SubResource("SpriteFrames_vbju3")
+animation = &"Nothing"
 
 [connection signal="body_entered" from="EnemyCounter/Area2D" to="EnemyCounter" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="EnemyCounter/Area2D" to="EnemyCounter" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="BossHealthManager/Area2D" to="BossHealthManager" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="BossHealthManager/Area2D" to="BossHealthManager" method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="Timer2" to="BossHealthManager" method="_on_timer_2_timeout"]

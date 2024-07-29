@@ -3,6 +3,7 @@ var random:= Vector2()
 var rng = RandomNumberGenerator.new()
 var fire = load("res://Scenes/enemies/caster_enemy.tscn")
 @onready var timer = $Timer
+@onready var boss_health_manager = $BossHealthManager
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,5 +19,8 @@ func instFireGuy(pos):
 
 
 func _on_timer_timeout():
-	instFireGuy(random)
 	timer.start(4)
+	print("spawnGuy")
+	if boss_health_manager.weakness == false: 
+		instFireGuy(random)
+		
