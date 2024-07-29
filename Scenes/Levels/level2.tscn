@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/SpellManager.gd" id="6_vg2d3"]
 [ext_resource type="PackedScene" uid="uid://801kiy05g0j6" path="res://Scenes/mouse_collider.tscn" id="7_jtut2"]
 [ext_resource type="PackedScene" uid="uid://bo23bowkhn4xp" path="res://Scenes/Hud.tscn" id="8_i3ih3"]
-[ext_resource type="Texture2D" uid="uid://bo1qruoraee2d" path="res://Assets/Louies game tilesret-export.png" id="11_bkfct"]
+[ext_resource type="Texture2D" uid="uid://dlm3a2yvto468" path="res://Assets/Louies game tilesret-export.png" id="11_bkfct"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2mhsd"]
 texture = ExtResource("11_bkfct")
@@ -207,6 +207,9 @@ texture_region_size = Vector2i(20, 20)
 4:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:7/0/physics_layer_0/angular_velocity = 0.0
 4:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10, -10, 4.06586, -10, 4.24264, 10, -10, 10)
+9:1/0 = 0
+9:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+9:1/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_1lr2h"]
 tile_size = Vector2i(20, 20)

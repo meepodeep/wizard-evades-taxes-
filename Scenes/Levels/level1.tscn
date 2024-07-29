@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://801kiy05g0j6" path="res://Scenes/mouse_collider.tscn" id="6_77jte"]
 [ext_resource type="AudioStream" uid="uid://blcanoxwwqkfq" path="res://Assets/SoundFx/box-crash-106687.mp3" id="8_7ylr7"]
 [ext_resource type="PackedScene" uid="uid://bo23bowkhn4xp" path="res://Scenes/Hud.tscn" id="8_elyol"]
-[ext_resource type="Texture2D" uid="uid://bo1qruoraee2d" path="res://Assets/Louies game tilesret-export.png" id="9_q3l1t"]
 [ext_resource type="PackedScene" uid="uid://c28bccgpesgl2" path="res://Scenes/Items/gun.tscn" id="10_n3v2g"]
 [ext_resource type="AudioStream" uid="uid://b5sdudi4dmeuq" path="res://Assets/SoundFx/AmbientNatureBirdsWater01.wav" id="10_qfs2q"]
 [ext_resource type="PackedScene" uid="uid://dxd0i4vkjbkun" path="res://Scenes/Items/grass.tscn" id="13_hb23e"]
@@ -22,8 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://dbww08lb4qhr5" path="res://Scenes/enemies/healer_enemy.tscn" id="20_owydo"]
 [ext_resource type="Texture2D" uid="uid://bfr6e07nv11m6" path="res://Assets/Fountain.png" id="21_ahxv1"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_43qcs"]
+load_path = "res://.godot/imported/Louies game tilesret-export.png-f9eb9d3b2bf6389addecc09f249fffc7.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2mhsd"]
-texture = ExtResource("9_q3l1t")
+texture = SubResource("CompressedTexture2D_43qcs")
 texture_region_size = Vector2i(20, 20)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -323,8 +325,8 @@ position = Vector2(932, 335)
 scale = Vector2(1.29146, 0.727301)
 
 [node name="Light3" parent="LightParent" instance=ExtResource("4_ef0o6")]
-position = Vector2(-5, -646)
-scale = Vector2(0.960001, 0.6)
+position = Vector2(-20, -687)
+scale = Vector2(1.2, 1.12)
 
 [node name="Light6" parent="LightParent" instance=ExtResource("4_ef0o6")]
 position = Vector2(-4.76837e-07, -388)
@@ -443,7 +445,7 @@ position = Vector2(446, -390)
 scale = Vector2(0.115, 0.11)
 
 [node name="Ladder" parent="." instance=ExtResource("18_b2myp")]
-position = Vector2(-1, -84)
+position = Vector2(966, 309)
 
 [node name="HealerEnemy" parent="." instance=ExtResource("20_owydo")]
 position = Vector2(1085, -54)
@@ -458,11 +460,13 @@ position = Vector2(850, -786)
 position = Vector2(1006, -109)
 
 [node name="Fountain" type="Sprite2D" parent="."]
+z_index = -4
 position = Vector2(1003, -401)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("21_ahxv1")
 
 [node name="Fountain2" type="Sprite2D" parent="."]
+z_index = -4
 position = Vector2(-21, -688)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("21_ahxv1")
