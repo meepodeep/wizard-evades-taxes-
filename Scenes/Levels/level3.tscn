@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwext4n2bvw7e"]
+[gd_scene load_steps=16 format=3 uid="uid://cwext4n2bvw7e"]
 
 [ext_resource type="PackedScene" uid="uid://bhlyxfpg5udx2" path="res://Scenes/Spells/spell_ball.tscn" id="1_n35v7"]
 [ext_resource type="PackedScene" uid="uid://cealsvi7aqafc" path="res://Scenes/Player.tscn" id="2_tlsbv"]
@@ -7,6 +7,14 @@
 [ext_resource type="Script" path="res://Scripts/SpellManager.gd" id="5_qdr1l"]
 [ext_resource type="PackedScene" uid="uid://801kiy05g0j6" path="res://Scenes/mouse_collider.tscn" id="6_nebns"]
 [ext_resource type="PackedScene" uid="uid://bo23bowkhn4xp" path="res://Scenes/Hud.tscn" id="7_nq8k2"]
+[ext_resource type="PackedScene" uid="uid://7xwkyhyloarx" path="res://Scenes/Rooms/SafeRoom2sideDoor.tscn" id="8_fp08o"]
+[ext_resource type="PackedScene" uid="uid://qbq8yudh1vhn" path="res://Scenes/Rooms/4dogDownleftright.tscn" id="9_8wo3g"]
+[ext_resource type="PackedScene" uid="uid://dhy6qrfmkht4r" path="res://Scenes/Rooms/3dog 2side1up.tscn" id="10_d5bje"]
+[ext_resource type="PackedScene" uid="uid://d1qrdmbnviolp" path="res://Scenes/Rooms/2horizDoor2Dog1Poison.tscn" id="11_ypmqh"]
+[ext_resource type="PackedScene" uid="uid://d2ajvn53rdo0q" path="res://Scenes/Rooms/ProgressionRoom.tscn" id="12_dabiv"]
+[ext_resource type="PackedScene" uid="uid://cbq72401i357" path="res://Scenes/Rooms/UpDownFire.tscn" id="13_7rldv"]
+[ext_resource type="PackedScene" uid="uid://bnv5e3hap230s" path="res://Scenes/Rooms/Room4Door4Dog1Healer.tscn" id="14_xh7n7"]
+[ext_resource type="PackedScene" uid="uid://dbco08x5ah6fs" path="res://Scenes/doorPerm.tscn" id="15_46f3v"]
 
 [node name="level3" type="Node2D" groups=["Level", "Spells"]]
 
@@ -41,6 +49,72 @@ script = ExtResource("5_qdr1l")
 position = Vector2(91, 10)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("7_nq8k2")]
+
+[node name="Node2D" parent="." instance=ExtResource("8_fp08o")]
+position = Vector2(42, 123)
+
+[node name="Node2D2" parent="." instance=ExtResource("9_8wo3g")]
+position = Vector2(-437, 93)
+
+[node name="Node2D3" parent="." instance=ExtResource("10_d5bje")]
+position = Vector2(-438, 513)
+
+[node name="TileMap" parent="." instance=ExtResource("12_dabiv")]
+position = Vector2(-438, 1982)
+
+[node name="Node2D5" parent="." instance=ExtResource("11_ypmqh")]
+position = Vector2(-18, 513)
+
+[node name="Node2D6" parent="." instance=ExtResource("9_8wo3g")]
+position = Vector2(523, 513)
+
+[node name="Node2D7" parent="." instance=ExtResource("13_7rldv")]
+position = Vector2(522, 993)
+
+[node name="Node2D4" parent="." instance=ExtResource("14_xh7n7")]
+position = Vector2(-889, 573)
+
+[node name="Node2D8" parent="." instance=ExtResource("9_8wo3g")]
+position = Vector2(-887, 93)
+
+[node name="Node2D9" parent="." instance=ExtResource("13_7rldv")]
+position = Vector2(-889, 1053)
+
+[node name="Node2D10" parent="." instance=ExtResource("10_d5bje")]
+position = Vector2(-888, 1533)
+
+[node name="Node2D11" parent="." instance=ExtResource("9_8wo3g")]
+position = Vector2(-437, 1533)
+
+[node name="Node2D12" parent="." instance=ExtResource("10_d5bje")]
+position = Vector2(522, 1533)
+
+[node name="Node2D13" parent="." instance=ExtResource("8_fp08o")]
+position = Vector2(42, 1563)
+
+[node name="Door" parent="." instance=ExtResource("15_46f3v")]
+position = Vector2(-1073, 96)
+rotation = 1.57079
+
+[node name="Door2" parent="." instance=ExtResource("15_46f3v")]
+position = Vector2(233, 92)
+rotation = 1.57079
+
+[node name="Door3" parent="." instance=ExtResource("15_46f3v")]
+position = Vector2(733, 506)
+rotation = 1.57079
+
+[node name="Door4" parent="." instance=ExtResource("15_46f3v")]
+position = Vector2(712, 1541)
+rotation = 1.57079
+
+[node name="Door5" parent="." instance=ExtResource("15_46f3v")]
+position = Vector2(-1084, 1541)
+rotation = 1.57079
+
+[node name="Door6" parent="." instance=ExtResource("15_46f3v")]
+position = Vector2(-1122, 510)
+rotation = 1.57079
 
 [connection signal="AddToInv" from="Player" to="Player/PotionBrew" method="_on_player_add_to_inv"]
 [connection signal="AmmoFilled" from="Player" to="Spell Manager" method="_on_player_ammo_filled"]

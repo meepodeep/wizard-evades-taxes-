@@ -41,8 +41,8 @@ position = Vector2(-195, -58)
 rotation = 1.5708
 
 [node name="EnemyCounter" parent="." instance=ExtResource("3_dte20")]
-position = Vector2(-8, -10)
-scale = Vector2(0.13, 0.13)
+position = Vector2(-16, -25)
+scale = Vector2(0.545, 0.62)
 
 [node name="Enemy" parent="." instance=ExtResource("4_kcbg8")]
 position = Vector2(-136, -122)
@@ -61,7 +61,7 @@ position = Vector2(-5, -14)
 
 [node name="Light" parent="." instance=ExtResource("6_cmgn3")]
 position = Vector2(-5, -17)
-scale = Vector2(0.719275, -0.621492)
+scale = Vector2(0.999276, -0.981493)
 
 [node name="item" parent="." instance=ExtResource("7_q4a3a")]
 position = Vector2(1, -109)

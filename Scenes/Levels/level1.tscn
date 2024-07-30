@@ -231,7 +231,6 @@ sources/0 = SubResource("TileSetAtlasSource_2mhsd")
 [node name="level1" type="Node2D" groups=["Level", "Spells"]]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 scale = Vector2(-0.202183, 0.979107)
 color = Color(0.00351917, 0.00351917, 0.00351916, 1)
 

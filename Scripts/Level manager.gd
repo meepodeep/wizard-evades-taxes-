@@ -4,11 +4,11 @@ var enemyCountStart = 0
 var doorCount = 0 
 var doors = []
 var concurrentEnemies = 0
-var playerIn 
+var playerIn = false 
 signal RoomCleared
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	doors.resize(10)
+	doors.resize(20)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,9 +27,9 @@ func _process(delta):
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("enemy"):
-		enemyCountStart +=1
-		concurrentEnemies = enemyCountStart
+		concurrentEnemies +=1
 	if body.is_in_group("door"):
+		print(playerIn)
 		doors[doorCount] = body
 		doorCount += 1
 	if body.is_in_group("Player"):

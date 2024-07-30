@@ -37,7 +37,7 @@ position = Vector2(205.999, 569)
 
 [node name="EnemyCounter" parent="." instance=ExtResource("3_nbt6x")]
 position = Vector2(-36, -16)
-scale = Vector2(0.550025, 0.589187)
+scale = Vector2(2.27003, 2.46919)
 
 [node name="casterEnemy" parent="." instance=ExtResource("4_a5t2f")]
 position = Vector2(-38, -17)

@@ -19,7 +19,7 @@ rotation = -1.5708
 
 [node name="EnemyCounter" parent="." instance=ExtResource("2_3eu0u")]
 position = Vector2(41, -5)
-scale = Vector2(0.16, 0.2)
+scale = Vector2(0.640001, 0.88)
 
 [node name="Enemy" parent="." instance=ExtResource("3_5fofa")]
 position = Vector2(128, 9)

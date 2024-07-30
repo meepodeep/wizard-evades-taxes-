@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://csoptem8umag2"]
+[gd_scene load_steps=18 format=3 uid="uid://csoptem8umag2"]
 
 [ext_resource type="PackedScene" uid="uid://bhlyxfpg5udx2" path="res://Scenes/Spells/spell_ball.tscn" id="2_wyq6y"]
 [ext_resource type="PackedScene" uid="uid://cealsvi7aqafc" path="res://Scenes/Player.tscn" id="3_pvsxf"]
@@ -10,17 +10,17 @@
 [ext_resource type="PackedScene" uid="uid://7xwkyhyloarx" path="res://Scenes/Rooms/SafeRoom2sideDoor.tscn" id="8_jluxa"]
 [ext_resource type="PackedScene" uid="uid://bnv5e3hap230s" path="res://Scenes/Rooms/Room4Door4Dog1Healer.tscn" id="9_n0w81"]
 [ext_resource type="PackedScene" uid="uid://c6eoerpr7i26v" path="res://Scenes/Rooms/Bottle.tscn" id="10_q2xrn"]
-[ext_resource type="PackedScene" uid="uid://qbq8yudh1vhn" path="res://Scenes/Rooms/4dogUpleftright.tscn" id="11_iiuac"]
+[ext_resource type="PackedScene" uid="uid://qbq8yudh1vhn" path="res://Scenes/Rooms/4dogDownleftright.tscn" id="11_iiuac"]
 [ext_resource type="PackedScene" uid="uid://d1qrdmbnviolp" path="res://Scenes/Rooms/2horizDoor2Dog1Poison.tscn" id="12_3qw0t"]
 [ext_resource type="PackedScene" uid="uid://d2ajvn53rdo0q" path="res://Scenes/Rooms/ProgressionRoom.tscn" id="13_hmnol"]
 [ext_resource type="PackedScene" uid="uid://dhy6qrfmkht4r" path="res://Scenes/Rooms/3dog 2side1up.tscn" id="14_o2qbn"]
 [ext_resource type="PackedScene" uid="uid://v22yfjvpspu5" path="res://Scenes/Rooms/BattleRoomEnterLeftExitBottom.tscn" id="15_wx6wi"]
 [ext_resource type="PackedScene" uid="uid://dbco08x5ah6fs" path="res://Scenes/doorPerm.tscn" id="16_ewym8"]
+[ext_resource type="PackedScene" uid="uid://svqcjvilc4xs" path="res://Scenes/Items/flint.tscn" id="17_7yocf"]
 
 [node name="level2" type="Node2D" groups=["Level", "Spells"]]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 scale = Vector2(-0.202183, 0.979107)
 color = Color(0.00351917, 0.00351917, 0.00351916, 1)
 
@@ -101,6 +101,9 @@ rotation = 1.57079
 [node name="Door5" parent="." instance=ExtResource("16_ewym8")]
 position = Vector2(-1335, 473)
 rotation = 1.57079
+
+[node name="flint" parent="." instance=ExtResource("17_7yocf")]
+position = Vector2(-48, 110)
 
 [connection signal="AddToInv" from="Player" to="Player/PotionBrew" method="_on_player_add_to_inv"]
 [connection signal="AmmoFilled" from="Player" to="Spell Manager" method="_on_player_ammo_filled"]

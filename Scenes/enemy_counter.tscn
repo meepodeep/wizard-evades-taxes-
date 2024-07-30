@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Level manager.gd" id="1_1hwdf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_frvj0"]
-size = Vector2(2752, 2060)
+size = Vector2(657, 479)
 
 [node name="EnemyCounter" type="Node2D"]
 script = ExtResource("1_1hwdf")
