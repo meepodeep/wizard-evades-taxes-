@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cj4l0j7lj1tnq"]
+[gd_scene load_steps=23 format=3 uid="uid://cj4l0j7lj1tnq"]
 
 [ext_resource type="Script" path="res://Scripts/FireBoss.gd" id="1_qa4a3"]
 [ext_resource type="Texture2D" uid="uid://db5jrmpoqseu6" path="res://Assets/Wizard.png" id="2_t8el2"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dd3ulyj61yiw" path="res://Assets/bossContainer3.png" id="8_nws0j"]
 [ext_resource type="TileSet" uid="uid://6jct11xurwym" path="res://TileSets/RoomTiles.tres" id="10_ox2ap"]
 [ext_resource type="PackedScene" uid="uid://4c8msk2p4600" path="res://Scenes/door.tscn" id="11_by7gj"]
+[ext_resource type="PackedScene" uid="uid://dqbdekj57kccg" path="res://Scenes/lightUnPhysics.tscn" id="12_6ixly"]
 [ext_resource type="PackedScene" uid="uid://sr5s1x27nhe7" path="res://Scenes/enemy_counter.tscn" id="12_cwoac"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_frvj0"]
@@ -174,6 +175,9 @@ rotation = 1.57079
 [node name="EnemyCounter" parent="TileMap" instance=ExtResource("12_cwoac")]
 position = Vector2(-23.3333, -10)
 scale = Vector2(0.71, 0.675)
+
+[node name="Light" parent="." instance=ExtResource("12_6ixly")]
+position = Vector2(-4, -3)
 
 [connection signal="body_entered" from="EnemyCounter/Area2D" to="EnemyCounter" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="EnemyCounter/Area2D" to="EnemyCounter" method="_on_area_2d_body_exited"]

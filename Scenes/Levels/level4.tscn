@@ -1,0 +1,91 @@
+[gd_scene load_steps=16 format=3 uid="uid://ddk5nitd8cdml"]
+
+[ext_resource type="PackedScene" uid="uid://bhlyxfpg5udx2" path="res://Scenes/Spells/spell_ball.tscn" id="1_11xuo"]
+[ext_resource type="PackedScene" uid="uid://cealsvi7aqafc" path="res://Scenes/Player.tscn" id="2_23pad"]
+[ext_resource type="PackedScene" uid="uid://c7i8u3biltbfd" path="res://Scenes/potion_brew.tscn" id="3_cuvlx"]
+[ext_resource type="PackedScene" uid="uid://dqbdekj57kccg" path="res://Scenes/lightUnPhysics.tscn" id="4_73bge"]
+[ext_resource type="Script" path="res://Scripts/SpellManager.gd" id="5_v10ah"]
+[ext_resource type="PackedScene" uid="uid://801kiy05g0j6" path="res://Scenes/mouse_collider.tscn" id="6_44ksp"]
+[ext_resource type="PackedScene" uid="uid://bo23bowkhn4xp" path="res://Scenes/Hud.tscn" id="7_qkfoq"]
+[ext_resource type="PackedScene" uid="uid://7xwkyhyloarx" path="res://Scenes/Rooms/SafeRoom2sideDoor.tscn" id="8_op8gn"]
+[ext_resource type="PackedScene" uid="uid://bnv5e3hap230s" path="res://Scenes/Rooms/Room4Door4Dog1Healer.tscn" id="9_bstgf"]
+[ext_resource type="PackedScene" uid="uid://dhy6qrfmkht4r" path="res://Scenes/Rooms/3dog 2side1up.tscn" id="10_04csd"]
+[ext_resource type="PackedScene" uid="uid://qbq8yudh1vhn" path="res://Scenes/Rooms/4dogDownleftright.tscn" id="11_w7ilm"]
+[ext_resource type="PackedScene" uid="uid://c6eoerpr7i26v" path="res://Scenes/Rooms/Bottle.tscn" id="12_yr1nx"]
+[ext_resource type="PackedScene" uid="uid://cj4l0j7lj1tnq" path="res://Scenes/Rooms/BossFire.tscn" id="13_td6d1"]
+[ext_resource type="PackedScene" uid="uid://d2ajvn53rdo0q" path="res://Scenes/Rooms/ProgressionRoom.tscn" id="14_h37mv"]
+[ext_resource type="PackedScene" uid="uid://dbco08x5ah6fs" path="res://Scenes/doorPerm.tscn" id="15_6i5a5"]
+
+[node name="level4" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+scale = Vector2(-0.202183, 0.979107)
+color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+
+[node name="SpellBall" parent="." instance=ExtResource("1_11xuo")]
+position = Vector2(38, 77)
+
+[node name="Player" parent="." instance=ExtResource("2_23pad")]
+unique_name_in_owner = true
+
+[node name="PotionBrew" parent="Player" instance=ExtResource("3_cuvlx")]
+visible = false
+position = Vector2(-209, 101)
+scale = Vector2(2.8, 2.8)
+
+[node name="Light" parent="Player/PotionBrew" instance=ExtResource("4_73bge")]
+position = Vector2(75.3571, -37.1429)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+
+[node name="Spell Manager" type="Node2D" parent="."]
+script = ExtResource("5_v10ah")
+
+[node name="MouseCollider" parent="." instance=ExtResource("6_44ksp")]
+position = Vector2(91, 10)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("7_qkfoq")]
+
+[node name="Node2D" parent="." instance=ExtResource("8_op8gn")]
+position = Vector2(10, 112)
+
+[node name="Node2D3" parent="." instance=ExtResource("9_bstgf")]
+position = Vector2(580, 142)
+
+[node name="Node2D4" parent="." instance=ExtResource("10_04csd")]
+position = Vector2(580, 653)
+
+[node name="Node2D5" parent="." instance=ExtResource("11_w7ilm")]
+position = Vector2(1031, 653)
+
+[node name="TileMap" parent="." instance=ExtResource("12_yr1nx")]
+position = Vector2(1030, 923)
+
+[node name="Node2D2" parent="." instance=ExtResource("13_td6d1")]
+position = Vector2(1690, 683)
+
+[node name="TileMap2" parent="." instance=ExtResource("14_h37mv")]
+position = Vector2(1690, 1223)
+
+[node name="Door" parent="." instance=ExtResource("15_6i5a5")]
+position = Vector2(413, 650)
+rotation = 1.5708
+
+[node name="Door2" parent="." instance=ExtResource("15_6i5a5")]
+position = Vector2(750, 83)
+rotation = 1.5708
+
+[node name="Door3" parent="." instance=ExtResource("15_6i5a5")]
+position = Vector2(578, -27)
+
+[connection signal="AddToInv" from="Player" to="Player/PotionBrew" method="_on_player_add_to_inv"]
+[connection signal="OpenInv" from="Player/PotionBrew" to="Player" method="_on_potion_brew_open_inv"]
+[connection signal="passLoadFire" from="Player/PotionBrew" to="Player" method="_on_potion_brew_pass_load_fire"]
+[connection signal="passLoadHealth" from="Player/PotionBrew" to="Player" method="_on_potion_brew_pass_load_health"]
+[connection signal="passLoadIce" from="Player/PotionBrew" to="Player" method="_on_potion_brew_pass_load_ice"]
+[connection signal="passLoadLight" from="Player/PotionBrew" to="Player" method="_on_potion_brew_pass_load_light"]
+[connection signal="passLoadPoison" from="Player/PotionBrew" to="Player" method="_on_potion_brew_pass_load_poison"]
+[connection signal="landed" from="Spell Manager" to="Spell Manager" method="_on_landed"]

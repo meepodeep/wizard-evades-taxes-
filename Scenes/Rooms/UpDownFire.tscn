@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbq72401i357"]
+[gd_scene load_steps=7 format=3 uid="uid://cbq72401i357"]
 
 [ext_resource type="PackedScene" uid="uid://sr5s1x27nhe7" path="res://Scenes/enemy_counter.tscn" id="1_g4w5p"]
 [ext_resource type="PackedScene" uid="uid://4c8msk2p4600" path="res://Scenes/door.tscn" id="2_p7xgm"]
 [ext_resource type="TileSet" uid="uid://6jct11xurwym" path="res://TileSets/RoomTiles.tres" id="3_32fv3"]
 [ext_resource type="PackedScene" uid="uid://rluwp48ph85s" path="res://Scenes/enemies/caster_enemy.tscn" id="4_x8xlc"]
 [ext_resource type="PackedScene" uid="uid://dbww08lb4qhr5" path="res://Scenes/enemies/healer_enemy.tscn" id="5_3qv0e"]
+[ext_resource type="PackedScene" uid="uid://dqbdekj57kccg" path="res://Scenes/lightUnPhysics.tscn" id="6_d65hj"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -38,3 +39,6 @@ position = Vector2(-4, 12)
 
 [node name="HealerEnemy" parent="." instance=ExtResource("5_3qv0e")]
 position = Vector2(74, 19)
+
+[node name="Light" parent="." instance=ExtResource("6_d65hj")]
+position = Vector2(0, -2)
