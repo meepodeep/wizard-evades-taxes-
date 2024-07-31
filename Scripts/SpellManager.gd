@@ -6,7 +6,7 @@ extends Node2D
 @onready var light = load("res://Scenes/Spells/light.tscn")
 @onready var ball = $"../SpellBall"
 @onready var player = %Player
-var targetPosition
+var targetPosition = 0.0
 signal Fired
 signal landed
 var currentSpell = 1
@@ -39,7 +39,7 @@ func instLight(pos):
 
 func _process(_delta):
 	player.SpellType = currentSpell
-	if isFiring == true:
+	if isFiring == true && targetPosition != null:
 		if ball.global_position != targetPosition:
 			ball.visible = true
 			ball.global_position = ball.global_position.move_toward(targetPosition, 3)

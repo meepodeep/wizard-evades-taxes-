@@ -37,6 +37,9 @@ layer_2/tile_data = PackedInt32Array(-327688, 196608, 7, -327687, 196608, 7, -32
 [node name="casterEnemy" parent="." instance=ExtResource("4_x8xlc")]
 position = Vector2(-4, 12)
 
+[node name="casterEnemy2" parent="." instance=ExtResource("4_x8xlc")]
+position = Vector2(-148, 79)
+
 [node name="HealerEnemy" parent="." instance=ExtResource("5_3qv0e")]
 position = Vector2(74, 19)
 

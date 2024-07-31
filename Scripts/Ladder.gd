@@ -15,7 +15,7 @@ func _ready():
 		"level3":
 			nextLevel = ("res://Scenes/Levels/level4.tscn")
 		"level4":
-			pass
+			nextLevel = ("res://Scenes/Levels/level5.tscn")
 		"level5":
 			pass
 		"level6":
