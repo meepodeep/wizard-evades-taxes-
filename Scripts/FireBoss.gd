@@ -20,7 +20,6 @@ func instFireGuy(pos):
 
 func _on_timer_timeout():
 	timer.start(4)
-	print("spawnGuy")
 	if boss_health_manager.weakness == false: 
 		instFireGuy(random)
 		

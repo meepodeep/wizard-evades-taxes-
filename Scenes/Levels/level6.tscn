@@ -1,61 +1,27 @@
-[gd_scene load_steps=10 format=3 uid="uid://7ljanqs6d4d5"]
+[gd_scene load_steps=3 format=3 uid="uid://7ljanqs6d4d5"]
 
-[ext_resource type="PackedScene" uid="uid://bhlyxfpg5udx2" path="res://Scenes/Spells/spell_ball.tscn" id="1_au2jg"]
-[ext_resource type="PackedScene" uid="uid://cealsvi7aqafc" path="res://Scenes/Player.tscn" id="2_kig0q"]
-[ext_resource type="PackedScene" uid="uid://c7i8u3biltbfd" path="res://Scenes/potion_brew.tscn" id="3_yk5he"]
-[ext_resource type="PackedScene" uid="uid://dqbdekj57kccg" path="res://Scenes/lightUnPhysics.tscn" id="4_dlv5j"]
-[ext_resource type="Script" path="res://Scripts/SpellManager.gd" id="5_sjx32"]
-[ext_resource type="PackedScene" uid="uid://801kiy05g0j6" path="res://Scenes/mouse_collider.tscn" id="6_b30a2"]
-[ext_resource type="PackedScene" uid="uid://bo23bowkhn4xp" path="res://Scenes/Hud.tscn" id="7_obagb"]
+[ext_resource type="FontFile" uid="uid://cya3revvfbalq" path="res://Assets/TeenyTinyPixls-o2zo.ttf" id="2_nqk74"]
 [ext_resource type="PackedScene" uid="uid://7xwkyhyloarx" path="res://Scenes/Rooms/SafeRoom2sideDoor.tscn" id="8_40106"]
-[ext_resource type="PackedScene" uid="uid://d1qrdmbnviolp" path="res://Scenes/Rooms/2horizDoor2Dog1Poison.tscn" id="9_gnby0"]
 
 [node name="Level6" type="Node2D" groups=["Level"]]
 position = Vector2(-1, 0)
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-scale = Vector2(-0.202183, 0.979107)
-color = Color(0.00351917, 0.00351917, 0.00351916, 1)
-
-[node name="SpellBall" parent="." instance=ExtResource("1_au2jg")]
-position = Vector2(38, 77)
-
-[node name="Player" parent="." instance=ExtResource("2_kig0q")]
-unique_name_in_owner = true
-
-[node name="PotionBrew" parent="Player" instance=ExtResource("3_yk5he")]
-visible = false
-position = Vector2(-209, 101)
-scale = Vector2(2.8, 2.8)
-
-[node name="Light" parent="Player/PotionBrew" instance=ExtResource("4_dlv5j")]
-position = Vector2(75.3571, -37.1429)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-process_callback = 0
-position_smoothing_enabled = true
-position_smoothing_speed = 3.0
-
-[node name="Spell Manager" type="Node2D" parent="."]
-script = ExtResource("5_sjx32")
-
-[node name="MouseCollider" parent="." instance=ExtResource("6_b30a2")]
-position = Vector2(91, 10)
-
-[node name="CanvasLayer" parent="." instance=ExtResource("7_obagb")]
-
 [node name="Node2D" parent="." instance=ExtResource("8_40106")]
-position = Vector2(13, 122)
+position = Vector2(-10, -7)
 
-[node name="Node2D2" parent="." instance=ExtResource("9_gnby0")]
-position = Vector2(463, 92)
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-5, -25)
+scale = Vector2(0.84326, 0.666667)
+zoom = Vector2(2, 2)
 
-[connection signal="AddToInv" from="Player" to="Player/PotionBrew" method="_on_player_add_to_inv"]
-[connection signal="OpenInv" from="Player/PotionBrew" to="Player" method="_on_potion_brew_open_inv"]
-[connection signal="passLoadFire" from="Player/PotionBrew" to="Player" method="_on_potion_brew_pass_load_fire"]
-[connection signal="passLoadHealth" from="Player/PotionBrew" to="Player" method="_on_potion_brew_pass_load_health"]
-[connection signal="passLoadIce" from="Player/PotionBrew" to="Player" method="_on_potion_brew_pass_load_ice"]
-[connection signal="passLoadLight" from="Player/PotionBrew" to="Player" method="_on_potion_brew_pass_load_light"]
-[connection signal="passLoadPoison" from="Player/PotionBrew" to="Player" method="_on_potion_brew_pass_load_poison"]
-[connection signal="landed" from="Spell Manager" to="Spell Manager" method="_on_landed"]
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -103.0
+offset_top = -84.0
+offset_right = 124.0
+offset_bottom = 48.0
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_nqk74")
+theme_override_font_sizes/normal_font_size = 20
+text = "Thanks for playing, more content coming eventually!"

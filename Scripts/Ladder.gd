@@ -17,17 +17,7 @@ func _ready():
 		"level4":
 			nextLevel = ("res://Scenes/Levels/level5.tscn")
 		"level5":
-			pass
-		"level6":
-			pass
-		"level7":
-			pass
-		"level8":
-			pass
-		"level9":
-			pass
-		"level10":
-			pass
+			nextLevel = ("res://Scenes/Levels/level6.tscn")
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):

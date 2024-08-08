@@ -317,6 +317,7 @@ scale = Vector2(3.94193, 3.94193)
 [node name="BarAnim" type="AnimatedSprite2D" parent="MarginContainer"]
 position = Vector2(29.9012, 7.27859)
 sprite_frames = SubResource("SpriteFrames_mrkis")
-animation = &"3Hearts"
+animation = &"4Hearts"
+autoplay = "4Hearts"
 
 [connection signal="animation_finished" from="MarginContainer/BarAnim" to="." method="_on_bar_anim_animation_finished"]

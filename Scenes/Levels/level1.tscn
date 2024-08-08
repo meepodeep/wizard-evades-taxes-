@@ -360,7 +360,7 @@ position = Vector2(437, -603)
 
 [node name="EnemyCounter" parent="." instance=ExtResource("16_2qqjl")]
 position = Vector2(3, -167)
-scale = Vector2(0.135, 0.328)
+scale = Vector2(0.575001, 1.448)
 
 [node name="item" parent="." instance=ExtResource("17_r1mic")]
 position = Vector2(447, -390)
@@ -381,6 +381,11 @@ position = Vector2(-83, -690)
 z_index = -6
 position = Vector2(4, -511)
 rotation = 3.14159
+
+[node name="Door11" parent="." instance=ExtResource("17_q0up1")]
+z_index = -6
+position = Vector2(613, -696)
+rotation = 4.71238
 
 [node name="Door4" parent="." instance=ExtResource("17_q0up1")]
 z_index = -6
@@ -428,20 +433,20 @@ position = Vector2(194, -392)
 rotation = -1.57079
 
 [node name="EnemyCounter3" parent="." instance=ExtResource("16_2qqjl")]
-position = Vector2(441, -687)
-scale = Vector2(0.113, 0.132)
+position = Vector2(449, -687)
+scale = Vector2(0.513005, 0.572002)
 
 [node name="EnemyCounter4" parent="." instance=ExtResource("16_2qqjl")]
 position = Vector2(1001.97, -697)
-scale = Vector2(-0.152, 0.127)
+scale = Vector2(-0.614878, 0.48862)
 
 [node name="EnemyCounter5" parent="." instance=ExtResource("16_2qqjl")]
 position = Vector2(1029, -87)
 scale = Vector2(-0.152, 0.127)
 
 [node name="EnemyCounter2" parent="." instance=ExtResource("16_2qqjl")]
-position = Vector2(446, -390)
-scale = Vector2(0.115, 0.11)
+position = Vector2(443, -371)
+scale = Vector2(0.475, 0.59)
 
 [node name="Ladder" parent="." instance=ExtResource("18_b2myp")]
 position = Vector2(966, 309)
@@ -475,6 +480,12 @@ position = Vector2(1053, -401)
 
 [node name="Mushroom2" parent="." instance=ExtResource("15_yvb7n")]
 position = Vector2(948, -402)
+
+[node name="Grass3" parent="." instance=ExtResource("13_hb23e")]
+position = Vector2(-27, -735)
+
+[node name="Grass4" parent="." instance=ExtResource("13_hb23e")]
+position = Vector2(-21, -637)
 
 [connection signal="AddToInv" from="Player" to="Player/PotionBrew" method="_on_player_add_to_inv"]
 [connection signal="AmmoFilled" from="Player" to="Spell Manager" method="_on_player_ammo_filled"]

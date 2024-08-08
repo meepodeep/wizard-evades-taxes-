@@ -59,7 +59,6 @@ func Physics_Update(delta: float):
 		enemy.velocity = direction.normalized() * enemy.move_speed * delta
 		if canSlash: 
 			Transitioned.emit(self, "Slash")
-			print("castwed")
 			canSlash = false
 	
 

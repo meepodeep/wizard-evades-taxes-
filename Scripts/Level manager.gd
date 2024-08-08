@@ -26,10 +26,10 @@ func _process(delta):
 
 
 func _on_area_2d_body_entered(body):
+	print(playerIn)
 	if body.is_in_group("enemy"):
-		concurrentEnemies +=1
+		concurrentEnemies += 1
 	if body.is_in_group("door"):
-		print(playerIn)
 		doors[doorCount] = body
 		doorCount += 1
 	if body.is_in_group("Player"):

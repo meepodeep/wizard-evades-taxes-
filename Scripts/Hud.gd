@@ -2,7 +2,7 @@ extends CanvasLayer
 @onready var barAnim = $MarginContainer/BarAnim
 var currentBarLevel = 0
 func _ready():
-	_3_hearts()
+	_4_hearts()
 func _process(delta):
 	if barAnim.animation == "3Hearts":
 		if barAnim.frame == 5:

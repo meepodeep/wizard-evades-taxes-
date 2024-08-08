@@ -37,7 +37,6 @@ func _process(_delta):
 		itemsCount += 1
 		currentBody.destroy()
 		removeInv.emit(currentBody.get_groups())
-		print(potionItems)
 
 
 func _on_body_entered(body):
@@ -52,19 +51,14 @@ func brew():
 			else:
 				match ingredient:
 					[&"mushroom"]:
-						print("hasMushroom")
 						hasMushroom = true
 					[&"flint"]:
-						print("hasMushroom")
 						hasFlint = true
 					[&"fireflies"]:
-						print("hasMushroom")
 						hasFireflies = true
 					[&"iceCrystal"]:
-						print("hasMushroom")
 						hasCrystal = true
 					[&"heart"]:
-						print("hasMushroom")
 						hasHeart = true
 	
 	finBrew()
